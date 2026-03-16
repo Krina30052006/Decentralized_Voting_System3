@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - Decentralized System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .party-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .party-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .party-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .party-card.selected { border-color: #10b981; background: rgba(16, 185, 129, 0.1); }
+        .logo-box {
+            width: 80px; height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+        .candidate-name { font-weight: 700; color: var(--text-color); margin-top: 0.5rem; display: none; }
+        .party-card.selected .candidate-name { display: block; animation: fadeIn 0.5s ease forwards; }
+        #status-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        .status-notstarted { background: #6b7280; color: #fff; }
+        .status-started { background: #10b981; color: #fff; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); animation: pulse 2s infinite; }
+        .status-ended { background: #ef4444; color: #fff; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
+    </style>
+    <script>
+        let selectedCandidateId = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const voterId = localStorage.getItem("voter_id");
+            if (!voterId) { window.location.href = "login.html"; return; }
+            document.getElementById("welcomeMsg").textContent = `Welcome, ${voterId}`;
+            loadElectionState();
+        });
+
+        async function loadElectionState() {
+            try {
+                const res = await fetch("http://127.0.0.1:5000/election/status");
+                const data = await res.json();
+                const label = document.getElementById("status-label");
+                label.textContent = `STATUS: ${data.status.replace(/([A-Z])/g, ' $1').trim()}`;
+                label.className = `status-${data.status.toLowerCase()}`;
+                
+                if (data.status === "Started") {
+                    loadCandidates();
+                } else {
+                    document.getElementById("candidates-container").innerHTML = `<p style='text-align:center; padding: 2rem; opacity: 0.6;'>The voting booth is currently closed.</p>`;
+                    document.getElementById("submitBtn").style.display = "none";
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        async function loadCandidates() {
+            try {
+                const res = await fetch("http://127.0.0.1:5000/candidates");
+                const candidates = await res.json();
+                const container = document.getElementById("candidates-container");
+                container.innerHTML = "";
+
+                candidates.forEach(c => {
+                    const card = document.createElement("div");
+                    card.className = "party-card";
+                    card.onclick = () => selectCandidate(c.id, card);
+                    card.innerHTML = `
+                        <div class="logo-box">
+                            <img src="${c.party_logo}" onerror="this.src='https://via.placeholder.com/80?text=${c.party_name}'" alt="Logo">
+                        </div>
+                        <div style="font-weight: 500; opacity: 0.8">${c.party_name}</div>
+                        <div class="candidate-name">${c.name}</div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (err) { console.error(err); }
+        }
+
+        function selectCandidate(id, element) {
+            document.querySelectorAll(".party-card").forEach(c => c.classList.remove("selected"));
+            element.classList.add("selected");
+            selectedCandidateId = id;
+            document.getElementById("submitBtn").disabled = false;
+        }
+
+        async function castVote() {
+            if (!selectedCandidateId) return;
+            const voterId = localStorage.getItem("voter_id");
+            const btn = document.getElementById("submitBtn");
+            const msgEl = document.getElementById("msg");
+
+            btn.textContent = "Writing to Blockchain...";
+            btn.disabled = true;
+
+            try {
+                const res = await fetch("http://127.0.0.1:5000/vote", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ 
+                        candidate_id: selectedCandidateId,
+                        voter_id: voterId
+                    })
+                });
+                const result = await res.json();
+                if (res.ok) {
+                    msgEl.innerHTML = `Success! Your vote has been finalized.<br><small style="word-break: break-all; opacity: 0.6;">TX: ${result.transaction_hash}</small>`;
+                    msgEl.className = "message success";
+                } else {
+                    msgEl.textContent = result.message;
+                    msgEl.className = "message error";
+                    btn.disabled = false;
+                    btn.textContent = "Cast Vote";
+                }
+            } catch (err) {
+                msgEl.textContent = "Blockchain network error.";
+                msgEl.className = "message error";
+                btn.disabled = false;
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("voter_id");
+            window.location.href = "index.html";
+        }
+    </script>
+</head>
+<body>
+
+    <div class="nav-header">
+        <a href="results.html" class="btn-secondary">View Live Results</a>
+        <button class="btn-secondary" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="container" style="max-width: 800px;">
+        <div style="text-align: center;">
+            <span id="status-label" class="status-notstarted">Checking status...</span>
+            <h2>Select Your Party</h2>
+            <p id="welcomeMsg" style="color: var(--text-muted); margin-top: -0.5rem;"></p>
+        </div>
+        
+        <div id="candidates-container" class="party-grid">
+            <!-- Loaded via JS -->
+        </div>
+
+        <button id="submitBtn" onclick="castVote()" disabled style="margin-top: 3rem; width: 100%;">Cast Vote</button>
+
+        <p id="msg" class="message"></p>
+    </div>
+
+</body>
+</html>

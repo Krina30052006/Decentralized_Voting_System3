@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Election Control</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .stats-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stats-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0.5rem 0;
+        }
+        .control-panel {
+            grid-column: span 2;
+        }
+        .candidate-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            color: var(--text-color);
+        }
+        th, td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .voted-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+        }
+        .not-voted-badge {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+        }
+        .badge-status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .status-notstarted { background: #6b7280; }
+        .status-started { background: #10b981; }
+        .status-ended { background: #ef4444; }
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <span id="admin-name" style="font-weight: 600; color: var(--primary)">Admin Dashboard</span>
+        <button class="btn-secondary" onclick="logoutAdmin()">Logout</button>
+    </div>
+
+    <div class="container" style="max-width: 1000px;">
+        <div style="text-align: center;">
+            <span id="election-badge" class="badge-status status-notstarted">Loading State...</span>
+            <h2>Election Control Center</h2>
+        </div>
+
+        <div class="admin-grid">
+            <!-- Stats -->
+            <div class="stats-card">
+                <p>Total Registered Voters</p>
+                <div id="total-voters" class="stats-value">0</div>
+            </div>
+            <div class="stats-card">
+                <p>Voting Turnout</p>
+                <div id="turnout" class="stats-value">0%</div>
+            </div>
+
+            <!-- Election Controls -->
+            <div class="control-panel stats-card">
+                <h3>Executive Controls</h3>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button id="start-btn" onclick="controlElection('start')" style="flex: 1; background: #10b981;">Start Election</button>
+                    <button id="end-btn" onclick="controlElection('end')" style="flex: 1; background: #ef4444;">End Election</button>
+                    <button class="btn-secondary" onclick="refreshAll()" style="flex: 0.5;">Refresh Data</button>
+                </div>
+                <p id="control-msg" class="message" style="margin-top: 1rem;"></p>
+            </div>
+
+            <!-- Candidate Management -->
+            <div class="control-panel stats-card">
+                <h3>Add New Candidate</h3>
+                <form id="addCandidateForm" onsubmit="addCandidate(event)" class="candidate-form">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                        <input type="text" id="cand-name" placeholder="Candidate Name" required>
+                        <input type="text" id="cand-party" placeholder="Party Name" required>
+                        <input type="text" id="cand-logo" placeholder="Logo URL" required>
+                    </div>
+                    <button type="submit" style="margin-top: 1rem;">Add to Ballot</button>
+                </form>
+                <p id="cand-msg" class="message"></p>
+            </div>
+
+            <!-- Voter List -->
+            <div class="control-panel stats-card">
+                <h3>Voter Registration Records</h3>
+                <div style="overflow-x: auto;">
+                    <table id="voter-table">
+                        <thead>
+                            <tr>
+                                <th>Voter ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check Auth
+        if (localStorage.getItem("isAdmin") !== "true") {
+            window.location.href = "admin_login.html";
+        }
+
+        async function refreshAll() {
+            loadStatus();
+            loadStats();
+        }
+
+        async function loadStatus() {
+            try {
+                const res = await fetch("http://127.0.0.1:5000/election/status");
+                const data = await res.json();
+                const badge = document.getElementById("election-badge");
+                badge.textContent = `Election State: ${data.status}`;
+                badge.className = `badge-status status-${data.status.toLowerCase()}`;
+                
+                // Toggle buttons based on state
+                document.getElementById("start-btn").disabled = (data.status !== "NotStarted");
+                document.getElementById("end-btn").disabled = (data.status !== "Started");
+            } catch (err) { console.error(err); }
+        }
+
+        async function loadStats() {
+            try {
+                const res = await fetch("http://127.0.0.1:5000/admin/voters");
+                const voters = await res.json();
+                
+                document.getElementById("total-voters").textContent = voters.length;
+                
+                const votedCount = voters.filter(v => v.has_voted).length;
+                const turnout = voters.length > 0 ? ((votedCount / voters.length) * 100).toFixed(1) : 0;
+                document.getElementById("turnout").textContent = `${turnout}%`;
+
+                const tbody = document.querySelector("#voter-table tbody");
+                tbody.innerHTML = "";
+                voters.forEach(v => {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td>${v.voter_id}</td>
+                        <td>${v.name}</td>
+                        <td>${v.email}</td>
+                        <td><span class="${v.has_voted ? 'voted-badge' : 'not-voted-badge'}">${v.has_voted ? 'Voted' : 'Not Voted'}</span></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (err) { console.error(err); }
+        }
+
+        async function controlElection(action) {
+            const msgEl = document.getElementById("control-msg");
+            msgEl.textContent = "Processing Blockchain Transaction...";
+            msgEl.className = "message";
+            
+            try {
+                const url = `http://127.0.0.1:5000/admin/${action}-election`;
+                const res = await fetch(url, { method: "POST" });
+                const data = await res.json();
+                
+                if (res.ok) {
+                    msgEl.textContent = data.message;
+                    msgEl.className = "message success";
+                    loadStatus();
+                } else {
+                    msgEl.textContent = data.message;
+                    msgEl.className = "message error";
+                }
+            } catch (err) {
+                msgEl.textContent = "Error communicating with backend.";
+                msgEl.className = "message error";
+            }
+        }
+
+        async function addCandidate(e) {
+            e.preventDefault();
+            const msgEl = document.getElementById("cand-msg");
+            const name = document.getElementById("cand-name").value;
+            const party_name = document.getElementById("cand-party").value;
+            const party_logo = document.getElementById("cand-logo").value;
+
+            msgEl.textContent = "Deploying Candidate to Blockchain...";
+            msgEl.className = "message";
+
+            try {
+                const res = await fetch("http://127.0.0.1:5000/admin/add-candidate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, party_name, party_logo })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    msgEl.textContent = "Candidate added successfully!";
+                    msgEl.className = "message success";
+                    document.getElementById("addCandidateForm").reset();
+                } else {
+                    msgEl.textContent = data.message;
+                    msgEl.className = "message error";
+                }
+            } catch (err) {
+                msgEl.textContent = "Blockchain/Server error.";
+                msgEl.className = "message error";
+            }
+        }
+
+        function logoutAdmin() {
+            localStorage.removeItem("isAdmin");
+            window.location.href = "admin_login.html";
+        }
+
+        // Initial Load
+        refreshAll();
+    </script>
+</body>
+</html>

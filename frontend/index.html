@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOTE.CHAIN | Secure Voting System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Landing Section -->
+    <section id="landingPage" class="hero-bg min-h-screen text-white flex flex-col">
+        <nav class="p-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="check-icon">✓</div>
+                <span class="font-black text-xl tracking-tighter">VOTE.CHAIN</span>
+            </div>
+            <button onclick="document.getElementById('portal-selection').scrollIntoView({behavior:'smooth'})" class="btn-login">Explore Portal</button>
+        </nav>
+        <div class="flex-1 flex flex-col items-center justify-center text-center px-6">
+            <h1 class="text-6xl md:text-8xl font-black mb-6 animate-fade-in">Voice the <br><span class="highlight">Future.</span></h1>
+            <p class="text-xl text-slate-300 max-w-2xl mb-12 opacity-80">A decentralized, tamper-proof voting protocol built on the Ethereum blockchain. Secure your choice, empower your voice.</p>
+            
+            <div id="portal-selection" class="flex flex-col md:flex-row gap-6 w-full max-w-lg">
+                <a href="login.html" class="flex-1 bg-white text-slate-900 p-8 rounded-[32px] hover:scale-105 transition shadow-2xl group border-4 border-transparent hover:border-blue-500/20">
+                    <div class="text-4xl mb-4 group-hover:rotate-12 transition">🗳️</div>
+                    <div class="text-2xl font-black tracking-tighter">Enter <span class="text-blue-600">Voter</span> Portal</div>
+                    <p class="text-[10px] text-slate-400 mt-2 font-black uppercase tracking-widest opacity-60">Authorize Ballot</p>
+                </a>
+                <a href="admin_login.html" class="flex-1 bg-slate-900/40 backdrop-blur-xl border border-white/10 p-8 rounded-[32px] hover:scale-105 transition shadow-2xl group border-4 border-transparent hover:border-white/10">
+                    <div class="text-4xl mb-4 group-hover:-rotate-12 transition">🛡️</div>
+                    <div class="text-2xl font-black tracking-tighter text-white">Access <span class="text-blue-400">Admin</span> Panel</div>
+                    <p class="text-[10px] text-slate-500 mt-2 font-black uppercase tracking-widest opacity-60">Election Control</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard -->
+    <section id="dashboard" class="hidden min-h-screen flex bg-slate-50">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="flex items-center gap-2 text-2xl font-black text-blue-500 mb-10 italic">
+                <div class="w-8 h-8 bg-blue-500 rounded text-white flex items-center justify-center text-sm">✓</div>
+                VOTE.CHAIN
+            </div>
+            
+            <nav class="flex-1 space-y-2">
+                <!-- Shared Tabs -->
+                <button id="btn-candidates" class="nav-item active" onclick="switchTab('candidateTab')">📋 Candidate List</button>
+                <button id="btn-results" class="nav-item" onclick="switchTab('resultsTab')">📊 Live Standings</button>
+                
+                <!-- Voter Only Tabs -->
+                <div id="voterNav" class="pt-4 mt-4 border-t border-slate-100">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2 px-4">Voter Actions</p>
+                    <button id="btn-voting" class="nav-item" onclick="switchTab('votingTab')">🗳️ Cast Ballot</button>
+                </div>
+
+                <!-- Admin Only Tabs -->
+                <div id="adminNav" class="hidden pt-4 mt-4 border-t border-slate-100">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2 px-4">Admin Controls</p>
+                    <button id="btn-adminControl" class="nav-item" onclick="switchTab('adminControlTab')">⚙️ Control Center</button>
+                    <button id="btn-adminVoters" class="nav-item" onclick="switchTab('adminVotersTab')">👥 Voter List</button>
+                </div>
+            </nav>
+
+            <div class="mt-auto px-4 py-4 bg-slate-50 rounded-2xl">
+               <p id="userNameDisplay" class="text-sm font-bold text-slate-800">User Name</p>
+               <p id="userRoleDisplay" class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Authorized Voter</p>
+               <button onclick="logout()" class="text-xs text-red-500 font-bold mt-2 hover:underline">Sign Out</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+            
+            <!-- Candidate Tab -->
+            <div id="candidateTab" class="content-tab">
+                <div id="partyMenu">
+                    <h2 class="text-3xl font-black mb-2 text-slate-800">Candidate Directory</h2>
+                    <p class="text-slate-500 mb-8">Explore parties and their representative candidates.</p>
+                    <div id="partyGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div id="partyDetailView" class="hidden">
+                    <button onclick="hidePartyDetails()" class="mb-6 text-blue-500 font-bold flex items-center gap-2 hover:-translate-x-1 transition">← Back to Selection</button>
+                    <div class="bg-white p-8 rounded-3xl border mb-10 shadow-sm border-slate-200">
+                        <div class="flex items-center gap-6 mb-6">
+                            <img id="detailPartyLogo" src="" class="w-20 h-20 rounded-2xl shadow-lg border border-slate-100">
+                            <div>
+                                <h3 id="partyVisionTitle" class="text-4xl font-black text-slate-800"></h3>
+                                <p id="detailCandidateName" class="text-blue-500 font-bold text-xl"></p>
+                            </div>
+                        </div>
+                        <p id="partyAdvocacy" class="text-slate-600 italic border-l-4 border-blue-500 pl-4 bg-blue-50/30 py-4 pr-4 rounded-r-xl">
+                            Empowering communities through transparent leadership and blockchain-backed accountability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voting Tab -->
+            <div id="votingTab" class="content-tab hidden text-center max-w-4xl mx-auto">
+                <span id="voterStatusLabel" class="inline-block px-4 py-1 rounded-full bg-green-100 text-green-600 text-xs font-bold mb-4 uppercase tracking-widest">Election Live</span>
+                <h2 class="text-4xl font-black mb-4 text-slate-800">Cast Your Secure Ballot</h2>
+                <p class="text-slate-500 mb-12 italic">Your choice is encrypted and immutable once confirmed.</p>
+                
+                <div id="voteGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <!-- Populated by JS -->
+                </div>
+                
+                <div class="bg-slate-100 p-6 rounded-3xl mb-12">
+                   <p class="text-xs text-slate-400 font-bold uppercase tracking-widest mb-2">Selected Candidate</p>
+                   <p id="selectedCandidateName" class="text-2xl font-black text-slate-800">Please select a party</p>
+                </div>
+
+                <button id="voteActionBtn" onclick="submitVote()" class="vote-btn-locked" disabled>CONFIRM SECURE VOTE</button>
+                <p id="voteMsg" class="message hidden"></p>
+            </div>
+
+            <!-- Results Tab -->
+            <div id="resultsTab" class="content-tab hidden">
+                <h2 class="text-3xl font-black mb-2 text-slate-800">Live Election Standings</h2>
+                <p id="resultsMeta" class="text-slate-500 mb-8 uppercase tracking-widest text-[10px] font-bold">Encrypted Blockchain Ledger Stream</p>
+                
+                <div id="resultsGrid" class="grid gap-6 max-w-2xl">
+                    <!-- Populated by JS -->
+                </div>
+
+                <button onclick="fetchResults()" class="mt-10 px-6 py-3 border-2 border-slate-200 text-slate-500 font-bold rounded-xl hover:bg-slate-100 transition">Refresh Standings</button>
+            </div>
+
+            <!-- Admin Control Center Tab -->
+            <div id="adminControlTab" class="content-tab hidden">
+                <div class="dashboard-header mb-10">
+                    <h2 class="text-4xl font-black text-slate-800">📊 Admin Executive Dashboard</h2>
+                    <p class="text-slate-500">Orchestrate elections and monitor real-time blockchain activity.</p>
+                </div>
+                
+                <!-- Action Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <div onclick="switchTab('adminControlTab'); document.getElementById('cand-name').focus();" class="action-card">
+                        <div class="icon">➕</div>
+                        <h3 class="font-bold text-slate-800">Add Candidate</h3>
+                        <p class="text-xs text-slate-400 mt-2">Register new entries to the ledger</p>
+                    </div>
+                    <div onclick="switchTab('candidateTab')" class="action-card">
+                        <div class="icon">👥</div>
+                        <h3 class="font-bold text-slate-800">View Candidates</h3>
+                        <p class="text-xs text-slate-400 mt-2">Inspect verified participants</p>
+                    </div>
+                    <div onclick="switchTab('resultsTab')" class="action-card">
+                        <div class="icon">📈</div>
+                        <h3 class="font-bold text-slate-800">Live Results</h3>
+                        <p class="text-xs text-slate-400 mt-2">Monitor real-time standings</p>
+                    </div>
+                    <div onclick="document.getElementById('lifecycle-section').scrollIntoView({behavior:'smooth'})" class="action-card">
+                        <div class="icon">⚙️</div>
+                        <h3 class="font-bold text-slate-800">Manage Election</h3>
+                        <p class="text-xs text-slate-400 mt-2">Control lifecycle & state</p>
+                    </div>
+                </div>
+
+                <!-- Election Status Grid -->
+                <div class="status-grid mb-12">
+                    <div class="status-item">
+                        <div class="number" id="candidateCountStat">0</div>
+                        <div class="label">Total Candidates</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="number" id="votesCastStat">0</div>
+                        <div class="label">Votes Cast</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="number" id="registeredVotersStat">0</div>
+                        <div class="label">Registered Voters</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="number" id="turnoutRateStat">0%</div>
+                        <div class="label">Turnout Rate</div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Lifecycle (Target for Manage Election Card) -->
+                    <div id="lifecycle-section" class="lg:col-span-2 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                        <h3 class="font-bold text-slate-400 uppercase text-[10px] tracking-widest mb-6">Blockchain Lifecycle Control</h3>
+                        <div class="flex items-center justify-between mb-8 pb-6 border-b border-slate-50">
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Network Authority State</p>
+                                <div id="adminStatusDisplay" class="text-3xl font-black text-slate-800">Status: Loading...</div>
+                            </div>
+                            <div class="flex gap-4">
+                                <button id="startElectionBtn" onclick="controlElection('start')" class="px-8 py-4 bg-green-500 text-white font-bold rounded-2xl hover:bg-green-600 transition shadow-lg shadow-green-500/30">Start Election</button>
+                                <button id="endElectionBtn" onclick="controlElection('end')" class="px-8 py-4 bg-red-500 text-white font-bold rounded-2xl hover:bg-red-600 transition shadow-lg shadow-red-500/30">End Election</button>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="resetSystem()" class="flex-1 py-4 border-2 border-red-50 text-red-500 font-bold rounded-2xl hover:bg-red-50 transition">⚠️ Universal Factory Reset</button>
+                            <button onclick="fetchAdminStats()" class="px-8 py-4 bg-slate-100 text-slate-600 font-bold rounded-2xl hover:bg-slate-200 transition">↺ Sync Data</button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="bg-blue-600/5 p-8 rounded-3xl border border-blue-100 shadow-sm">
+                        <h3 class="font-bold text-blue-600 uppercase text-[10px] tracking-widest mb-6">📢 Recent Registry Logs</h3>
+                        <div id="activityFeed" class="space-y-4">
+                            <div class="activity-item activity-success"><strong>New vote recorded</strong> - Just now</div>
+                            <div class="activity-item activity-info"><strong>Voter portal accessed</strong> - 2m ago</div>
+                            <div class="activity-item activity-success"><strong>Candidate verified</strong> - 1h ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Gradients -->
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="gradient-green p-8 rounded-3xl text-white shadow-xl shadow-green-500/20">
+                        <div class="text-3xl mb-4">✅</div>
+                        <div class="text-xl font-black">Network Active</div>
+                        <p class="text-sm opacity-80 mt-1 font-medium">Blockchain responding normally</p>
+                    </div>
+                    <div class="gradient-blue p-8 rounded-3xl text-white shadow-xl shadow-blue-500/20">
+                        <div class="text-3xl mb-4">🔒</div>
+                        <div class="text-xl font-black">Ledger Secure</div>
+                        <p class="text-sm opacity-80 mt-1 font-medium">Hashing & Integrity verified</p>
+                    </div>
+                    <div class="gradient-purple p-8 rounded-3xl text-white shadow-xl shadow-purple-500/20">
+                        <div class="text-3xl mb-4">⚡</div>
+                        <div class="text-xl font-black">Live Pulse</div>
+                        <p class="text-sm opacity-80 mt-1 font-medium">Real-time update stream enabled</p>
+                    </div>
+                </div>
+                           <!-- Enroll New Candidate (Modernized) -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm mb-12">
+                    <h3 class="font-bold text-slate-400 uppercase text-[10px] tracking-widest mb-8">Enroll New Candidate</h3>
+                    
+                    <div class="flex flex-col lg:flex-row gap-10">
+                        <!-- Left: Form Fields -->
+                        <div class="flex-1 space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="form-group">
+                                    <label class="text-xs font-bold text-slate-500 mb-2 block uppercase tracking-wide">Candidate Full Name</label>
+                                    <input type="text" id="cand-name" placeholder="e.g. John Doe" class="auth-input mb-0">
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-xs font-bold text-slate-500 mb-2 block uppercase tracking-wide">Party Affiliation</label>
+                                    <input type="text" id="cand-party" placeholder="e.g. Progressive League" class="auth-input mb-0">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-xs font-bold text-slate-500 mb-2 block uppercase tracking-wide">Campaign Slogan</label>
+                                <input type="text" id="cand-slogan" placeholder="e.g. Building a Brighter Tomorrow" class="auth-input mb-0">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-xs font-bold text-slate-500 mb-2 block uppercase tracking-wide">Candidate Biography</label>
+                                <textarea id="cand-bio" rows="4" placeholder="Highlight qualifications and representative vision..." class="auth-input mb-0 py-3 min-h-[120px]"></textarea>
+                            </div>
+
+                            <div class="flex flex-col gap-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wide">Upload Official Logo/Photo</label>
+                                <div class="relative">
+                                    <input type="file" id="cand-logo-file" class="hidden" accept="image/*" onchange="previewLogo(event)">
+                                    <label for="cand-logo-file" class="inline-block px-6 py-3 bg-blue-50 text-blue-600 font-bold rounded-xl border-2 border-dashed border-blue-200 cursor-pointer hover:bg-blue-100 transition">
+                                        📷 Select Image File
+                                    </label>
+                                    <span id="fileNameDisplay" class="ml-4 text-xs text-slate-400 font-medium italic">No file selected</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Profile Preview -->
+                        <div class="w-full lg:w-64 flex flex-col items-center text-center p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+                            <p class="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-6">Live Profile Preview</p>
+                            <div class="w-40 h-40 rounded-full border-4 border-white shadow-xl overflow-hidden bg-slate-200 relative mb-4">
+                                <img id="logoPreviewImg" src="" class="hidden w-full h-full object-cover">
+                                <div id="logoPlaceholder" class="absolute inset-0 flex items-center justify-center text-slate-400 text-3xl font-bold">?</div>
+                            </div>
+                            <h4 id="previewName" class="font-bold text-slate-800 truncate w-full">Candidate Name</h4>
+                            <p id="previewParty" class="text-blue-500 text-xs font-bold truncate w-full uppercase mt-1">Select Party</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 pt-8 border-t border-slate-100 flex items-center justify-between">
+                        <button onclick="addCandidate()" class="px-12 py-5 bg-slate-900 text-white font-bold rounded-2xl hover:scale-105 transition shadow-2xl shadow-slate-900/20">Authorize & Add to Blockchain</button>
+                        <p id="adminCandMsg" class="message hidden"></p>
+                    </div>
+                </div>
+
+                <!-- Manage Candidates -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-400 uppercase text-[10px] tracking-widest mb-6">Manage Existing Candidates</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 border-b border-slate-100">
+                                <tr class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                                    <th class="px-8 py-4">Logo</th>
+                                    <th class="px-8 py-4">Name</th>
+                                    <th class="px-8 py-4">Party</th>
+                                    <th class="px-8 py-4">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminCandidateTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- adminVotersTab -->
+            <div id="adminVotersTab" class="content-tab hidden">
+               <h2 class="text-3xl font-black mb-8 text-slate-800">Registered Voter Registry</h2>
+               <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                   <table class="w-full text-left">
+                       <thead class="bg-slate-50 border-b border-slate-100">
+                           <tr class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                               <th class="px-8 py-4">Voter ID</th>
+                               <th class="px-8 py-4">Name</th>
+                               <th class="px-8 py-4">Email</th>
+                               <th class="px-8 py-4">Status</th>
+                           </tr>
+                       </thead>
+                       <tbody id="voterTableBody">
+                           <!-- Populated by JS -->
+                       </tbody>
+                   </table>
+               </div>
+            </div>
+
+            <!-- Success View -->
+            <div id="successView" class="content-tab hidden text-center py-20 animate-bounce-short">
+                <div class="success-icon">✓</div>
+                <h2 class="text-5xl font-black text-slate-800">Ballot Cast Successfully</h2>
+                <p class="text-slate-500 mt-6 text-xl">Your identity is verified and your choice is immutable.</p>
+                <div class="mt-12 flex justify-center gap-4">
+                    <button onclick="switchTab('resultsTab')" class="bg-blue-500 text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-blue-500/20">View Current Standings</button>
+                </div>
+            </div>
+
+        </main>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

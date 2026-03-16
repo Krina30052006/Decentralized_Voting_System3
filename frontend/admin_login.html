@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Decentralized Voting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="hero-bg min-h-screen flex items-center justify-center p-6">
+        <div class="max-w-md w-full bg-white/10 backdrop-blur-2xl border border-white/20 p-10 rounded-[40px] shadow-2xl animate-fade-in">
+            <div class="text-center mb-10">
+                <div class="w-20 h-20 bg-slate-900 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 shadow-xl shadow-black/50 -rotate-12 border border-white/10">🛡️</div>
+                <h2 class="text-4xl font-black text-white tracking-tighter">Admin <span class="text-blue-400">Control</span></h2>
+                <p class="text-slate-300 mt-2 text-sm font-medium opacity-70 italic tracking-wide uppercase">High-Authority Access Point</p>
+            </div>
+            
+            <form id="adminLoginForm" class="space-y-6">
+                <div class="form-group">
+                    <label class="text-[10px] font-black text-white/50 mb-2 block uppercase tracking-widest">Administrative Username</label>
+                    <input type="text" id="username" required placeholder="Admin ID" class="auth-input bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:bg-white/10">
+                </div>
+
+                <div class="form-group">
+                    <label class="text-[10px] font-black text-white/50 mb-2 block uppercase tracking-widest">Root Access Password</label>
+                    <input type="password" id="password" required placeholder="••••••••••••" class="auth-input bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:bg-white/10">
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full py-5 bg-white text-slate-900 font-black rounded-2xl hover:bg-slate-100 hover:scale-[1.02] transition shadow-2xl shadow-white/5 uppercase tracking-widest text-xs">
+                    Ascend to Dashboard
+                </button>
+            </form>
+
+            <p id="msg" class="message mt-6 text-center"></p>
+            
+            <a href="index.html" class="mt-12 block text-center text-slate-500 text-[10px] font-black uppercase tracking-tighter hover:text-white transition">← Return to Universal Control</a>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("adminLoginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const msgEl = document.getElementById("msg");
+            const btn = document.getElementById("submitBtn");
+
+            btn.textContent = "Verifying Authority...";
+            btn.disabled = true;
+
+            try {
+                const res = await fetch("http://127.0.0.1:5000/admin/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    localStorage.setItem("userRole", "admin");
+                    localStorage.setItem("userId", "Admin Control");
+                    msgEl.textContent = "Access Granted. Initializing Control Center...";
+                    msgEl.className = "message success";
+                    setTimeout(() => window.location.href = "index.html", 1000);
+                } else {
+                    msgEl.textContent = data.message || "Invalid administrator credentials.";
+                    msgEl.className = "message error";
+                    btn.textContent = "Ascend to Dashboard";
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                msgEl.textContent = "Blockchain/Server Connection Failed.";
+                msgEl.className = "message error";
+                btn.textContent = "Ascend to Dashboard";
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

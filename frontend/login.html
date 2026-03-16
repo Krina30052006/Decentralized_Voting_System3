@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Decentralized Voting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="hero-bg min-h-screen flex items-center justify-center p-6">
+        <div class="max-w-md w-full bg-white/10 backdrop-blur-2xl border border-white/20 p-10 rounded-[40px] shadow-2xl animate-fade-in">
+            <div class="text-center mb-10">
+                <div class="w-20 h-20 bg-blue-500 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 shadow-xl shadow-blue-500/20 rotate-12">🗳️</div>
+                <h2 class="text-4xl font-black text-white tracking-tighter">Voter <span class="text-blue-400">Portal</span></h2>
+                <p class="text-slate-300 mt-2 text-sm font-medium opacity-70 italic tracking-wide uppercase">Identity Verification Required</p>
+            </div>
+            
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-6">
+                <div class="form-group">
+                    <label class="text-[10px] font-black text-white/50 mb-2 block uppercase tracking-widest">Digital Identification Token</label>
+                    <input type="text" id="voter_id" required placeholder="e.g. V-992-K" class="auth-input bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:bg-white/10">
+                </div>
+
+                <div class="form-group">
+                    <label class="text-[10px] font-black text-white/50 mb-2 block uppercase tracking-widest">Encrypted Security Phrase</label>
+                    <input type="password" id="password" required placeholder="••••••••••••" class="auth-input bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:bg-white/10">
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full py-5 bg-blue-500 text-white font-black rounded-2xl hover:bg-blue-600 hover:scale-[1.02] transition shadow-2xl shadow-blue-500/30 uppercase tracking-widest text-xs">
+                    Inaugurate Session
+                </button>
+            </form>
+
+            <p id="msg" class="message mt-6 text-center"></p>
+            
+            <div class="mt-10 pt-8 border-t border-white/10 text-center">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest opacity-60">New Candidate?</p>
+                <a href="register.html" class="inline-block mt-2 text-white font-black hover:text-blue-400 transition">Register Identity</a>
+            </div>
+            
+            <a href="index.html" class="mt-8 block text-center text-slate-500 text-[10px] font-black uppercase tracking-tighter hover:text-white transition">← Return to Universal Control</a>
+        </div>
+    </section>
+
+    <script>
+        async function handleLogin(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById("submitBtn");
+            const msgEl = document.getElementById("msg");
+            
+            btn.textContent = "Authenticating...";
+            btn.disabled = true;
+            msgEl.textContent = "";
+            msgEl.className = "message";
+
+            const data = {
+                voter_id: document.getElementById("voter_id").value,
+                password: document.getElementById("password").value
+            };
+
+            try {
+                const res = await fetch("http://127.0.0.1:5000/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    msgEl.textContent = "Identity Authenticated. Synchronizing Ledger...";
+                    msgEl.classList.add("success");
+                    
+                    // Store unified session keys
+                    localStorage.setItem("userRole", "voter");
+                    localStorage.setItem("userId", result.voter_id);
+                    
+                    setTimeout(() => window.location.href = "index.html", 1000);
+                } else {
+                    msgEl.textContent = result.message || "Authentication Denied.";
+                    msgEl.classList.add("error");
+                    btn.textContent = "Inaugurate Session";
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                msgEl.textContent = "Network Protocol Error.";
+                msgEl.classList.add("error");
+                btn.textContent = "Inaugurate Session";
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

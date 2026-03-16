@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Decentralized Voting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", loadResults);
+
+        async function loadResults() {
+            const listEl = document.getElementById("results-list");
+            listEl.innerHTML = "<p style='text-align:center;'>Loading live data from blockchain...</p>";
+
+            try {
+                const res = await fetch("http://127.0.0.1:5000/results");
+                const data = await res.json();
+                
+                listEl.innerHTML = "";
+                
+                // Show winner highlight if election might be over
+                const statusRes = await fetch("http://127.0.0.1:5000/election/status");
+                const statusData = await statusRes.json();
+                
+                data.forEach((c, index) => {
+                    const li = document.createElement("li");
+                    li.style.animationDelay = `${index * 0.1}s`;
+                    
+                    const nameContainer = document.createElement("div");
+                    nameContainer.innerHTML = `<span style="font-weight: 700;">${c.candidate}</span><br><small style="opacity: 0.6">${c.party}</small>`;
+                    
+                    const voteBadge = document.createElement("span");
+                    voteBadge.className = "vote-badge";
+                    voteBadge.textContent = `${c.votes} ${c.votes === 1 ? 'Vote' : 'Votes'}`;
+                    
+                    li.appendChild(nameContainer);
+                    li.appendChild(voteBadge);
+                    listEl.appendChild(li);
+                });
+                
+                if (statusData.status === "Ended") {
+                    document.getElementById("results-meta").textContent = "ELECTION CONCLUDED - FINAL RESULTS";
+                }
+            } catch (err) {
+                listEl.innerHTML = "<p class='error' style='text-align:center;'>Failed to fetch blockchain data.</p>";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="nav-header">
+        <a href="vote.html" class="btn-secondary">Back to Booth</a>
+    </div>
+
+    <div class="container">
+        <h2 style="margin-bottom: 0.5rem;">Election Data</h2>
+        <p id="results-meta" style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.8rem; letter-spacing: 1px;">LIVE BLOCKCHAIN STREAM</p>
+        
+        <ul id="results-list" class="results-list">
+            <!-- Populated via JS -->
+        </ul>
+        
+        <button class="btn-secondary" onclick="loadResults()" style="margin-top: 2rem; padding: 1rem; width: 100%;">
+            Refresh Live Feed
+        </button>
+    </div>
+
+</body>
+</html>
