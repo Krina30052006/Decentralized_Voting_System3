@@ -4,12 +4,12 @@ ABI_PATH = r"D:\decentralized-voting-system\blockchain\artifacts\contracts\Votin
 
 ADMIN_CREDENTIALS = {
     "username": "admin",
-    "password": "adminpassword"
+    "password": "admin123"
 }
-
 DB_CONFIG = {
-    "host": "localhost",
+    "host": "containers-us-west-xx.railway.app",
     "user": "root",
-    "password": "",
-    "database": "voting_system"
+    "password": "qbfnhtwmmfNOdYInsfKwblAUgSfJLcIY",
+    "database": "railway",
+    "port": 3306
 }
