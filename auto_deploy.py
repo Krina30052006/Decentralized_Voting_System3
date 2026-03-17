@@ -4,7 +4,7 @@ import os
 import sys
 
 # Paths
-root = r"d:\decentralized-voting-system"
+root = r"d:\Decentralized_Voting_System3"
 blockchain_dir = os.path.join(root, "blockchain")
 config_file = os.path.join(root, "backend", "config.py")
 
@@ -15,7 +15,7 @@ def run():
     print("📦 Deploying Voting.sol...")
     try:
         result = subprocess.run(
-            ["npx", "hardhat", "run", "scripts/deploy.js", "--network", "ganache"],
+            ["npx", "hardhat", "run", "scripts/deploy.js", "--network", "localhost"],
             cwd=blockchain_dir,
             capture_output=True,
             text=False, # Use bytes

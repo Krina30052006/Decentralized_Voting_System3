@@ -1,6 +1,6 @@
-GANACHE_URL = "http://127.0.0.1:7545"
-CONTRACT_ADDRESS = "0xFB0d6C19603e8C1957CBcB58BF1FE1233DF7ba21"
-ABI_PATH = r"D:\decentralized-voting-system\blockchain\artifacts\contracts\Voting.sol\Voting.json"
+GANACHE_URL = "http://127.0.0.1:8545"
+CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+ABI_PATH = r"D:\Decentralized_Voting_System3\blockchain\artifacts\contracts\Voting.sol\Voting.json"
 
 ADMIN_CREDENTIALS = {
     "username": "admin",
