@@ -1,14 +1,16 @@
-GANACHE_URL = "http://127.0.0.1:8545"
-CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
-ABI_PATH = r"D:\Decentralized_Voting_System3\blockchain\artifacts\contracts\Voting.sol\Voting.json"
+import os
+
+GANACHE_URL = os.getenv('GANACHE_URL', 'http://127.0.0.1:8545')
+CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS', '0x5FbDB2315678afecb367f032d93F642f64180aa3')
+ABI_PATH = os.path.join(os.path.dirname(__file__), 'blockchain', 'artifacts', 'contracts', 'Voting.sol', 'Voting.json')  # Relative path
 
 ADMIN_CREDENTIALS = {
-    "username": "admin",
-    "password": "admin123"
+    "username": os.getenv('ADMIN_USERNAME', 'admin'),
+    "password": os.getenv('ADMIN_PASSWORD', 'secure-password-change-in-prod')  # Use env var, not default weak password
 }
 DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "",  # default in XAMPP
-    "database": "voting_system"
+    "host": os.getenv('DB_HOST', 'localhost'),
+    "user": os.getenv('DB_USER', 'root'),
+    "password": os.getenv('DB_PASSWORD', ''),  # Use env var
+    "database": os.getenv('DB_NAME', 'voting_system')
 }
