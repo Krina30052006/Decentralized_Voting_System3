@@ -503,3 +503,23 @@ function logout() {
     localStorage.clear();
     location.reload();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const landing = document.getElementById('landingPage');
+    const dashboard = document.getElementById('dashboard');
+
+    // Only run this router on pages that contain the unified landing/dashboard layout.
+    if (!landing || !dashboard) return;
+
+    const storedRole = localStorage.getItem('userRole');
+    if (storedRole === 'admin' || storedRole === 'voter') {
+        userRole = storedRole;
+        setupUIForRole(storedRole);
+        showSection('dashboard');
+        switchTab(storedRole === 'admin' ? 'adminControlTab' : 'votingTab');
+        fetchCandidates();
+        return;
+    }
+
+    showSection('landingPage');
+});
