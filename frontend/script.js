@@ -147,14 +147,37 @@ async function fetchElectionStatus() {
         const res = await fetch(`${API_BASE}/election/status`);
         const data = await res.json();
         const label = document.getElementById('voterStatusLabel');
+        const voteGrid = document.getElementById('voteGrid');
+        const voteBtn = document.getElementById('voteActionBtn');
+        const selectedLabel = document.getElementById('selectedCandidateName');
+
         label.textContent = `Election ${data.status}`;
         label.className = `inline-block px-4 py-1 rounded-full text-xs font-bold mb-4 uppercase tracking-widest ${data.status === 'Started' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`;
         
         if (data.status === 'Started') {
-            document.getElementById('voteGrid').classList.remove('hidden');
-            fetchCandidatesForVoting();
+            voteGrid.classList.remove('hidden');
+            selectedCandidateId = null;
+            voteBtn.disabled = true;
+            voteBtn.classList.remove('vote-btn-active');
+            voteBtn.textContent = "CONFIRM SECURE VOTE";
+            selectedLabel.textContent = "Please select a party";
+
+            if (!candidatesData.length) {
+                await fetchCandidates();
+            }
+
+            if (!candidatesData.length) {
+                voteGrid.innerHTML = `<div class="col-span-3 py-10 opacity-50">No candidates are available yet.</div>`;
+            } else {
+                fetchCandidatesForVoting();
+            }
         } else {
-            document.getElementById('voteGrid').innerHTML = `<div class="col-span-3 py-10 opacity-50">Voting is currently closed.</div>`;
+            selectedCandidateId = null;
+            voteGrid.innerHTML = `<div class="col-span-3 py-10 opacity-50">Voting is currently closed. Please wait for election start.</div>`;
+            voteBtn.disabled = true;
+            voteBtn.classList.remove('vote-btn-active');
+            voteBtn.textContent = "CONFIRM SECURE VOTE";
+            selectedLabel.textContent = "Please select a party";
         }
     } catch (err) { console.error(err); }
 }
@@ -250,6 +273,7 @@ async function submitVote() {
         }
     } catch (err) {
         showMsg(msgEl, "Network failure.", "error");
+        btn.textContent = "CONFIRM SECURE VOTE";
         btn.disabled = false;
     }
 }

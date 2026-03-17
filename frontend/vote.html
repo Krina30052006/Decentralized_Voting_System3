@@ -128,7 +128,7 @@
                 });
                 const result = await res.json();
                 if (res.ok) {
-                    msgEl.innerHTML = `Success! Your vote has been finalized.<br><small style="word-break: break-all; opacity: 0.6;">TX: ${result.transaction_hash}</small>`;
+                    msgEl.textContent = "Success! Your vote has been finalized.";
                     msgEl.className = "message success";
                 } else {
                     msgEl.textContent = result.message;

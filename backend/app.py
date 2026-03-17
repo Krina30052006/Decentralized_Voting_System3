@@ -224,7 +224,7 @@ def register():
     except Exception as e:
         return jsonify({"message": f"Registration failed: {str(e)}"}), 500
 
-    return jsonify({"message": "Registration successful", "wallet_address": assigned_wallet})
+    return jsonify({"message": "Registration successful"})
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -273,7 +273,7 @@ def vote():
         cursor.execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
         db.commit()
 
-        return jsonify({"message": "Vote recorded successfully", "transaction_hash": tx_hash.hex()})
+        return jsonify({"message": "Vote recorded successfully"})
     except Exception as e:
         db.rollback()  # Rollback DB on TX failure
         error_msg = str(e)
@@ -281,7 +281,7 @@ def vote():
             return jsonify({"message": "Error: You have already voted."}), 400
         elif "Action not allowed" in error_msg:
             return jsonify({"message": "Voting is not currently allowed."}), 400
-        return jsonify({"message": f"Blockchain error: {error_msg}"}), 500
+        return jsonify({"message": "Unable to record vote right now. Please try again."}), 500
 
 @app.route("/candidates", methods=["GET"])
 def get_candidates():
