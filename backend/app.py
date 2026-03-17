@@ -19,6 +19,18 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'frontend')
+
+@app.route("/")
+def serve_index():
+    return send_from_directory(FRONTEND_DIR, 'index.html')
+
+@app.route("/<path:path>")
+def serve_static(path):
+    if os.path.exists(os.path.join(FRONTEND_DIR, path)):
+        return send_from_directory(FRONTEND_DIR, path)
+    return send_from_directory(FRONTEND_DIR, 'index.html')
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -178,6 +190,9 @@ def register():
     voter_count = cursor.fetchone()[0]
     
     accounts = web3.eth.accounts
+    if not accounts:
+        return jsonify({"message": "Blockchain node has no available accounts. Registration suspended."}), 503
+        
     assigned_wallet = accounts[voter_count % len(accounts)]
 
     sql = "INSERT INTO voters (voter_id, name, email, password, wallet_address) VALUES (%s,%s,%s,%s,%s)"

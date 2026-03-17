@@ -504,10 +504,6 @@ function logout() {
     location.reload();
 }
 
-// Initial State Check
-const savedRole = localStorage.getItem("userRole");
-if (savedRole && localStorage.getItem("userId")) {
-    setupUIForRole(savedRole);
-    showSection('dashboard');
-    switchTab('candidateTab');
-}
+// Session Cleanup: Always return to landing page on refresh
+localStorage.clear();
+showSection('landingPage');

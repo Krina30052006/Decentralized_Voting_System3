@@ -1,5 +1,5 @@
 GANACHE_URL = "http://127.0.0.1:7545"
-CONTRACT_ADDRESS = "0xFf7c2AB8F9b8cDBa733D0E37c19aF6a2b247EAf2"
+CONTRACT_ADDRESS = "0xFB0d6C19603e8C1957CBcB58BF1FE1233DF7ba21"
 ABI_PATH = r"D:\decentralized-voting-system\blockchain\artifacts\contracts\Voting.sol\Voting.json"
 
 ADMIN_CREDENTIALS = {
@@ -7,9 +7,8 @@ ADMIN_CREDENTIALS = {
     "password": "admin123"
 }
 DB_CONFIG = {
-    "host": "containers-us-west-xx.railway.app",
+    "host": "localhost",
     "user": "root",
-    "password": "qbfnhtwmmfNOdYInsfKwblAUgSfJLcIY",
-    "database": "railway",
-    "port": 3306
+    "password": "",  # default in XAMPP
+    "database": "voting_system"
 }

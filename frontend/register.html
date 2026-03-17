@@ -44,6 +44,12 @@
     </div>
 
     <script>
+        // Force return to landing page on refresh or new session
+        if (performance.navigation.type === 1 || !sessionStorage.getItem('portal_session')) {
+            window.location.href = 'index.html';
+        }
+        sessionStorage.setItem('portal_session', 'active');
+
         async function handleRegister(e) {
             e.preventDefault();
             
