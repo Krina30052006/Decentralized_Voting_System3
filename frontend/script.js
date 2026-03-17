@@ -83,8 +83,8 @@ async function handleLogin() {
         const data = await res.json();
 
         if (res.ok) {
-            localStorage.setItem("userRole", userRole);
-            localStorage.setItem("userId", userRole === 'admin' ? 'Admin' : data.voter_id);
+            sessionStorage.setItem("userRole", userRole);
+            sessionStorage.setItem("userId", userRole === 'admin' ? 'Admin' : data.voter_id);
             setupUIForRole(userRole);
             showSection('dashboard');
             switchTab('candidateTab');
@@ -101,7 +101,7 @@ function setupUIForRole(role) {
     document.getElementById('adminNav').classList.toggle('hidden', !isAdmin);
     document.getElementById('voterNav').classList.toggle('hidden', isAdmin);
     
-    document.getElementById('userNameDisplay').textContent = localStorage.getItem("userId");
+    document.getElementById('userNameDisplay').textContent = sessionStorage.getItem("userId");
     document.getElementById('userRoleDisplay').textContent = isAdmin ? "Election Official" : "Certified Voter";
 }
 
@@ -219,7 +219,7 @@ async function fetchCandidatesForVoting() {
 }
 
 async function submitVote() {
-    const voterId = localStorage.getItem("userId");
+    const voterId = sessionStorage.getItem("userId");
     const msgEl = document.getElementById('voteMsg');
     const btn = document.getElementById('voteActionBtn');
     
@@ -500,7 +500,9 @@ function showMsg(el, text, type) {
 }
 
 function logout() {
-    localStorage.clear();
+    sessionStorage.removeItem('userRole');
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('portal_session');
     location.reload();
 }
 
@@ -511,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Only run this router on pages that contain the unified landing/dashboard layout.
     if (!landing || !dashboard) return;
 
-    const storedRole = localStorage.getItem('userRole');
+    const storedRole = sessionStorage.getItem('userRole');
     if (storedRole === 'admin' || storedRole === 'voter') {
         userRole = storedRole;
         setupUIForRole(storedRole);
