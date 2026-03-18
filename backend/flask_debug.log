@@ -17934,3 +17934,322 @@
 2026-03-18 14:18:09,612 - app - INFO - DB setup completed successfully
 2026-03-18 14:18:09,614 - app - DEBUG - DB connection closed
 2026-03-18 14:18:09,614 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 14:18:09] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-18 21:04:42,356 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-18 21:04:42,357 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-03-18 21:04:56,074 - app - INFO - Setting up DB for request: GET /login.html
+2026-03-18 21:05:00,239 - app - ERROR - DATABASE SETUP ERROR: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+
+2026-03-18 21:05:00,239 - app - ERROR - Exception on /login.html [GET]
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+2026-03-18 21:05:00,277 - app - DEBUG - DB connection closed
+2026-03-18 21:05:00,278 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 21:05:00] "[35m[1mGET /login.html HTTP/1.1[0m" 500 -
+2026-03-18 21:05:00,392 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 21:05:04,479 - app - ERROR - DATABASE SETUP ERROR: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+
+2026-03-18 21:05:04,480 - app - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+2026-03-18 21:05:04,485 - app - DEBUG - DB connection closed
+2026-03-18 21:05:04,485 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 21:05:04] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-03-18 21:05:11,636 - app - INFO - Setting up DB for request: GET /
+2026-03-18 21:05:15,721 - app - ERROR - DATABASE SETUP ERROR: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+
+2026-03-18 21:05:15,723 - app - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+2026-03-18 21:05:15,732 - app - DEBUG - DB connection closed
+2026-03-18 21:05:15,732 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 21:05:15] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-03-18 21:05:15,829 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 21:05:19,892 - app - ERROR - DATABASE SETUP ERROR: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+
+2026-03-18 21:05:19,892 - app - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+2026-03-18 21:05:19,895 - app - DEBUG - DB connection closed
+2026-03-18 21:05:19,895 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 21:05:19] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
