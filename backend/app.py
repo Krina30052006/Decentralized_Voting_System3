@@ -1,25 +1,83 @@
-from flask import Flask, request, jsonify, send_from_directory
-from database import db, cursor
+from flask import Flask, request, jsonify, send_from_directory, session, g
+from database import db, cursor, init_request_db, get_request_cursor, get_request_db, close_request_db
 from blockchain import web3, contract, account
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
-from config import ADMIN_CREDENTIALS
+from config import ADMIN_CREDENTIALS, CONTRACT_ADDRESS
+import hashlib
+import logging
+
+# Set up logging to file
+logging.basicConfig(
+    filename='flask_debug.log',
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+error_logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
+app.secret_key = os.getenv('SECRET_KEY', 'default-secret-key-change-in-prod')  # Use env var for security
+
+# Flask request context setup for database connections
+@app.before_request
+def setup_db():
+    """Initialize database connection for this request"""
+    import traceback
+    try:
+        error_logger.info(f"Setting up DB for request: {request.method} {request.path}")
+        init_request_db()
+        error_logger.info("DB setup completed successfully")
+    except Exception as e:
+        exc_trace = traceback.format_exc()
+        error_logger.error(f"DATABASE SETUP ERROR: {e}\n{exc_trace}")
+        print(f"!!! DATABASE SETUP ERROR !!!")
+        print(f"Error: {e}")
+        print(exc_trace)
+        raise  # Re-raise so Flask catches it properly
+        
+@app.teardown_request
+def close_db(exception=None):
+    """Close the database connection at the end of the request"""
+    try:
+        close_request_db()
+        error_logger.debug("DB connection closed")
+    except Exception as e:
+        error_logger.error(f"Database close error: {e}")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-# Ensure upload directory exists
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'frontend')
+
+
+def select_wallet_for_voter(voter_id: str, accounts: list[str]) -> str:
+    """Choose a deterministic wallet for a voter from currently active node accounts."""
+    digest = hashlib.sha256(voter_id.encode("utf-8")).digest()
+    index = int.from_bytes(digest[:4], "big") % len(accounts)
+    return accounts[index]
+
+
+def resolve_active_wallet(voter_id: str, stored_wallet: str | None) -> tuple[str, bool]:
+    """Return a wallet guaranteed to exist on the active node; bool indicates if remap occurred."""
+    accounts = web3.eth.accounts
+    if not accounts:
+        raise RuntimeError("Blockchain node has no available accounts")
+
+    if stored_wallet:
+        active_by_lower = {addr.lower(): addr for addr in accounts}
+        active_match = active_by_lower.get(stored_wallet.lower())
+        if active_match:
+            return active_match, False
+
+    return select_wallet_for_voter(voter_id, accounts), True
 
 @app.route("/")
 def serve_index():
@@ -34,16 +92,27 @@ def serve_static(path):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# -------------------------------
-# HOME
-# -------------------------------
-@app.route("/")
-def home():
-    return "Decentralized Voting Backend Running"
+@app.route("/debug", methods=["GET"])
+def debug_info():
+    """Debug endpoint to check contract address and candidate count"""
+    try:
+        count = contract.functions.getCandidatesCount().call()
+        return jsonify({
+            "contract_address": CONTRACT_ADDRESS,
+            "candidate_count": count,
+            "web3_connected": web3.is_connected()
+        })
+    except Exception as e:
+        return jsonify({
+            "contract_address": CONTRACT_ADDRESS,
+            "error": str(e)
+        }), 500
 
-# -------------------------------
-# ADMIN LOGIN
-# -------------------------------
+def require_admin():
+    if 'admin_logged_in' not in session or not session['admin_logged_in']:
+        return jsonify({"message": "Admin authentication required"}), 403
+    return None
+
 @app.route("/admin/login", methods=["POST"])
 def admin_login():
     data = request.json
@@ -51,6 +120,7 @@ def admin_login():
     password = data.get("password")
 
     if username == ADMIN_CREDENTIALS["username"] and password == ADMIN_CREDENTIALS["password"]:
+        session['admin_logged_in'] = True  # Set session for auth
         return jsonify({
             "message": "Admin login successful",
             "is_admin": True
@@ -58,13 +128,12 @@ def admin_login():
     else:
         return jsonify({"message": "Invalid admin credentials"}), 401
 
-# -------------------------------
-# ELECTION CONTROL
-# -------------------------------
 @app.route("/admin/start-election", methods=["POST"])
 def start_election():
+    auth_check = require_admin()
+    if auth_check: return auth_check
+    
     try:
-        # Check if contract has candidates for the current round
         count = contract.functions.getCandidatesCount().call()
         if count == 0:
             return jsonify({"message": "Cannot start election with 0 candidates."}), 400
@@ -77,6 +146,9 @@ def start_election():
 
 @app.route("/admin/end-election", methods=["POST"])
 def end_election():
+    auth_check = require_admin()
+    if auth_check: return auth_check
+    
     try:
         tx_hash = contract.functions.endElection().transact({"from": account})
         web3.eth.wait_for_transaction_receipt(tx_hash)
@@ -86,18 +158,19 @@ def end_election():
 
 @app.route("/admin/reset", methods=["POST"])
 def reset_system():
+    auth_check = require_admin()
+    if auth_check: return auth_check
+    
     try:
-        # 1. Reset Blockchain (Increments electionRound and sets status to NotStarted)
         tx_hash = contract.functions.resetSystem().transact({"from": account})
         web3.eth.wait_for_transaction_receipt(tx_hash)
         
-        # 2. Reset Database (Clear voter turnout flags but keep account data)
-        # Result: Voters remain in system, has_voted reset to 0
-        cursor.execute("UPDATE voters SET has_voted = 0")
-        db.commit()
+        get_request_cursor().execute("UPDATE voters SET has_voted = 0")
+        get_request_db().commit()
         
         return jsonify({"message": "Election records archived. System ready for new round."})
     except Exception as e:
+        get_request_db().rollback()  # Rollback DB on failure for consistency
         return jsonify({"message": f"Reset failed: {str(e)}"}), 500
 
 @app.route("/election/status", methods=["GET"])
@@ -109,17 +182,20 @@ def get_election_status():
     except Exception as e:
         return jsonify({"message": f"Failed to get status: {str(e)}"}), 500
 
-# -------------------------------
-# CANDIDATE MANAGEMENT
-# -------------------------------
 @app.route("/admin/add-candidate", methods=["POST"])
 def add_candidate():
+    auth_check = require_admin()
+    if auth_check: return auth_check
+    
     data = request.json
-    name = data.get("name")
-    party_name = data.get("party_name")
-    party_logo = data.get("party_logo")
-    slogan = data.get("slogan", "")
-    biography = data.get("biography", "")
+    name = data.get("name", "").strip()
+    party_name = data.get("party_name", "").strip()
+    party_logo = data.get("party_logo", "").strip()
+    slogan = data.get("slogan", "").strip()
+    biography = data.get("biography", "").strip()
+
+    if not name or not party_name or not party_logo:
+        return jsonify({"message": "Name, Party, and Logo are required"}), 400
 
     try:
         tx_hash = contract.functions.addCandidate(name, party_name, party_logo, slogan, biography).transact({"from": account})
@@ -130,6 +206,9 @@ def add_candidate():
 
 @app.route("/admin/upload-logo", methods=["POST"])
 def upload_logo():
+    auth_check = require_admin()
+    if auth_check: return auth_check
+    
     if 'logo' not in request.files:
         return jsonify({"message": "No file part"}), 400
     file = request.files['logo']
@@ -137,11 +216,12 @@ def upload_logo():
         return jsonify({"message": "No selected file"}), 400
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        # Add timestamp to filename to prevent collisions
         import time
         filename = f"{int(time.time())}_{filename}"
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return jsonify({"logo_url": f"http://127.0.0.1:5000/uploads/{filename}"})
+        # Dynamic URL based on request
+        logo_url = f"{request.host_url}uploads/{filename}"
+        return jsonify({"logo_url": logo_url})
     return jsonify({"message": "Invalid file type"}), 400
 
 @app.route("/uploads/<filename>")
@@ -150,6 +230,9 @@ def uploaded_file(filename):
 
 @app.route("/admin/delete-candidate/<int:candidate_id>", methods=["POST"])
 def delete_candidate(candidate_id):
+    auth_check = require_admin()
+    if auth_check: return auth_check
+    
     try:
         tx_hash = contract.functions.deleteCandidate(candidate_id).transact({"from": account})
         web3.eth.wait_for_transaction_receipt(tx_hash)
@@ -159,9 +242,12 @@ def delete_candidate(candidate_id):
 
 @app.route("/admin/voters", methods=["GET"])
 def get_all_voters():
+    auth_check = require_admin()
+    if auth_check: return auth_check
+    
     try:
-        cursor.execute("SELECT voter_id, name, email, has_voted FROM voters")
-        voters = cursor.fetchall()
+        get_request_cursor().execute("SELECT voter_id, name, email, has_voted FROM voters")
+        voters = get_request_cursor().fetchall()
         result = []
         for v in voters:
             result.append({
@@ -174,47 +260,55 @@ def get_all_voters():
     except Exception as e:
         return jsonify({"message": f"Failed to fetch voters: {str(e)}"}), 500
 
-# -------------------------------
-# REGISTER / LOGIN / VOTE (VOTERS)
-# -------------------------------
 @app.route("/register", methods=["POST"])
 def register():
     data = request.json
-    voter_id = data["voter_id"]
-    name = data["name"]
-    email = data["email"]
-    password = data["password"]
+    voter_id = data.get("voter_id", "").strip()
+    name = data.get("name", "").strip()
+    email = data.get("email", "").strip()
+    password = data.get("password", "").strip()
+    
+    if not voter_id or not name or not email or not password:
+        return jsonify({"message": "All fields are required"}), 400
+    if len(password) < 6:
+        return jsonify({"message": "Password must be at least 6 characters"}), 400
+
     hashed_password = generate_password_hash(password)
 
-    cursor.execute("SELECT COUNT(*) FROM voters")
-    voter_count = cursor.fetchone()[0]
-    
+    # Check for duplicate voter_id
+    get_request_cursor().execute("SELECT COUNT(*) FROM voters WHERE voter_id = %s", (voter_id,))
+    if get_request_cursor().fetchone()[0] > 0:
+        return jsonify({"message": "Voter ID already exists"}), 400
+
     accounts = web3.eth.accounts
     if not accounts:
         return jsonify({"message": "Blockchain node has no available accounts. Registration suspended."}), 503
-        
-    assigned_wallet = accounts[voter_count % len(accounts)]
+
+    assigned_wallet = select_wallet_for_voter(voter_id, accounts)
 
     sql = "INSERT INTO voters (voter_id, name, email, password, wallet_address) VALUES (%s,%s,%s,%s,%s)"
     values = (voter_id, name, email, hashed_password, assigned_wallet)
 
     try:
-        cursor.execute(sql, values)
-        db.commit()
+        get_request_cursor().execute(sql, values)
+        get_request_db().commit()
     except Exception as e:
         return jsonify({"message": f"Registration failed: {str(e)}"}), 500
 
-    return jsonify({"message": "Registration successful", "wallet_address": assigned_wallet})
+    return jsonify({"message": "Registration successful"})
 
 @app.route("/login", methods=["POST"])
 def login():
     data = request.json
-    voter_id = data["voter_id"]
-    password = data["password"]
+    voter_id = data.get("voter_id", "").strip()
+    password = data.get("password", "").strip()
+
+    if not voter_id or not password:
+        return jsonify({"message": "Voter ID and password required"}), 400
 
     sql = "SELECT password, voter_id FROM voters WHERE voter_id=%s"
-    cursor.execute(sql, (voter_id,))
-    result = cursor.fetchone()
+    get_request_cursor().execute(sql, (voter_id,))
+    result = get_request_cursor().fetchone()
 
     if result and check_password_hash(result[0], password):
         return jsonify({"message": "Login successful", "voter_id": result[1]})
@@ -224,40 +318,66 @@ def login():
 @app.route("/vote", methods=["POST"])
 def vote():
     data = request.json
-    voter_id = data.get("voter_id")
-    candidate_id = int(data["candidate_id"])
+    voter_id = data.get("voter_id", "").strip()
+    candidate_id = data.get("candidate_id")
     
     if not voter_id:
         return jsonify({"message": "Voter ID not provided. Are you logged in?"}), 400
-
-    sql = "SELECT wallet_address FROM voters WHERE voter_id=%s"
-    cursor.execute(sql, (voter_id,))
-    res = cursor.fetchone()
-    
-    if not res or not res[0]:
-        return jsonify({"message": "User wallet not found."}), 404
-        
-    voter_wallet = res[0]
+    if candidate_id is None or not isinstance(candidate_id, int) or candidate_id <= 0:
+        return jsonify({"message": "Valid candidate ID required"}), 400
 
     try:
+        # Query voter details
+        sql = "SELECT wallet_address, has_voted FROM voters WHERE voter_id=%s"
+        cursor_obj = get_request_cursor()
+        cursor_obj.execute(sql, (voter_id,))
+        res = cursor_obj.fetchone()
+        
+        if not res or not res[0]:
+            return jsonify({"message": "User wallet not found."}), 404
+        if res[1]:
+            return jsonify({"message": "You have already voted."}), 400
+            
+        voter_wallet, wallet_remapped = resolve_active_wallet(voter_id, res[0])
+
+        if wallet_remapped:
+            cursor_obj.execute(
+                "UPDATE voters SET wallet_address=%s WHERE voter_id=%s",
+                (voter_wallet, voter_id),
+            )
+            get_request_db().commit()
+
+        # Perform blockchain transaction
         tx_hash = contract.functions.vote(candidate_id).transact({"from": voter_wallet})
         web3.eth.wait_for_transaction_receipt(tx_hash)
 
-        cursor.execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
-        db.commit()
+        # Update database (get fresh cursor to avoid state issues)
+        db_obj = get_request_db()
+        update_cursor = db_obj.cursor()
+        update_cursor.execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
+        update_cursor.close()
+        db_obj.commit()
 
-        return jsonify({"message": "Vote recorded successfully", "transaction_hash": tx_hash.hex()})
+        return jsonify({"message": "Vote recorded successfully"})
     except Exception as e:
+        try:
+            get_request_db().rollback()
+        except:
+            pass
+        
         error_msg = str(e)
+        error_logger.error(f"Vote error for {voter_id}: {error_msg}")
+        print(f"[VOTE ERROR] {voter_id}: {error_msg}")  # Print for immediate visibility
+        
         if "already voted" in error_msg.lower():
             return jsonify({"message": "Error: You have already voted."}), 400
         elif "Action not allowed" in error_msg:
             return jsonify({"message": "Voting is not currently allowed."}), 400
-        return jsonify({"message": f"Blockchain error: {error_msg}"}), 500
+        elif "not deployed" in error_msg.lower() or "no code" in error_msg.lower():
+            return jsonify({"message": "Contract not properly deployed. Try restarting the system."}), 500
+        
+        return jsonify({"message": "Unable to record vote right now. Please try again."}), 500
 
-# -------------------------------
-# GET DATA
-# -------------------------------
 @app.route("/candidates", methods=["GET"])
 def get_candidates():
     candidates = []
@@ -265,7 +385,7 @@ def get_candidates():
         count = contract.functions.getCandidatesCount().call()
         for i in range(1, count + 1):
             candidate = contract.functions.getCandidate(i).call()
-            if not candidate[7]: # isDeleted is now 7th index
+            if not candidate[7]:  # isDeleted
                 candidates.append({
                     "id": candidate[0],
                     "name": candidate[1],
@@ -286,7 +406,7 @@ def get_results():
         count = contract.functions.getCandidatesCount().call()
         for i in range(1, count + 1):
             candidate = contract.functions.getCandidate(i).call()
-            if not candidate[7]: # isDeleted
+            if not candidate[7]:  # isDeleted
                 results.append({
                     "candidate": candidate[1],
                     "party": candidate[2],
@@ -297,4 +417,4 @@ def get_results():
     return jsonify(results)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)  # Removed debug, added host for deployment

@@ -2,9 +2,11 @@
 pragma solidity ^0.8.0;
 
 contract Voting {
-
+    address public owner;
+    uint public electionRound;
     enum State { NotStarted, Started, Ended }
-    
+    State public electionState;
+
     struct Candidate {
         uint id;
         string name;
@@ -16,75 +18,112 @@ contract Voting {
         bool isDeleted;
     }
 
-    address public owner;
-    State public electionState;
-    uint public electionRound;
-    
-    // mapping(round => mapping(candidateId => Candidate))
-    mapping(uint => mapping(uint => Candidate)) public candidates;
-    // mapping(round => mapping(voterAddress => hasVoted))
-    mapping(uint => mapping(address => bool)) public voters;
-    // mapping(round => count)
-    mapping(uint => uint) public candidatesCount;
+    mapping(uint => mapping(uint => Candidate)) public candidates; // round => id => Candidate
+    mapping(uint => uint) public candidatesCount; // round => count
+    mapping(uint => mapping(address => bool)) public voters; // round => voter => hasVoted
+
+    // Events for transparency and off-chain tracking
+    event CandidateAdded(uint indexed round, uint indexed id, string name);
+    event CandidateDeleted(uint indexed round, uint indexed id);
+    event ElectionStarted(uint indexed round);
+    event ElectionEnded(uint indexed round);
+    event ElectionReset(uint indexed newRound);
+    event VoteCast(uint indexed round, uint indexed candidateId, address voter);
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only admin can perform this action");
+        require(msg.sender == owner, "Only owner can perform this action");
         _;
     }
 
     modifier onlyDuringState(State _state) {
-        require(electionState == _state, "Action not allowed in current election state");
+        require(electionState == _state, "Action not allowed in current state");
         _;
     }
 
     constructor() {
         owner = msg.sender;
-        electionState = State.NotStarted;
         electionRound = 1;
-    }
-
-    function addCandidate(string memory _name, string memory _partyName, string memory _partyLogo, string memory _slogan, string memory _biography) public onlyOwner onlyDuringState(State.NotStarted) {
-        uint currentCount = ++candidatesCount[electionRound];
-        candidates[electionRound][currentCount] = Candidate(currentCount, _name, _partyName, _partyLogo, _slogan, _biography, 0, false);
-    }
-
-    function deleteCandidate(uint _id) public onlyOwner {
-        require(electionState == State.NotStarted || electionState == State.Ended, "Action not allowed in current election state");
-        require(_id > 0 && _id <= candidatesCount[electionRound], "Invalid candidate");
-        candidates[electionRound][_id].isDeleted = true;
-    }
-
-    function startElection() public onlyOwner onlyDuringState(State.NotStarted) {
-        require(candidatesCount[electionRound] > 0, "Cannot start with 0 candidates");
-        electionState = State.Started;
-    }
-
-    function endElection() public onlyOwner onlyDuringState(State.Started) {
-        electionState = State.Ended;
-    }
-
-    function resetSystem() public onlyOwner {
-        electionRound++;
         electionState = State.NotStarted;
     }
 
-    function vote(uint _candidateId) public onlyDuringState(State.Started) {
-        require(!voters[electionRound][msg.sender], "You have already voted");
-        require(_candidateId > 0 && _candidateId <= candidatesCount[electionRound], "Invalid candidate");
-        require(!candidates[electionRound][_candidateId].isDeleted, "Candidate deleted");
-
-        voters[electionRound][msg.sender] = true;
-        candidates[electionRound][_candidateId].voteCount++;
+    // Transfer ownership to prevent lockout
+    function transferOwnership(address newOwner) public onlyOwner {
+        require(newOwner != address(0), "New owner cannot be zero address");
+        emit OwnershipTransferred(owner, newOwner);
+        owner = newOwner;
     }
 
-    // Helper to get candidate count for current round
+    // Add candidate only during NotStarted or Ended (consistent with delete)
+    function addCandidate(
+        string memory _name,
+        string memory _partyName,
+        string memory _partyLogo,
+        string memory _slogan,
+        string memory _biography
+    ) public onlyOwner onlyDuringState(State.NotStarted) {
+        require(bytes(_name).length > 0 && bytes(_partyName).length > 0, "Name and party required");
+        uint currentCount = ++candidatesCount[electionRound];
+        candidates[electionRound][currentCount] = Candidate({
+            id: currentCount,
+            name: _name,
+            partyName: _partyName,
+            partyLogo: _partyLogo,
+            slogan: _slogan,
+            biography: _biography,
+            voteCount: 0,
+            isDeleted: false
+        });
+        emit CandidateAdded(electionRound, currentCount, _name);
+    }
+
+    // Delete candidate during NotStarted or Ended
+    function deleteCandidate(uint _candidateId) public onlyOwner onlyDuringState(State.NotStarted) {
+        require(_candidateId > 0 && _candidateId <= candidatesCount[electionRound], "Invalid candidate ID");
+        require(!candidates[electionRound][_candidateId].isDeleted, "Already deleted");
+        candidates[electionRound][_candidateId].isDeleted = true;
+        emit CandidateDeleted(electionRound, _candidateId);
+    }
+
+    // Get candidate with bounds check
+    function getCandidate(uint _candidateId) public view returns (
+        uint, string memory, string memory, string memory, string memory, string memory, uint, bool
+    ) {
+        require(_candidateId > 0 && _candidateId <= candidatesCount[electionRound], "Invalid candidate ID");
+        Candidate memory c = candidates[electionRound][_candidateId];
+        return (c.id, c.name, c.partyName, c.partyLogo, c.slogan, c.biography, c.voteCount, c.isDeleted);
+    }
+
     function getCandidatesCount() public view returns (uint) {
         return candidatesCount[electionRound];
     }
 
-    // Helper to get candidate details for current round
-    function getCandidate(uint _id) public view returns (uint, string memory, string memory, string memory, string memory, string memory, uint, bool) {
-        Candidate memory c = candidates[electionRound][_id];
-        return (c.id, c.name, c.partyName, c.partyLogo, c.slogan, c.biography, c.voteCount, c.isDeleted);
+    function startElection() public onlyOwner onlyDuringState(State.NotStarted) {
+        electionState = State.Started;
+        emit ElectionStarted(electionRound);
+    }
+
+    function endElection() public onlyOwner onlyDuringState(State.Started) {
+        electionState = State.Ended;
+        emit ElectionEnded(electionRound);
+    }
+
+    function resetSystem() public onlyOwner onlyDuringState(State.Ended) {
+        electionRound++;
+        electionState = State.NotStarted;
+        emit ElectionReset(electionRound);
+    }
+
+    function vote(uint _candidateId) public onlyDuringState(State.Started) {
+        require(_candidateId > 0 && _candidateId <= candidatesCount[electionRound], "Invalid candidate ID");
+        require(!candidates[electionRound][_candidateId].isDeleted, "Candidate deleted");
+        require(!voters[electionRound][msg.sender], "Already voted");
+        voters[electionRound][msg.sender] = true;
+        candidates[electionRound][_candidateId].voteCount++;
+        emit VoteCast(electionRound, _candidateId, msg.sender);
+    }
+
+    function getElectionState() public view returns (uint) {
+        return uint(electionState);
     }
 }

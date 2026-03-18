@@ -81,8 +81,8 @@
                     msgEl.classList.add("success");
                     
                     // Store unified session keys
-                    localStorage.setItem("userRole", "voter");
-                    localStorage.setItem("userId", result.voter_id);
+                    sessionStorage.setItem("userRole", "voter");
+                    sessionStorage.setItem("userId", result.voter_id);
                     
                     setTimeout(() => window.location.href = "index.html", 1000);
                 } else {
