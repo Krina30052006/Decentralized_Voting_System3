@@ -281,7 +281,7 @@ async function submitVote() {
 // --- ADMIN LOGIC ---
 async function fetchAdminStats() {
     try {
-        const resV = await fetch(`${API_BASE}/admin/voters`);
+        const resV = await fetch(`${API_BASE}/admin/voters`, { credentials: 'include' });
         const voters = await resV.json();
         
         const votedCount = voters.filter(v => v.has_voted).length;
@@ -322,7 +322,7 @@ function updateActivityLog(msg) {
 
 async function controlElection(action) {
     try {
-        const res = await fetch(`${API_BASE}/admin/${action}-election`, { method: 'POST' });
+        const res = await fetch(`${API_BASE}/admin/${action}-election`, { method: 'POST', credentials: 'include' });
         const data = await res.json();
         if (res.ok) {
             alert(data.message);
@@ -339,7 +339,7 @@ async function resetSystem() {
     if (!confirmation) return;
     
     try {
-        const res = await fetch(`${API_BASE}/admin/reset`, { method: 'POST' });
+        const res = await fetch(`${API_BASE}/admin/reset`, { method: 'POST', credentials: 'include' });
         const data = await res.json();
         if (res.ok) {
             alert(data.message);
@@ -403,6 +403,7 @@ async function addCandidate() {
         
         const uploadRes = await fetch(`${API_BASE}/admin/upload-logo`, {
             method: 'POST',
+            credentials: 'include',
             body: formData
         });
         const uploadData = await uploadRes.json();
@@ -414,6 +415,7 @@ async function addCandidate() {
         showMsg(msgEl, "Finalizing blockchain record...", "success");
         const res = await fetch(`${API_BASE}/admin/add-candidate`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 name, 
@@ -451,7 +453,8 @@ async function deleteCandidate(id) {
     
     try {
         const res = await fetch(`${API_BASE}/admin/delete-candidate/${id}`, {
-            method: 'POST'
+            method: 'POST',
+            credentials: 'include'
         });
         const data = await res.json();
         if (res.ok) {

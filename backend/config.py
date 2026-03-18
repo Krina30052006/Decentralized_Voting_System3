@@ -1,7 +1,7 @@
 import os
 
 GANACHE_URL = os.getenv('GANACHE_URL', 'http://127.0.0.1:8545')
-CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS', '0x5FbDB2315678afecb367f032d93F642f64180aa3')
+CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS', '0x0B306BF915C4d645ff596e518fAf3F9669b97016')
 ABI_PATH = os.path.join(os.path.dirname(__file__), '..', 'blockchain', 'artifacts', 'contracts', 'Voting.sol', 'Voting.json')
 
 ADMIN_CREDENTIALS = {
