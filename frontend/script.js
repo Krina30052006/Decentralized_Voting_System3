@@ -1,9 +1,12 @@
-// VOTE.CHAIN - Unified Frontend Logic
-const API_BASE = "http://127.0.0.1:5000";
+// VOTE.CHAIN - Unified Frontend Logic (Fixed for persistence, validation, UI overflow, portability)
+const API_BASE = ""; // Use relative URLs for portability
 
-let userRole = null; // 'voter' or 'admin'
+let userRole = null;
 let selectedCandidateId = null;
 let candidatesData = [];
+
+// Session persistence: Only clear on logout, not on load
+// localStorage.clear(); // Removed to allow persistence
 
 // --- SECTION & TAB NAVIGATION ---
 function showSection(id) {
@@ -17,7 +20,6 @@ function switchTab(tabId) {
     
     document.getElementById(tabId).classList.remove('hidden');
     
-    // Highlight the correct button
     const btnMap = {
         'candidateTab': 'btn-candidates',
         'votingTab': 'btn-voting',
@@ -27,7 +29,6 @@ function switchTab(tabId) {
     };
     if (btnMap[tabId]) document.getElementById(btnMap[tabId]).classList.add('active');
 
-    // Tab-specific loads
     if (tabId === 'resultsTab') fetchResults();
     if (tabId === 'votingTab') fetchElectionStatus();
     if (tabId === 'adminControlTab') {
@@ -54,12 +55,17 @@ function closeAuthModal() {
 }
 
 async function handleLogin() {
-    const id = document.getElementById('loginId').value;
-    const pin = document.getElementById('loginPin').value;
+    const id = document.getElementById('loginId').value.trim();
+    const pin = document.getElementById('loginPin').value.trim();
     const msgEl = document.getElementById('authMsg');
 
+    // Input validation
     if (!id || !pin) {
         showMsg(msgEl, "Please fill in all fields.", "error");
+        return;
+    }
+    if (userRole === 'voter' && !/^[a-zA-Z0-9]+$/.test(id)) {
+        showMsg(msgEl, "Voter ID must be alphanumeric.", "error");
         return;
     }
 
@@ -77,8 +83,8 @@ async function handleLogin() {
         const data = await res.json();
 
         if (res.ok) {
-            localStorage.setItem("userRole", userRole);
-            localStorage.setItem("userId", userRole === 'admin' ? 'Admin' : data.voter_id);
+            sessionStorage.setItem("userRole", userRole);
+            sessionStorage.setItem("userId", userRole === 'admin' ? 'Admin' : data.voter_id);
             setupUIForRole(userRole);
             showSection('dashboard');
             switchTab('candidateTab');
@@ -95,7 +101,7 @@ function setupUIForRole(role) {
     document.getElementById('adminNav').classList.toggle('hidden', !isAdmin);
     document.getElementById('voterNav').classList.toggle('hidden', isAdmin);
     
-    document.getElementById('userNameDisplay').textContent = localStorage.getItem("userId");
+    document.getElementById('userNameDisplay').textContent = sessionStorage.getItem("userId");
     document.getElementById('userRoleDisplay').textContent = isAdmin ? "Election Official" : "Certified Voter";
 }
 
@@ -105,7 +111,7 @@ async function fetchCandidates() {
         const res = await fetch(`${API_BASE}/candidates`);
         candidatesData = await res.json();
         renderCandidateMenu();
-        fetchAdminCandidates();
+        if (userRole === 'admin') fetchAdminCandidates(); // Only if admin
     } catch (err) { console.error("Err fetching candidates", err); }
 }
 
@@ -117,16 +123,18 @@ async function fetchResults() {
         const data = await res.json();
         
         grid.innerHTML = "";
+        const maxVotes = Math.max(...data.map(c => c.votes), 1); // Prevent division by zero
         data.forEach(c => {
             const bar = document.createElement('div');
             bar.className = "bg-white p-6 rounded-2xl border border-slate-100 shadow-sm";
+            const widthPercent = Math.min((c.votes / maxVotes) * 100, 100); // Cap at 100% and scale
             bar.innerHTML = `
                 <div class="flex justify-between items-center mb-2 font-bold">
                     <span>${c.candidate} <small class="text-slate-400">(${c.party})</small></span>
                     <span class="text-blue-500">${c.votes} Votes</span>
                 </div>
                 <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                    <div class="bg-blue-500 h-full" style="width: ${c.votes * 10}%"></div>
+                    <div class="bg-blue-500 h-full" style="width: ${widthPercent}%"></div>
                 </div>
             `;
             grid.appendChild(bar);
@@ -139,14 +147,37 @@ async function fetchElectionStatus() {
         const res = await fetch(`${API_BASE}/election/status`);
         const data = await res.json();
         const label = document.getElementById('voterStatusLabel');
+        const voteGrid = document.getElementById('voteGrid');
+        const voteBtn = document.getElementById('voteActionBtn');
+        const selectedLabel = document.getElementById('selectedCandidateName');
+
         label.textContent = `Election ${data.status}`;
         label.className = `inline-block px-4 py-1 rounded-full text-xs font-bold mb-4 uppercase tracking-widest ${data.status === 'Started' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`;
         
         if (data.status === 'Started') {
-            document.getElementById('voteGrid').classList.remove('hidden');
-            fetchCandidatesForVoting();
+            voteGrid.classList.remove('hidden');
+            selectedCandidateId = null;
+            voteBtn.disabled = true;
+            voteBtn.classList.remove('vote-btn-active');
+            voteBtn.textContent = "CONFIRM SECURE VOTE";
+            selectedLabel.textContent = "Please select a party";
+
+            if (!candidatesData.length) {
+                await fetchCandidates();
+            }
+
+            if (!candidatesData.length) {
+                voteGrid.innerHTML = `<div class="col-span-3 py-10 opacity-50">No candidates are available yet.</div>`;
+            } else {
+                fetchCandidatesForVoting();
+            }
         } else {
-            document.getElementById('voteGrid').innerHTML = `<div class="col-span-3 py-10 opacity-50">Voting is currently closed.</div>`;
+            selectedCandidateId = null;
+            voteGrid.innerHTML = `<div class="col-span-3 py-10 opacity-50">Voting is currently closed. Please wait for election start.</div>`;
+            voteBtn.disabled = true;
+            voteBtn.classList.remove('vote-btn-active');
+            voteBtn.textContent = "CONFIRM SECURE VOTE";
+            selectedLabel.textContent = "Please select a party";
         }
     } catch (err) { console.error(err); }
 }
@@ -176,7 +207,6 @@ function showPartyDetails(c) {
     document.getElementById('partyVisionTitle').textContent = c.party_name;
     document.getElementById('detailCandidateName').textContent = `Represented by ${c.name}`;
     
-    // Update advocacy/bio if present
     const advEl = document.getElementById('partyAdvocacy');
     if (c.biography) {
         advEl.innerHTML = `<b>Vision:</b> ${c.slogan}<br><br>${c.biography}`;
@@ -212,9 +242,14 @@ async function fetchCandidatesForVoting() {
 }
 
 async function submitVote() {
-    const voterId = localStorage.getItem("userId");
+    const voterId = sessionStorage.getItem("userId");
     const msgEl = document.getElementById('voteMsg');
     const btn = document.getElementById('voteActionBtn');
+    
+    if (!selectedCandidateId || !voterId) {
+        showMsg(msgEl, "Please select a candidate and log in.", "error");
+        return;
+    }
     
     btn.textContent = "VERIFYING BALLOT...";
     btn.disabled = true;
@@ -238,6 +273,7 @@ async function submitVote() {
         }
     } catch (err) {
         showMsg(msgEl, "Network failure.", "error");
+        btn.textContent = "CONFIRM SECURE VOTE";
         btn.disabled = false;
     }
 }
@@ -245,20 +281,17 @@ async function submitVote() {
 // --- ADMIN LOGIC ---
 async function fetchAdminStats() {
     try {
-        // Voters & Turnout
-        const resV = await fetch(`${API_BASE}/admin/voters`);
+        const resV = await fetch(`${API_BASE}/admin/voters`, { credentials: 'include' });
         const voters = await resV.json();
         
         const votedCount = voters.filter(v => v.has_voted).length;
         const totalVoters = voters.length;
         const turnoutPercent = totalVoters > 0 ? ((votedCount / totalVoters) * 100).toFixed(1) : 0;
         
-        // Candidates
         const resC = await fetch(`${API_BASE}/candidates`);
         const candidates = await resC.json();
         const totalCandidates = candidates.length;
 
-        // UI Update (Status Grid)
         if (document.getElementById('candidateCountStat')) {
             document.getElementById('candidateCountStat').textContent = totalCandidates;
             document.getElementById('votesCastStat').textContent = votedCount;
@@ -266,14 +299,12 @@ async function fetchAdminStats() {
             document.getElementById('turnoutRateStat').textContent = `${turnoutPercent}%`;
         }
         
-        // Status & Lifecycle
         const resS = await fetch(`${API_BASE}/election/status`);
         const sData = await resS.json();
         document.getElementById('adminStatusDisplay').textContent = `Status: ${sData.status}`;
         document.getElementById('startElectionBtn').disabled = (sData.status !== 'NotStarted' || totalCandidates === 0);
         document.getElementById('endElectionBtn').disabled = (sData.status !== 'Started');
 
-        // Simulate activity log
         updateActivityLog(`Registry synced with ${totalVoters} voters.`);
         
     } catch (err) { console.error(err); }
@@ -291,7 +322,7 @@ function updateActivityLog(msg) {
 
 async function controlElection(action) {
     try {
-        const res = await fetch(`${API_BASE}/admin/${action}-election`, { method: 'POST' });
+        const res = await fetch(`${API_BASE}/admin/${action}-election`, { method: 'POST', credentials: 'include' });
         const data = await res.json();
         if (res.ok) {
             alert(data.message);
@@ -308,12 +339,11 @@ async function resetSystem() {
     if (!confirmation) return;
     
     try {
-        const res = await fetch(`${API_BASE}/admin/reset`, { method: 'POST' });
+        const res = await fetch(`${API_BASE}/admin/reset`, { method: 'POST', credentials: 'include' });
         const data = await res.json();
         if (res.ok) {
             alert(data.message);
             updateActivityLog("Election archived. System ready for new round.");
-            fetchAdminStats();
             fetchCandidates();
             switchTab('adminControlTab');
         } else {
@@ -322,7 +352,6 @@ async function resetSystem() {
     } catch (err) { alert("Blockchain synchronization failed."); }
 }
 
-// --- ADMIN LOGIC ---
 function previewLogo(event) {
     const file = event.target.files[0];
     const previewImg = document.getElementById('logoPreviewImg');
@@ -342,12 +371,10 @@ function previewLogo(event) {
         reader.readAsDataURL(file);
     }
     
-    // Sync text fields for live feel
     nameDisplay.textContent = document.getElementById('cand-name').value || "Candidate Name";
     partyDisplay.textContent = document.getElementById('cand-party').value || "Select Party";
 }
 
-// Add event listeners for live preview sync
 document.addEventListener('input', (e) => {
     if (['cand-name', 'cand-party'].includes(e.target.id)) {
         document.getElementById('previewName').textContent = document.getElementById('cand-name').value || "Candidate Name";
@@ -356,10 +383,10 @@ document.addEventListener('input', (e) => {
 });
 
 async function addCandidate() {
-    const name = document.getElementById('cand-name').value;
-    const party = document.getElementById('cand-party').value;
-    const slogan = document.getElementById('cand-slogan').value;
-    const biography = document.getElementById('cand-bio').value;
+    const name = document.getElementById('cand-name').value.trim();
+    const party = document.getElementById('cand-party').value.trim();
+    const slogan = document.getElementById('cand-slogan').value.trim();
+    const biography = document.getElementById('cand-bio').value.trim();
     const logoFile = document.getElementById('cand-logo-file').files[0];
     const msgEl = document.getElementById('adminCandMsg');
 
@@ -371,12 +398,12 @@ async function addCandidate() {
     try {
         showMsg(msgEl, "Uploading secure logo...", "success");
         
-        // 1. Upload Logo
         const formData = new FormData();
         formData.append('logo', logoFile);
         
         const uploadRes = await fetch(`${API_BASE}/admin/upload-logo`, {
             method: 'POST',
+            credentials: 'include',
             body: formData
         });
         const uploadData = await uploadRes.json();
@@ -385,10 +412,10 @@ async function addCandidate() {
         
         const logoUrl = uploadData.logo_url;
 
-        // 2. Add to Blockchain
         showMsg(msgEl, "Finalizing blockchain record...", "success");
         const res = await fetch(`${API_BASE}/admin/add-candidate`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 name, 
@@ -403,7 +430,6 @@ async function addCandidate() {
         if (res.ok) {
             showMsg(msgEl, "Candidate successfully enrolled!", "success");
             updateActivityLog(`Candidate ${name} added to blockchain.`);
-            // Clear form
             document.getElementById('cand-name').value = '';
             document.getElementById('cand-party').value = '';
             document.getElementById('cand-slogan').value = '';
@@ -427,7 +453,8 @@ async function deleteCandidate(id) {
     
     try {
         const res = await fetch(`${API_BASE}/admin/delete-candidate/${id}`, {
-            method: 'POST'
+            method: 'POST',
+            credentials: 'include'
         });
         const data = await res.json();
         if (res.ok) {
@@ -500,10 +527,28 @@ function showMsg(el, text, type) {
 }
 
 function logout() {
-    localStorage.clear();
+    sessionStorage.removeItem('userRole');
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('portal_session');
     location.reload();
 }
 
-// Session Cleanup: Always return to landing page on refresh
-localStorage.clear();
-showSection('landingPage');
+document.addEventListener('DOMContentLoaded', () => {
+    const landing = document.getElementById('landingPage');
+    const dashboard = document.getElementById('dashboard');
+
+    // Only run this router on pages that contain the unified landing/dashboard layout.
+    if (!landing || !dashboard) return;
+
+    const storedRole = sessionStorage.getItem('userRole');
+    if (storedRole === 'admin' || storedRole === 'voter') {
+        userRole = storedRole;
+        setupUIForRole(storedRole);
+        showSection('dashboard');
+        switchTab(storedRole === 'admin' ? 'adminControlTab' : 'votingTab');
+        fetchCandidates();
+        return;
+    }
+
+    showSection('landingPage');
+});

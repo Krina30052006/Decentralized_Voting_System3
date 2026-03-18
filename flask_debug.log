@@ -1,0 +1,665 @@
+2026-03-18 11:47:53,165 - app - INFO - Setting up DB for request: POST /admin/login
+2026-03-18 11:47:53,169 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:47:53,170 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:47:53,171 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:47:53,173 - app - INFO - DB setup completed successfully
+2026-03-18 11:47:53,176 - app - DEBUG - DB connection closed
+2026-03-18 11:47:53,180 - app - INFO - Setting up DB for request: POST /admin/add-candidate
+2026-03-18 11:47:53,182 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:47:53,183 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:47:53,189 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:47:53,191 - app - INFO - DB setup completed successfully
+2026-03-18 11:47:53,198 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_sendTransaction
+2026-03-18 11:47:53,199 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 11:47:53,199 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 11:47:53,205 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1741
+2026-03-18 11:47:53,206 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 3, 'result': {'baseFeePerGas': '0x749afe5', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0xbfb6', 'hash': '0x67676ba64db0ae78212260a484c5f9fe130e5357690db5218d2f198c6e3e08f2', 'logsBloom': '0x00000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000020000080000000000000000000000000000000000000000000000000800000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0xf79eb374434719395392b5e789577b70ba6c3c3f8f3783b24448745b21c66831', 'nonce': '0x0000000000000000', 'number': '0x10', 'parentBeaconBlockRoot': '0x04fa0dfbfe79b6a3db4803bb1157390cfc9ecb5a3e3f18ebcdb5b03632af0f31', 'parentHash': '0x08fb2d61e268dc6898357e07e2c49bceb7964db662ad037c8ca90a43adf800d3', 'receiptsRoot': '0xd19b8c9a16a046aabcd4112688b941b1aa9fb6e84015f5c9a31ba970ac919121', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x2ba', 'stateRoot': '0x985e1c68ab7a91849f2c0c07288c4bcbb146330e9fae39f223a09c2df9f26dd6', 'timestamp': '0x69ba42aa', 'totalDifficulty': '0x0', 'transactions': ['0x8c66a86f7f3024ce380c6272c042b706e3e08df1c912e11864171284e40bbda5'], 'transactionsRoot': '0x04141a05f8c060441d1d9c57f69262f8b1928eab2b283eba7f795681219d79cf', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 11:47:53,208 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:47:53,209 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:47:53,213 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:47:53,214 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 4, 'result': '0x7a69'}
+2026-03-18 11:47:53,217 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_estimateGas
+2026-03-18 11:47:53,218 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:47:53,218 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:47:53,222 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:47:53,223 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x7a69'}
+2026-03-18 11:47:53,224 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas
+2026-03-18 11:47:53,230 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:47:53,230 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas, Response: {'jsonrpc': '2.0', 'id': 6, 'result': '0x5d11'}
+2026-03-18 11:47:53,231 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:47:53,231 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:47:53,235 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:47:53,236 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x7a69'}
+2026-03-18 11:47:53,237 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 11:47:53,237 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 11:47:53,241 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1741
+2026-03-18 11:47:53,242 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 8, 'result': {'baseFeePerGas': '0x749afe5', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0xbfb6', 'hash': '0x67676ba64db0ae78212260a484c5f9fe130e5357690db5218d2f198c6e3e08f2', 'logsBloom': '0x00000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000020000080000000000000000000000000000000000000000000000000800000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0xf79eb374434719395392b5e789577b70ba6c3c3f8f3783b24448745b21c66831', 'nonce': '0x0000000000000000', 'number': '0x10', 'parentBeaconBlockRoot': '0x04fa0dfbfe79b6a3db4803bb1157390cfc9ecb5a3e3f18ebcdb5b03632af0f31', 'parentHash': '0x08fb2d61e268dc6898357e07e2c49bceb7964db662ad037c8ca90a43adf800d3', 'receiptsRoot': '0xd19b8c9a16a046aabcd4112688b941b1aa9fb6e84015f5c9a31ba970ac919121', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x2ba', 'stateRoot': '0x985e1c68ab7a91849f2c0c07288c4bcbb146330e9fae39f223a09c2df9f26dd6', 'timestamp': '0x69ba42aa', 'totalDifficulty': '0x0', 'transactions': ['0x8c66a86f7f3024ce380c6272c042b706e3e08df1c912e11864171284e40bbda5'], 'transactionsRoot': '0x04141a05f8c060441d1d9c57f69262f8b1928eab2b283eba7f795681219d79cf', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 11:47:53,243 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction
+2026-03-18 11:47:53,250 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-03-18 11:47:53,251 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction, Response: {'jsonrpc': '2.0', 'id': 9, 'result': '0xb141cb44dea29c55f55b332855c1141b4a0ce650c858e8cdffb995d0c2991f8d'}
+2026-03-18 11:47:53,251 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:47:53,251 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:47:53,255 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:47:53,256 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 10, 'result': '0x7a69'}
+2026-03-18 11:47:53,258 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getTransactionReceipt
+2026-03-18 11:47:53,258 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt
+2026-03-18 11:47:53,261 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1022
+2026-03-18 11:47:53,262 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt, Response: {'jsonrpc': '2.0', 'id': 11, 'result': {'blockHash': '0xe786991ea5a5a8462f2b3c40baccfef7c6f42e25f3114a746f2c46c4bf097271', 'blockNumber': '0x11', 'contractAddress': None, 'cumulativeGasUsed': '0x5d10', 'effectiveGasPrice': '0x6613d40', 'from': '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', 'gasUsed': '0x5d10', 'logs': [], 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000', 'status': '0x1', 'to': '0x8a791620dd6260079bf849dc5567adc3f2fdc318', 'transactionHash': '0xb141cb44dea29c55f55b332855c1141b4a0ce650c858e8cdffb995d0c2991f8d', 'transactionIndex': '0x0', 'type': '0x2'}}
+2026-03-18 11:47:53,264 - app - DEBUG - DB connection closed
+2026-03-18 11:47:53,267 - app - INFO - Setting up DB for request: POST /admin/start-election
+2026-03-18 11:47:53,269 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:47:53,269 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:47:53,270 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:47:53,273 - app - INFO - DB setup completed successfully
+2026-03-18 11:47:53,278 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:47:53,278 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:47:53,279 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:47:53,284 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:47:53,285 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 12, 'result': '0x7a69'}
+2026-03-18 11:47:53,286 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:47:53,293 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 39
+2026-03-18 11:47:53,294 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 13, 'result': '0x'}
+2026-03-18 11:47:53,294 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:47:53,294 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:47:53,302 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:47:53,303 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 14, 'result': '0x7a69'}
+2026-03-18 11:47:53,309 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getCode
+2026-03-18 11:47:53,310 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getCode
+2026-03-18 11:47:53,316 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 39
+2026-03-18 11:47:53,317 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'id': 15, 'result': '0x'}
+2026-03-18 11:47:53,319 - app - DEBUG - DB connection closed
+2026-03-18 11:47:53,322 - app - INFO - Setting up DB for request: POST /register
+2026-03-18 11:47:53,325 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:47:53,326 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:47:53,327 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:47:53,330 - app - INFO - DB setup completed successfully
+2026-03-18 11:47:53,752 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2026-03-18 11:47:53,753 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts
+2026-03-18 11:47:53,757 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 936
+2026-03-18 11:47:53,758 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts, Response: {'jsonrpc': '2.0', 'id': 16, 'result': ['0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', '0x70997970c51812dc3a010c7d01b50e0d17dc79c8', '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', '0x90f79bf6eb2c4f870365e785982e1f101e93b906', '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', '0x976ea74026e726554db657fa54763abd0c3a0aa9', '0x14dc79964da2c08b23698b3d3cc7ca32193d9955', '0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f', '0xa0ee7a142d267c1f36714e4a8f75612f20a79720', '0xbcd4042de499d14e55001ccbb24a551f3b954096', '0x71be63f3384f5fb98995898a86b02fb2426c5788', '0xfabb0ac9d68b0b445fb7357272ff202c5651694a', '0x1cbd3b2770909d4e10f157cabc84c7264073c9ec', '0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097', '0xcd3b766ccdd6ae721141f452c550ca635964ce71', '0x2546bcd3c84621e976d8185a91a922ae77ecec30', '0xbda5747bfd65f08deb54cb465eb87d40e51b197e', '0xdd2fd4581271e230360230f9337d5c0430bf44c0', '0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199']}
+2026-03-18 11:47:53,803 - app - DEBUG - DB connection closed
+2026-03-18 11:47:53,807 - app - INFO - Setting up DB for request: POST /login
+2026-03-18 11:47:53,810 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:47:53,811 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:47:53,812 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:47:53,815 - app - INFO - DB setup completed successfully
+2026-03-18 11:47:54,155 - app - DEBUG - DB connection closed
+2026-03-18 11:47:54,179 - app - INFO - Setting up DB for request: GET /candidates
+2026-03-18 11:47:54,182 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:47:54,183 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:47:54,184 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:47:54,188 - app - INFO - DB setup completed successfully
+2026-03-18 11:47:54,192 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:47:54,193 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:47:54,193 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:47:54,199 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:47:54,200 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 17, 'result': '0x7a69'}
+2026-03-18 11:47:54,201 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:47:54,207 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 39
+2026-03-18 11:47:54,208 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 18, 'result': '0x'}
+2026-03-18 11:47:54,209 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:47:54,209 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:47:54,214 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:47:54,215 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 19, 'result': '0x7a69'}
+2026-03-18 11:47:54,218 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getCode
+2026-03-18 11:47:54,219 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getCode
+2026-03-18 11:47:54,224 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 39
+2026-03-18 11:47:54,225 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'id': 20, 'result': '0x'}
+2026-03-18 11:47:54,227 - app - DEBUG - DB connection closed
+2026-03-18 11:50:00,471 - app - INFO - Setting up DB for request: POST /admin/login
+2026-03-18 11:50:00,474 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:50:00,474 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:50:00,475 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:50:00,478 - app - INFO - DB setup completed successfully
+2026-03-18 11:50:00,480 - app - DEBUG - DB connection closed
+2026-03-18 11:50:00,482 - app - INFO - Setting up DB for request: POST /admin/add-candidate
+2026-03-18 11:50:00,484 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:50:00,484 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:50:00,484 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:50:00,485 - app - INFO - DB setup completed successfully
+2026-03-18 11:50:00,490 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_sendTransaction
+2026-03-18 11:50:00,490 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 11:50:00,490 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 11:50:00,494 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1741
+2026-03-18 11:50:00,494 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 3, 'result': {'baseFeePerGas': '0x6613d3f', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0x5d10', 'hash': '0xe786991ea5a5a8462f2b3c40baccfef7c6f42e25f3114a746f2c46c4bf097271', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x63f7517b79b332040e18bed348de7184b8a02d4f07107e0a1c597628f17445cb', 'nonce': '0x0000000000000000', 'number': '0x11', 'parentBeaconBlockRoot': '0x1805a5dc95c37406cb580e78e2a36fc0831ff4776e7fcb61ea7be88bfc3663c1', 'parentHash': '0x67676ba64db0ae78212260a484c5f9fe130e5357690db5218d2f198c6e3e08f2', 'receiptsRoot': '0xd41adebcb79ad94a93e86cff577f17e256a4a38080faee8b6ef1be5fc6f862b5', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x49e', 'stateRoot': '0x4eaa1b4512c693db1994500bc2a6cc428db5f4231c515714b97ee802c36aef76', 'timestamp': '0x69ba4391', 'totalDifficulty': '0x0', 'transactions': ['0xb141cb44dea29c55f55b332855c1141b4a0ce650c858e8cdffb995d0c2991f8d'], 'transactionsRoot': '0xcdc36eb16832cc77d6085b6c3ec1bbc99978711e2a77126b6fab85b4a230db88', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 11:50:00,496 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:00,496 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:00,500 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:50:00,500 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 4, 'result': '0x7a69'}
+2026-03-18 11:50:00,502 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_estimateGas
+2026-03-18 11:50:00,502 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:00,502 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:00,505 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:50:00,505 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x7a69'}
+2026-03-18 11:50:00,505 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas
+2026-03-18 11:50:00,572 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 589
+2026-03-18 11:50:00,573 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas, Response: {'jsonrpc': '2.0', 'id': 6, 'error': {'code': -32603, 'message': "Error: VM Exception while processing transaction: reverted with reason string 'Action not allowed in current state'", 'data': {'message': "Error: VM Exception while processing transaction: reverted with reason string 'Action not allowed in current state'", 'data': '0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000023416374696f6e206e6f7420616c6c6f77656420696e2063757272656e742073746174650000000000000000000000000000000000000000000000000000000000'}}}
+2026-03-18 11:50:00,573 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:00,573 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:00,577 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:50:00,577 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x7a69'}
+2026-03-18 11:50:00,578 - app - DEBUG - DB connection closed
+2026-03-18 11:50:00,580 - app - INFO - Setting up DB for request: POST /admin/start-election
+2026-03-18 11:50:00,581 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:50:00,581 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:50:00,582 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:50:00,584 - app - INFO - DB setup completed successfully
+2026-03-18 11:50:00,587 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:50:00,587 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:00,587 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:00,591 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:50:00,592 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 8, 'result': '0x7a69'}
+2026-03-18 11:50:00,592 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:50:00,598 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-03-18 11:50:00,599 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 9, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002'}
+2026-03-18 11:50:00,599 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:00,599 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:00,603 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:00,604 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 10, 'result': '0x7a69'}
+2026-03-18 11:50:00,608 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_sendTransaction
+2026-03-18 11:50:00,609 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 11:50:00,609 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 11:50:00,614 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1742
+2026-03-18 11:50:00,615 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 11, 'result': {'baseFeePerGas': '0x6613d3f', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0x5d10', 'hash': '0xe786991ea5a5a8462f2b3c40baccfef7c6f42e25f3114a746f2c46c4bf097271', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x63f7517b79b332040e18bed348de7184b8a02d4f07107e0a1c597628f17445cb', 'nonce': '0x0000000000000000', 'number': '0x11', 'parentBeaconBlockRoot': '0x1805a5dc95c37406cb580e78e2a36fc0831ff4776e7fcb61ea7be88bfc3663c1', 'parentHash': '0x67676ba64db0ae78212260a484c5f9fe130e5357690db5218d2f198c6e3e08f2', 'receiptsRoot': '0xd41adebcb79ad94a93e86cff577f17e256a4a38080faee8b6ef1be5fc6f862b5', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x49e', 'stateRoot': '0x4eaa1b4512c693db1994500bc2a6cc428db5f4231c515714b97ee802c36aef76', 'timestamp': '0x69ba4391', 'totalDifficulty': '0x0', 'transactions': ['0xb141cb44dea29c55f55b332855c1141b4a0ce650c858e8cdffb995d0c2991f8d'], 'transactionsRoot': '0xcdc36eb16832cc77d6085b6c3ec1bbc99978711e2a77126b6fab85b4a230db88', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 11:50:00,616 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:00,617 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:00,622 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:00,623 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 12, 'result': '0x7a69'}
+2026-03-18 11:50:00,625 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_estimateGas
+2026-03-18 11:50:00,625 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:00,625 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:00,630 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:00,631 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 13, 'result': '0x7a69'}
+2026-03-18 11:50:00,632 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas
+2026-03-18 11:50:00,647 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 590
+2026-03-18 11:50:00,648 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas, Response: {'jsonrpc': '2.0', 'id': 14, 'error': {'code': -32603, 'message': "Error: VM Exception while processing transaction: reverted with reason string 'Action not allowed in current state'", 'data': {'message': "Error: VM Exception while processing transaction: reverted with reason string 'Action not allowed in current state'", 'data': '0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000023416374696f6e206e6f7420616c6c6f77656420696e2063757272656e742073746174650000000000000000000000000000000000000000000000000000000000'}}}
+2026-03-18 11:50:00,648 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:00,648 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:00,652 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:00,652 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 15, 'result': '0x7a69'}
+2026-03-18 11:50:00,654 - app - DEBUG - DB connection closed
+2026-03-18 11:50:00,656 - app - INFO - Setting up DB for request: POST /register
+2026-03-18 11:50:00,658 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:50:00,658 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:50:00,659 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:50:00,661 - app - INFO - DB setup completed successfully
+2026-03-18 11:50:00,928 - app - DEBUG - DB connection closed
+2026-03-18 11:50:00,930 - app - INFO - Setting up DB for request: POST /login
+2026-03-18 11:50:00,933 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:50:00,933 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:50:00,934 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:50:00,936 - app - INFO - DB setup completed successfully
+2026-03-18 11:50:01,246 - app - DEBUG - DB connection closed
+2026-03-18 11:50:01,250 - app - INFO - Setting up DB for request: GET /candidates
+2026-03-18 11:50:01,252 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:50:01,252 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:50:01,253 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:50:01,255 - app - INFO - DB setup completed successfully
+2026-03-18 11:50:01,257 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:50:01,257 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,257 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,261 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,262 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 16, 'result': '0x7a69'}
+2026-03-18 11:50:01,263 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:50:01,268 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-03-18 11:50:01,268 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 17, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002'}
+2026-03-18 11:50:01,269 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,269 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,271 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,271 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 18, 'result': '0x7a69'}
+2026-03-18 11:50:01,274 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:50:01,274 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,274 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,278 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,279 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 19, 'result': '0x7a69'}
+2026-03-18 11:50:01,279 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:50:01,289 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1191
+2026-03-18 11:50:01,290 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 20, 'result': '0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000056b72696e61000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568617070790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343431395f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 11:50:01,290 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,290 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,293 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,293 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 21, 'result': '0x7a69'}
+2026-03-18 11:50:01,297 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:50:01,297 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,297 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,300 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,301 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 22, 'result': '0x7a69'}
+2026-03-18 11:50:01,301 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:50:01,310 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1191
+2026-03-18 11:50:01,310 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 23, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000086161797572736861000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568656c6c6f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343433345f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 11:50:01,311 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,311 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,313 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,314 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 24, 'result': '0x7a69'}
+2026-03-18 11:50:01,315 - app - DEBUG - DB connection closed
+2026-03-18 11:50:01,317 - app - INFO - Setting up DB for request: POST /vote
+2026-03-18 11:50:01,320 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:50:01,320 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:50:01,320 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:50:01,322 - app - INFO - DB setup completed successfully
+2026-03-18 11:50:01,326 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_sendTransaction
+2026-03-18 11:50:01,326 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 11:50:01,326 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 11:50:01,329 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1742
+2026-03-18 11:50:01,330 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 25, 'result': {'baseFeePerGas': '0x6613d3f', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0x5d10', 'hash': '0xe786991ea5a5a8462f2b3c40baccfef7c6f42e25f3114a746f2c46c4bf097271', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x63f7517b79b332040e18bed348de7184b8a02d4f07107e0a1c597628f17445cb', 'nonce': '0x0000000000000000', 'number': '0x11', 'parentBeaconBlockRoot': '0x1805a5dc95c37406cb580e78e2a36fc0831ff4776e7fcb61ea7be88bfc3663c1', 'parentHash': '0x67676ba64db0ae78212260a484c5f9fe130e5357690db5218d2f198c6e3e08f2', 'receiptsRoot': '0xd41adebcb79ad94a93e86cff577f17e256a4a38080faee8b6ef1be5fc6f862b5', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x49e', 'stateRoot': '0x4eaa1b4512c693db1994500bc2a6cc428db5f4231c515714b97ee802c36aef76', 'timestamp': '0x69ba4391', 'totalDifficulty': '0x0', 'transactions': ['0xb141cb44dea29c55f55b332855c1141b4a0ce650c858e8cdffb995d0c2991f8d'], 'transactionsRoot': '0xcdc36eb16832cc77d6085b6c3ec1bbc99978711e2a77126b6fab85b4a230db88', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 11:50:01,331 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,331 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,334 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,334 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 26, 'result': '0x7a69'}
+2026-03-18 11:50:01,336 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_estimateGas
+2026-03-18 11:50:01,336 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,336 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,338 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,339 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 27, 'result': '0x7a69'}
+2026-03-18 11:50:01,339 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas
+2026-03-18 11:50:01,345 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 44
+2026-03-18 11:50:01,346 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas, Response: {'jsonrpc': '2.0', 'id': 28, 'result': '0x130fa'}
+2026-03-18 11:50:01,346 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,346 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,350 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,351 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 29, 'result': '0x7a69'}
+2026-03-18 11:50:01,351 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 11:50:01,351 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 11:50:01,355 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1742
+2026-03-18 11:50:01,355 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 30, 'result': {'baseFeePerGas': '0x6613d3f', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0x5d10', 'hash': '0xe786991ea5a5a8462f2b3c40baccfef7c6f42e25f3114a746f2c46c4bf097271', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x63f7517b79b332040e18bed348de7184b8a02d4f07107e0a1c597628f17445cb', 'nonce': '0x0000000000000000', 'number': '0x11', 'parentBeaconBlockRoot': '0x1805a5dc95c37406cb580e78e2a36fc0831ff4776e7fcb61ea7be88bfc3663c1', 'parentHash': '0x67676ba64db0ae78212260a484c5f9fe130e5357690db5218d2f198c6e3e08f2', 'receiptsRoot': '0xd41adebcb79ad94a93e86cff577f17e256a4a38080faee8b6ef1be5fc6f862b5', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x49e', 'stateRoot': '0x4eaa1b4512c693db1994500bc2a6cc428db5f4231c515714b97ee802c36aef76', 'timestamp': '0x69ba4391', 'totalDifficulty': '0x0', 'transactions': ['0xb141cb44dea29c55f55b332855c1141b4a0ce650c858e8cdffb995d0c2991f8d'], 'transactionsRoot': '0xcdc36eb16832cc77d6085b6c3ec1bbc99978711e2a77126b6fab85b4a230db88', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 11:50:01,356 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction
+2026-03-18 11:50:01,372 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-03-18 11:50:01,373 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction, Response: {'jsonrpc': '2.0', 'id': 31, 'result': '0x30d272b6ed0149663ee5689ceb4d71c8c72337f6b6e96007b86d00b6a174b93a'}
+2026-03-18 11:50:01,373 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:50:01,374 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:50:01,384 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:50:01,385 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 32, 'result': '0x7a69'}
+2026-03-18 11:50:01,386 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getTransactionReceipt
+2026-03-18 11:50:01,386 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt
+2026-03-18 11:50:01,394 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1621
+2026-03-18 11:50:01,395 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt, Response: {'jsonrpc': '2.0', 'id': 33, 'result': {'blockHash': '0xdb9616cba9a694994f6f0009cad54d23cf5795c4405812d866cb61999d564911', 'blockNumber': '0x12', 'contractAddress': None, 'cumulativeGasUsed': '0x130fa', 'effectiveGasPrice': '0x595689b', 'from': '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', 'gasUsed': '0x130fa', 'logs': [{'address': '0x5fbdb2315678afecb367f032d93f642f64180aa3', 'blockHash': '0xdb9616cba9a694994f6f0009cad54d23cf5795c4405812d866cb61999d564911', 'blockNumber': '0x12', 'data': '0x0000000000000000000000003c44cdddb6a900fa2b585dd299e03d12fa4293bc', 'logIndex': '0x0', 'removed': False, 'topics': ['0x7fe1d4e6b34e228b5dc059fcdc037c71b216fb2417f47c171e505144a5e4f5fc', '0x0000000000000000000000000000000000000000000000000000000000000003', '0x0000000000000000000000000000000000000000000000000000000000000001'], 'transactionHash': '0x30d272b6ed0149663ee5689ceb4d71c8c72337f6b6e96007b86d00b6a174b93a', 'transactionIndex': '0x0'}], 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'status': '0x1', 'to': '0x5fbdb2315678afecb367f032d93f642f64180aa3', 'transactionHash': '0x30d272b6ed0149663ee5689ceb4d71c8c72337f6b6e96007b86d00b6a174b93a', 'transactionIndex': '0x0', 'type': '0x2'}}
+2026-03-18 11:50:01,453 - app - DEBUG - DB connection closed
+2026-03-18 11:57:00,035 - app - INFO - Setting up DB for request: GET /candidates
+2026-03-18 11:57:00,037 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:00,037 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:00,037 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:00,038 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:00,041 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:57:00,042 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:00,042 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:00,045 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:00,045 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 3, 'result': '0x7a69'}
+2026-03-18 11:57:00,046 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:57:00,051 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-03-18 11:57:00,051 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 4, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002'}
+2026-03-18 11:57:00,051 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:00,051 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:00,054 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:00,054 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x7a69'}
+2026-03-18 11:57:00,059 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:57:00,059 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:00,059 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:00,062 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:00,063 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 6, 'result': '0x7a69'}
+2026-03-18 11:57:00,064 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:57:00,074 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1190
+2026-03-18 11:57:00,075 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000056b72696e61000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568617070790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343431395f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 11:57:00,075 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:00,075 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:00,078 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:00,079 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 8, 'result': '0x7a69'}
+2026-03-18 11:57:00,082 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:57:00,082 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:00,082 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:00,085 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:00,085 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 9, 'result': '0x7a69'}
+2026-03-18 11:57:00,086 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:57:00,095 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1191
+2026-03-18 11:57:00,095 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 10, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000086161797572736861000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568656c6c6f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343433345f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 11:57:00,095 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:00,095 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:00,098 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:00,099 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 11, 'result': '0x7a69'}
+2026-03-18 11:57:00,101 - app - DEBUG - DB connection closed
+2026-03-18 11:57:00,103 - app - INFO - Setting up DB for request: GET /election/status
+2026-03-18 11:57:00,105 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:00,105 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:00,106 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:00,107 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:00,109 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:57:00,109 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:00,109 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:00,112 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:00,113 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 12, 'result': '0x7a69'}
+2026-03-18 11:57:00,113 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:57:00,118 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-03-18 11:57:00,119 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 13, 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2026-03-18 11:57:00,119 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:00,119 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:00,123 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:00,123 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 14, 'result': '0x7a69'}
+2026-03-18 11:57:00,125 - app - DEBUG - DB connection closed
+2026-03-18 11:57:00,127 - app - INFO - Setting up DB for request: POST /register
+2026-03-18 11:57:00,129 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:00,129 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:00,130 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:00,131 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:00,527 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2026-03-18 11:57:00,527 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts
+2026-03-18 11:57:00,532 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 936
+2026-03-18 11:57:00,533 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts, Response: {'jsonrpc': '2.0', 'id': 15, 'result': ['0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', '0x70997970c51812dc3a010c7d01b50e0d17dc79c8', '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', '0x90f79bf6eb2c4f870365e785982e1f101e93b906', '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', '0x976ea74026e726554db657fa54763abd0c3a0aa9', '0x14dc79964da2c08b23698b3d3cc7ca32193d9955', '0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f', '0xa0ee7a142d267c1f36714e4a8f75612f20a79720', '0xbcd4042de499d14e55001ccbb24a551f3b954096', '0x71be63f3384f5fb98995898a86b02fb2426c5788', '0xfabb0ac9d68b0b445fb7357272ff202c5651694a', '0x1cbd3b2770909d4e10f157cabc84c7264073c9ec', '0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097', '0xcd3b766ccdd6ae721141f452c550ca635964ce71', '0x2546bcd3c84621e976d8185a91a922ae77ecec30', '0xbda5747bfd65f08deb54cb465eb87d40e51b197e', '0xdd2fd4581271e230360230f9337d5c0430bf44c0', '0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199']}
+2026-03-18 11:57:00,588 - app - DEBUG - DB connection closed
+2026-03-18 11:57:00,592 - app - INFO - Setting up DB for request: POST /login
+2026-03-18 11:57:00,595 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:00,596 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:00,597 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:00,599 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:00,604 - app - DEBUG - DB connection closed
+2026-03-18 11:57:00,608 - app - INFO - Setting up DB for request: POST /vote
+2026-03-18 11:57:00,611 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:00,611 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:00,612 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:00,615 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:00,619 - app - DEBUG - DB connection closed
+2026-03-18 11:57:36,868 - app - INFO - Setting up DB for request: POST /register
+2026-03-18 11:57:36,871 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:36,872 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:36,872 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:36,874 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:37,144 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2026-03-18 11:57:37,144 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts
+2026-03-18 11:57:37,148 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 935
+2026-03-18 11:57:37,149 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts, Response: {'jsonrpc': '2.0', 'id': 3, 'result': ['0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', '0x70997970c51812dc3a010c7d01b50e0d17dc79c8', '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', '0x90f79bf6eb2c4f870365e785982e1f101e93b906', '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', '0x976ea74026e726554db657fa54763abd0c3a0aa9', '0x14dc79964da2c08b23698b3d3cc7ca32193d9955', '0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f', '0xa0ee7a142d267c1f36714e4a8f75612f20a79720', '0xbcd4042de499d14e55001ccbb24a551f3b954096', '0x71be63f3384f5fb98995898a86b02fb2426c5788', '0xfabb0ac9d68b0b445fb7357272ff202c5651694a', '0x1cbd3b2770909d4e10f157cabc84c7264073c9ec', '0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097', '0xcd3b766ccdd6ae721141f452c550ca635964ce71', '0x2546bcd3c84621e976d8185a91a922ae77ecec30', '0xbda5747bfd65f08deb54cb465eb87d40e51b197e', '0xdd2fd4581271e230360230f9337d5c0430bf44c0', '0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199']}
+2026-03-18 11:57:37,192 - app - DEBUG - DB connection closed
+2026-03-18 11:57:37,197 - app - INFO - Setting up DB for request: POST /login
+2026-03-18 11:57:37,201 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:37,202 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:37,203 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:37,207 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:37,634 - app - DEBUG - DB connection closed
+2026-03-18 11:57:37,638 - app - INFO - Setting up DB for request: GET /candidates
+2026-03-18 11:57:37,641 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:37,641 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:37,642 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:37,644 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:37,650 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:57:37,651 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,651 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,658 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:37,659 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 4, 'result': '0x7a69'}
+2026-03-18 11:57:37,661 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:57:37,671 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-03-18 11:57:37,672 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002'}
+2026-03-18 11:57:37,673 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,673 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,679 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:37,680 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 6, 'result': '0x7a69'}
+2026-03-18 11:57:37,689 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:57:37,690 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,690 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,695 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:37,696 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x7a69'}
+2026-03-18 11:57:37,697 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:57:37,719 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1190
+2026-03-18 11:57:37,720 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 8, 'result': '0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000056b72696e61000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568617070790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343431395f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 11:57:37,721 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,721 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,728 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 11:57:37,729 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 9, 'result': '0x7a69'}
+2026-03-18 11:57:37,737 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 11:57:37,738 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,738 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,744 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:37,745 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 10, 'result': '0x7a69'}
+2026-03-18 11:57:37,746 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 11:57:37,768 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1191
+2026-03-18 11:57:37,770 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 11, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000086161797572736861000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568656c6c6f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343433345f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 11:57:37,771 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,771 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,777 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:37,778 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 12, 'result': '0x7a69'}
+2026-03-18 11:57:37,781 - app - DEBUG - DB connection closed
+2026-03-18 11:57:37,785 - app - INFO - Setting up DB for request: POST /vote
+2026-03-18 11:57:37,790 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:37,791 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:37,792 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:37,798 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:37,831 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_sendTransaction
+2026-03-18 11:57:37,832 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 11:57:37,832 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 11:57:37,839 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1743
+2026-03-18 11:57:37,840 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 13, 'result': {'baseFeePerGas': '0x595689a', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0x130fa', 'hash': '0xdb9616cba9a694994f6f0009cad54d23cf5795c4405812d866cb61999d564911', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x6f73c95322c48791146a192ab1264e66b1407bb63143ac741c06b7061f9d8f33', 'nonce': '0x0000000000000000', 'number': '0x12', 'parentBeaconBlockRoot': '0x28c666e7af3ea8f2a95368645e5df1addfd3e2dd5012ba863aa6cab4a77fcd6c', 'parentHash': '0xe786991ea5a5a8462f2b3c40baccfef7c6f42e25f3114a746f2c46c4bf097271', 'receiptsRoot': '0xe6a0d82075d9702bb7f60a3cf7061788b55bd7819af4a56d8d2058e326140c58', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x2db', 'stateRoot': '0x8293bd799aece712aee22b523355f2e74423199ff330c64c48a9e440fea6f946', 'timestamp': '0x69ba4411', 'totalDifficulty': '0x0', 'transactions': ['0x30d272b6ed0149663ee5689ceb4d71c8c72337f6b6e96007b86d00b6a174b93a'], 'transactionsRoot': '0x2591a1a6670a749f8212a46f2352c3e831f8e27b5af134cd9a767befc6f4ef96', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 11:57:37,842 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,842 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,847 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:37,847 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 14, 'result': '0x7a69'}
+2026-03-18 11:57:37,849 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_estimateGas
+2026-03-18 11:57:37,850 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,850 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,855 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:37,856 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 15, 'result': '0x7a69'}
+2026-03-18 11:57:37,857 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas
+2026-03-18 11:57:37,865 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:37,866 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas, Response: {'jsonrpc': '2.0', 'id': 16, 'result': '0xee2e'}
+2026-03-18 11:57:37,866 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,866 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,869 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:37,870 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 17, 'result': '0x7a69'}
+2026-03-18 11:57:37,871 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 11:57:37,871 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 11:57:37,875 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1743
+2026-03-18 11:57:37,875 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 18, 'result': {'baseFeePerGas': '0x595689a', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0x130fa', 'hash': '0xdb9616cba9a694994f6f0009cad54d23cf5795c4405812d866cb61999d564911', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x6f73c95322c48791146a192ab1264e66b1407bb63143ac741c06b7061f9d8f33', 'nonce': '0x0000000000000000', 'number': '0x12', 'parentBeaconBlockRoot': '0x28c666e7af3ea8f2a95368645e5df1addfd3e2dd5012ba863aa6cab4a77fcd6c', 'parentHash': '0xe786991ea5a5a8462f2b3c40baccfef7c6f42e25f3114a746f2c46c4bf097271', 'receiptsRoot': '0xe6a0d82075d9702bb7f60a3cf7061788b55bd7819af4a56d8d2058e326140c58', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x2db', 'stateRoot': '0x8293bd799aece712aee22b523355f2e74423199ff330c64c48a9e440fea6f946', 'timestamp': '0x69ba4411', 'totalDifficulty': '0x0', 'transactions': ['0x30d272b6ed0149663ee5689ceb4d71c8c72337f6b6e96007b86d00b6a174b93a'], 'transactionsRoot': '0x2591a1a6670a749f8212a46f2352c3e831f8e27b5af134cd9a767befc6f4ef96', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 11:57:37,876 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction
+2026-03-18 11:57:37,884 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-03-18 11:57:37,885 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction, Response: {'jsonrpc': '2.0', 'id': 19, 'result': '0x3df670b79e93f60b1de714b9bf602dc6ac37c13d66543f3379928b3645f0cf19'}
+2026-03-18 11:57:37,885 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 11:57:37,885 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 11:57:37,888 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 11:57:37,889 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 20, 'result': '0x7a69'}
+2026-03-18 11:57:37,890 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getTransactionReceipt
+2026-03-18 11:57:37,890 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt
+2026-03-18 11:57:37,893 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1619
+2026-03-18 11:57:37,894 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt, Response: {'jsonrpc': '2.0', 'id': 21, 'result': {'blockHash': '0x8e9d6781b7fdc2b8edaaf5e7752889d14b275deab102b2b29542aedf25d8face', 'blockNumber': '0x13', 'contractAddress': None, 'cumulativeGasUsed': '0xee2e', 'effectiveGasPrice': '0x4e3a99d', 'from': '0xcd3b766ccdd6ae721141f452c550ca635964ce71', 'gasUsed': '0xee2e', 'logs': [{'address': '0x5fbdb2315678afecb367f032d93f642f64180aa3', 'blockHash': '0x8e9d6781b7fdc2b8edaaf5e7752889d14b275deab102b2b29542aedf25d8face', 'blockNumber': '0x13', 'data': '0x000000000000000000000000cd3b766ccdd6ae721141f452c550ca635964ce71', 'logIndex': '0x0', 'removed': False, 'topics': ['0x7fe1d4e6b34e228b5dc059fcdc037c71b216fb2417f47c171e505144a5e4f5fc', '0x0000000000000000000000000000000000000000000000000000000000000003', '0x0000000000000000000000000000000000000000000000000000000000000001'], 'transactionHash': '0x3df670b79e93f60b1de714b9bf602dc6ac37c13d66543f3379928b3645f0cf19', 'transactionIndex': '0x0'}], 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'status': '0x1', 'to': '0x5fbdb2315678afecb367f032d93f642f64180aa3', 'transactionHash': '0x3df670b79e93f60b1de714b9bf602dc6ac37c13d66543f3379928b3645f0cf19', 'transactionIndex': '0x0', 'type': '0x2'}}
+2026-03-18 11:57:37,939 - app - DEBUG - DB connection closed
+2026-03-18 11:57:37,941 - app - INFO - Setting up DB for request: POST /vote
+2026-03-18 11:57:37,943 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 11:57:37,943 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 11:57:37,944 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 11:57:37,946 - app - INFO - DB setup completed successfully
+2026-03-18 11:57:37,950 - app - DEBUG - DB connection closed
+2026-03-18 12:02:51,050 - app - INFO - Setting up DB for request: POST /register
+2026-03-18 12:02:51,052 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 12:02:51,052 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 12:02:51,052 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 12:02:51,053 - app - INFO - DB setup completed successfully
+2026-03-18 12:02:51,311 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2026-03-18 12:02:51,311 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts
+2026-03-18 12:02:51,315 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 935
+2026-03-18 12:02:51,315 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts, Response: {'jsonrpc': '2.0', 'id': 3, 'result': ['0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', '0x70997970c51812dc3a010c7d01b50e0d17dc79c8', '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', '0x90f79bf6eb2c4f870365e785982e1f101e93b906', '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', '0x976ea74026e726554db657fa54763abd0c3a0aa9', '0x14dc79964da2c08b23698b3d3cc7ca32193d9955', '0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f', '0xa0ee7a142d267c1f36714e4a8f75612f20a79720', '0xbcd4042de499d14e55001ccbb24a551f3b954096', '0x71be63f3384f5fb98995898a86b02fb2426c5788', '0xfabb0ac9d68b0b445fb7357272ff202c5651694a', '0x1cbd3b2770909d4e10f157cabc84c7264073c9ec', '0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097', '0xcd3b766ccdd6ae721141f452c550ca635964ce71', '0x2546bcd3c84621e976d8185a91a922ae77ecec30', '0xbda5747bfd65f08deb54cb465eb87d40e51b197e', '0xdd2fd4581271e230360230f9337d5c0430bf44c0', '0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199']}
+2026-03-18 12:02:51,323 - app - DEBUG - DB connection closed
+2026-03-18 12:02:51,325 - app - INFO - Setting up DB for request: POST /login
+2026-03-18 12:02:51,328 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 12:02:51,328 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 12:02:51,328 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 12:02:51,330 - app - INFO - DB setup completed successfully
+2026-03-18 12:02:51,662 - app - DEBUG - DB connection closed
+2026-03-18 12:02:51,663 - app - INFO - Setting up DB for request: GET /candidates
+2026-03-18 12:02:51,665 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 12:02:51,665 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 12:02:51,666 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 12:02:51,668 - app - INFO - DB setup completed successfully
+2026-03-18 12:02:51,671 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 12:02:51,671 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,671 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,676 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:02:51,676 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 4, 'result': '0x7a69'}
+2026-03-18 12:02:51,677 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 12:02:51,684 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-03-18 12:02:51,685 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002'}
+2026-03-18 12:02:51,685 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,685 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,690 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:02:51,690 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 6, 'result': '0x7a69'}
+2026-03-18 12:02:51,698 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 12:02:51,698 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,698 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,703 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:02:51,704 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x7a69'}
+2026-03-18 12:02:51,705 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 12:02:51,719 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1190
+2026-03-18 12:02:51,720 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 8, 'result': '0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000056b72696e61000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568617070790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343431395f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 12:02:51,721 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,721 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,725 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:02:51,726 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 9, 'result': '0x7a69'}
+2026-03-18 12:02:51,731 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 12:02:51,731 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,731 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,735 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:02:51,735 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 10, 'result': '0x7a69'}
+2026-03-18 12:02:51,736 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 12:02:51,751 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1191
+2026-03-18 12:02:51,752 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 11, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000086161797572736861000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568656c6c6f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343433345f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 12:02:51,753 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,753 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,757 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:02:51,758 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 12, 'result': '0x7a69'}
+2026-03-18 12:02:51,761 - app - DEBUG - DB connection closed
+2026-03-18 12:02:51,764 - app - INFO - Setting up DB for request: POST /vote
+2026-03-18 12:02:51,767 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 12:02:51,767 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 12:02:51,768 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 12:02:51,770 - app - INFO - DB setup completed successfully
+2026-03-18 12:02:51,779 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_sendTransaction
+2026-03-18 12:02:51,779 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 12:02:51,780 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 12:02:51,785 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1742
+2026-03-18 12:02:51,786 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 13, 'result': {'baseFeePerGas': '0x4e3a99c', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0xee2e', 'hash': '0x8e9d6781b7fdc2b8edaaf5e7752889d14b275deab102b2b29542aedf25d8face', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x75b745e9f8658a5ff7d054ed6a2a0710ba5203113eda3fda41094f576b315918', 'nonce': '0x0000000000000000', 'number': '0x13', 'parentBeaconBlockRoot': '0x6d2ceaebd15386dd315f7a4f171adb56fb6a046be34f49d2c31e01b097ff3f44', 'parentHash': '0xdb9616cba9a694994f6f0009cad54d23cf5795c4405812d866cb61999d564911', 'receiptsRoot': '0x952744c1791a1ce9fd21d1fff08373d2db1c08624427da6eb37fbd12dfc89fff', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x2da', 'stateRoot': '0xa06595e9a2c14ea69e00708d5f197d207129b3909f7c47f649ff551eeb6f1af9', 'timestamp': '0x69ba45d9', 'totalDifficulty': '0x0', 'transactions': ['0x3df670b79e93f60b1de714b9bf602dc6ac37c13d66543f3379928b3645f0cf19'], 'transactionsRoot': '0x9f2903fb26e7afbc45362adbdb8c62fe3aa24e7d9eaf829f25f7b1b75fcc646f', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 12:02:51,788 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,789 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,793 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:02:51,794 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 14, 'result': '0x7a69'}
+2026-03-18 12:02:51,796 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_estimateGas
+2026-03-18 12:02:51,797 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,797 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,802 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:02:51,803 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 15, 'result': '0x7a69'}
+2026-03-18 12:02:51,804 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas
+2026-03-18 12:02:51,820 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:02:51,822 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas, Response: {'jsonrpc': '2.0', 'id': 16, 'result': '0xee2e'}
+2026-03-18 12:02:51,823 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,823 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,830 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:02:51,831 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 17, 'result': '0x7a69'}
+2026-03-18 12:02:51,832 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 12:02:51,833 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 12:02:51,839 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1742
+2026-03-18 12:02:51,840 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 18, 'result': {'baseFeePerGas': '0x4e3a99c', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0xee2e', 'hash': '0x8e9d6781b7fdc2b8edaaf5e7752889d14b275deab102b2b29542aedf25d8face', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x75b745e9f8658a5ff7d054ed6a2a0710ba5203113eda3fda41094f576b315918', 'nonce': '0x0000000000000000', 'number': '0x13', 'parentBeaconBlockRoot': '0x6d2ceaebd15386dd315f7a4f171adb56fb6a046be34f49d2c31e01b097ff3f44', 'parentHash': '0xdb9616cba9a694994f6f0009cad54d23cf5795c4405812d866cb61999d564911', 'receiptsRoot': '0x952744c1791a1ce9fd21d1fff08373d2db1c08624427da6eb37fbd12dfc89fff', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x2da', 'stateRoot': '0xa06595e9a2c14ea69e00708d5f197d207129b3909f7c47f649ff551eeb6f1af9', 'timestamp': '0x69ba45d9', 'totalDifficulty': '0x0', 'transactions': ['0x3df670b79e93f60b1de714b9bf602dc6ac37c13d66543f3379928b3645f0cf19'], 'transactionsRoot': '0x9f2903fb26e7afbc45362adbdb8c62fe3aa24e7d9eaf829f25f7b1b75fcc646f', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 12:02:51,842 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction
+2026-03-18 12:02:51,858 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-03-18 12:02:51,859 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction, Response: {'jsonrpc': '2.0', 'id': 19, 'result': '0x28814f75375ddc9d39ed136a5c675e01d8e98f182665bcb51ef4aa96b72a3aa0'}
+2026-03-18 12:02:51,859 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:02:51,860 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:02:51,868 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:02:51,869 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 20, 'result': '0x7a69'}
+2026-03-18 12:02:51,872 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getTransactionReceipt
+2026-03-18 12:02:51,873 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt
+2026-03-18 12:02:51,879 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1619
+2026-03-18 12:02:51,880 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt, Response: {'jsonrpc': '2.0', 'id': 21, 'result': {'blockHash': '0x9d6e32f6915a5ce1fc664e0aa977e0c71f0b259e46ff0c79d8b2b2d3d0f2894c', 'blockNumber': '0x14', 'contractAddress': None, 'cumulativeGasUsed': '0xee2e', 'effectiveGasPrice': '0x447d73a', 'from': '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', 'gasUsed': '0xee2e', 'logs': [{'address': '0x5fbdb2315678afecb367f032d93f642f64180aa3', 'blockHash': '0x9d6e32f6915a5ce1fc664e0aa977e0c71f0b259e46ff0c79d8b2b2d3d0f2894c', 'blockNumber': '0x14', 'data': '0x0000000000000000000000009965507d1a55bcc2695c58ba16fb37d819b0a4dc', 'logIndex': '0x0', 'removed': False, 'topics': ['0x7fe1d4e6b34e228b5dc059fcdc037c71b216fb2417f47c171e505144a5e4f5fc', '0x0000000000000000000000000000000000000000000000000000000000000003', '0x0000000000000000000000000000000000000000000000000000000000000001'], 'transactionHash': '0x28814f75375ddc9d39ed136a5c675e01d8e98f182665bcb51ef4aa96b72a3aa0', 'transactionIndex': '0x0'}], 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'status': '0x1', 'to': '0x5fbdb2315678afecb367f032d93f642f64180aa3', 'transactionHash': '0x28814f75375ddc9d39ed136a5c675e01d8e98f182665bcb51ef4aa96b72a3aa0', 'transactionIndex': '0x0', 'type': '0x2'}}
+2026-03-18 12:02:51,894 - app - DEBUG - DB connection closed
+2026-03-18 12:02:51,898 - app - INFO - Setting up DB for request: POST /vote
+2026-03-18 12:02:51,902 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 12:02:51,902 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 12:02:51,903 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 12:02:51,906 - app - INFO - DB setup completed successfully
+2026-03-18 12:02:51,910 - app - DEBUG - DB connection closed
+2026-03-18 12:03:38,854 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: web3_clientVersion
+2026-03-18 12:03:38,855 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x000001DF45E096D0>
+2026-03-18 12:03:38,857 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-03-18 12:03:38,877 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 84
+2026-03-18 12:03:38,878 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: web3_clientVersion, Response: {'jsonrpc': '2.0', 'id': 0, 'result': 'HardhatNetwork/2.22.3/@nomicfoundation/edr/0.3.5'}
+2026-03-18 12:03:38,884 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2026-03-18 12:03:38,885 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts
+2026-03-18 12:03:38,890 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 935
+2026-03-18 12:03:38,891 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts, Response: {'jsonrpc': '2.0', 'id': 1, 'result': ['0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', '0x70997970c51812dc3a010c7d01b50e0d17dc79c8', '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', '0x90f79bf6eb2c4f870365e785982e1f101e93b906', '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', '0x976ea74026e726554db657fa54763abd0c3a0aa9', '0x14dc79964da2c08b23698b3d3cc7ca32193d9955', '0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f', '0xa0ee7a142d267c1f36714e4a8f75612f20a79720', '0xbcd4042de499d14e55001ccbb24a551f3b954096', '0x71be63f3384f5fb98995898a86b02fb2426c5788', '0xfabb0ac9d68b0b445fb7357272ff202c5651694a', '0x1cbd3b2770909d4e10f157cabc84c7264073c9ec', '0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097', '0xcd3b766ccdd6ae721141f452c550ca635964ce71', '0x2546bcd3c84621e976d8185a91a922ae77ecec30', '0xbda5747bfd65f08deb54cb465eb87d40e51b197e', '0xdd2fd4581271e230360230f9337d5c0430bf44c0', '0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199']}
+2026-03-18 12:03:38,893 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2026-03-18 12:03:38,893 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts
+2026-03-18 12:03:38,898 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 935
+2026-03-18 12:03:38,899 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts, Response: {'jsonrpc': '2.0', 'id': 2, 'result': ['0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', '0x70997970c51812dc3a010c7d01b50e0d17dc79c8', '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', '0x90f79bf6eb2c4f870365e785982e1f101e93b906', '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', '0x976ea74026e726554db657fa54763abd0c3a0aa9', '0x14dc79964da2c08b23698b3d3cc7ca32193d9955', '0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f', '0xa0ee7a142d267c1f36714e4a8f75612f20a79720', '0xbcd4042de499d14e55001ccbb24a551f3b954096', '0x71be63f3384f5fb98995898a86b02fb2426c5788', '0xfabb0ac9d68b0b445fb7357272ff202c5651694a', '0x1cbd3b2770909d4e10f157cabc84c7264073c9ec', '0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097', '0xcd3b766ccdd6ae721141f452c550ca635964ce71', '0x2546bcd3c84621e976d8185a91a922ae77ecec30', '0xbda5747bfd65f08deb54cb465eb87d40e51b197e', '0xdd2fd4581271e230360230f9337d5c0430bf44c0', '0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199']}
+2026-03-18 12:03:38,909 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 12:03:38,910 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:03:38,910 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:03:38,914 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:03:38,915 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 3, 'result': '0x7a69'}
+2026-03-18 12:03:38,916 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 12:03:38,934 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1190
+2026-03-18 12:03:38,935 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 4, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000086161797572736861000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568656c6c6f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343433345f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 12:03:38,935 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:03:38,936 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:03:38,940 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:03:38,941 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x7a69'}
+2026-03-18 12:03:38,954 - app - INFO - Setting up DB for request: POST /register
+2026-03-18 12:03:38,956 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 12:03:38,957 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 12:03:38,957 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 12:03:38,959 - app - INFO - DB setup completed successfully
+2026-03-18 12:03:39,252 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2026-03-18 12:03:39,252 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts
+2026-03-18 12:03:39,257 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 935
+2026-03-18 12:03:39,257 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts, Response: {'jsonrpc': '2.0', 'id': 3, 'result': ['0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', '0x70997970c51812dc3a010c7d01b50e0d17dc79c8', '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', '0x90f79bf6eb2c4f870365e785982e1f101e93b906', '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', '0x976ea74026e726554db657fa54763abd0c3a0aa9', '0x14dc79964da2c08b23698b3d3cc7ca32193d9955', '0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f', '0xa0ee7a142d267c1f36714e4a8f75612f20a79720', '0xbcd4042de499d14e55001ccbb24a551f3b954096', '0x71be63f3384f5fb98995898a86b02fb2426c5788', '0xfabb0ac9d68b0b445fb7357272ff202c5651694a', '0x1cbd3b2770909d4e10f157cabc84c7264073c9ec', '0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097', '0xcd3b766ccdd6ae721141f452c550ca635964ce71', '0x2546bcd3c84621e976d8185a91a922ae77ecec30', '0xbda5747bfd65f08deb54cb465eb87d40e51b197e', '0xdd2fd4581271e230360230f9337d5c0430bf44c0', '0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199']}
+2026-03-18 12:03:39,266 - app - DEBUG - DB connection closed
+2026-03-18 12:03:39,269 - app - INFO - Setting up DB for request: POST /login
+2026-03-18 12:03:39,272 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 12:03:39,272 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 12:03:39,273 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 12:03:39,275 - app - INFO - DB setup completed successfully
+2026-03-18 12:03:39,579 - app - DEBUG - DB connection closed
+2026-03-18 12:03:39,583 - app - INFO - Setting up DB for request: POST /vote
+2026-03-18 12:03:39,585 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 12:03:39,585 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 12:03:39,586 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 12:03:39,587 - app - INFO - DB setup completed successfully
+2026-03-18 12:03:39,593 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_sendTransaction
+2026-03-18 12:03:39,593 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 12:03:39,593 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 12:03:39,596 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1741
+2026-03-18 12:03:39,597 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 4, 'result': {'baseFeePerGas': '0x447d739', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0xee2e', 'hash': '0x9d6e32f6915a5ce1fc664e0aa977e0c71f0b259e46ff0c79d8b2b2d3d0f2894c', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x76c64c21ac24d0577fd1a7e134d4d68f7adc57492f7fdee92b51a4c05f2bad32', 'nonce': '0x0000000000000000', 'number': '0x14', 'parentBeaconBlockRoot': '0x4bab65b87b08d5fe16f1bbfc14e682645e31e67a0bdc16e6a3aa95329b38b749', 'parentHash': '0x8e9d6781b7fdc2b8edaaf5e7752889d14b275deab102b2b29542aedf25d8face', 'receiptsRoot': '0x2a1853ba5b0213a80195ae52102bfd637928a0eb4b47d55feb6296e64b80ca4c', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x2da', 'stateRoot': '0x830f84eff3ca4b8e8855d21adffd26845e8247d386782fee0d9bca8b106a3a35', 'timestamp': '0x69ba4713', 'totalDifficulty': '0x0', 'transactions': ['0x28814f75375ddc9d39ed136a5c675e01d8e98f182665bcb51ef4aa96b72a3aa0'], 'transactionsRoot': '0x92a06e1bc4df72c70f368f63b0b81e64c995c87a86e50e4d5ef45190e8a76ff4', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 12:03:39,598 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:03:39,598 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:03:39,600 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:03:39,601 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x7a69'}
+2026-03-18 12:03:39,602 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_estimateGas
+2026-03-18 12:03:39,602 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:03:39,602 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:03:39,605 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:03:39,606 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 6, 'result': '0x7a69'}
+2026-03-18 12:03:39,606 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas
+2026-03-18 12:03:39,613 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:03:39,614 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_estimateGas, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x130fa'}
+2026-03-18 12:03:39,614 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:03:39,614 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:03:39,617 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:03:39,618 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 8, 'result': '0x7a69'}
+2026-03-18 12:03:39,619 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getBlockByNumber
+2026-03-18 12:03:39,619 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber
+2026-03-18 12:03:39,622 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1741
+2026-03-18 12:03:39,622 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getBlockByNumber, Response: {'jsonrpc': '2.0', 'id': 9, 'result': {'baseFeePerGas': '0x447d739', 'blobGasUsed': '0x0', 'difficulty': '0x0', 'excessBlobGas': '0x0', 'extraData': '0x', 'gasLimit': '0x1c9c380', 'gasUsed': '0xee2e', 'hash': '0x9d6e32f6915a5ce1fc664e0aa977e0c71f0b259e46ff0c79d8b2b2d3d0f2894c', 'logsBloom': '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000040000000000000000000000000000000000000000000000040000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000000000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000', 'miner': '0xc014ba5ec014ba5ec014ba5ec014ba5ec014ba5e', 'mixHash': '0x76c64c21ac24d0577fd1a7e134d4d68f7adc57492f7fdee92b51a4c05f2bad32', 'nonce': '0x0000000000000000', 'number': '0x14', 'parentBeaconBlockRoot': '0x4bab65b87b08d5fe16f1bbfc14e682645e31e67a0bdc16e6a3aa95329b38b749', 'parentHash': '0x8e9d6781b7fdc2b8edaaf5e7752889d14b275deab102b2b29542aedf25d8face', 'receiptsRoot': '0x2a1853ba5b0213a80195ae52102bfd637928a0eb4b47d55feb6296e64b80ca4c', 'sha3Uncles': '0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347', 'size': '0x2da', 'stateRoot': '0x830f84eff3ca4b8e8855d21adffd26845e8247d386782fee0d9bca8b106a3a35', 'timestamp': '0x69ba4713', 'totalDifficulty': '0x0', 'transactions': ['0x28814f75375ddc9d39ed136a5c675e01d8e98f182665bcb51ef4aa96b72a3aa0'], 'transactionsRoot': '0x92a06e1bc4df72c70f368f63b0b81e64c995c87a86e50e4d5ef45190e8a76ff4', 'uncles': [], 'withdrawals': [], 'withdrawalsRoot': '0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421'}}
+2026-03-18 12:03:39,623 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction
+2026-03-18 12:03:39,631 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-03-18 12:03:39,631 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_sendTransaction, Response: {'jsonrpc': '2.0', 'id': 10, 'result': '0xa603d5fe004b35deeb025aba45e6f671c6d34c2c25ddf48c9074c56525abb08a'}
+2026-03-18 12:03:39,631 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:03:39,631 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:03:39,633 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-03-18 12:03:39,633 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 11, 'result': '0x7a69'}
+2026-03-18 12:03:39,635 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_getTransactionReceipt
+2026-03-18 12:03:39,635 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt
+2026-03-18 12:03:39,638 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1621
+2026-03-18 12:03:39,639 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_getTransactionReceipt, Response: {'jsonrpc': '2.0', 'id': 12, 'result': {'blockHash': '0x10cb3c1c4e4fb647b17bb4280616978d94b2de5171dc94d5fa444a26eb454619', 'blockNumber': '0x15', 'contractAddress': None, 'cumulativeGasUsed': '0x130fa', 'effectiveGasPrice': '0x3bf6adf', 'from': '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', 'gasUsed': '0x130fa', 'logs': [{'address': '0x5fbdb2315678afecb367f032d93f642f64180aa3', 'blockHash': '0x10cb3c1c4e4fb647b17bb4280616978d94b2de5171dc94d5fa444a26eb454619', 'blockNumber': '0x15', 'data': '0x00000000000000000000000015d34aaf54267db7d7c367839aaf71a00a2c6a65', 'logIndex': '0x0', 'removed': False, 'topics': ['0x7fe1d4e6b34e228b5dc059fcdc037c71b216fb2417f47c171e505144a5e4f5fc', '0x0000000000000000000000000000000000000000000000000000000000000003', '0x0000000000000000000000000000000000000000000000000000000000000002'], 'transactionHash': '0xa603d5fe004b35deeb025aba45e6f671c6d34c2c25ddf48c9074c56525abb08a', 'transactionIndex': '0x0'}], 'logsBloom': '0x04000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000004000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000200000000100000000000000000000100000000000000000000800000000000000000400000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000', 'status': '0x1', 'to': '0x5fbdb2315678afecb367f032d93f642f64180aa3', 'transactionHash': '0xa603d5fe004b35deeb025aba45e6f671c6d34c2c25ddf48c9074c56525abb08a', 'transactionIndex': '0x0', 'type': '0x2'}}
+2026-03-18 12:03:39,680 - app - DEBUG - DB connection closed
+2026-03-18 12:03:39,683 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 12:03:39,683 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:03:39,684 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:03:39,686 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:03:39,687 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 6, 'result': '0x7a69'}
+2026-03-18 12:03:39,687 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 12:03:39,696 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 1190
+2026-03-18 12:03:39,696 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000086161797572736861000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000568656c6c6f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000049687474703a2f2f3132372e302e302e313a353030302f75706c6f6164732f313737333831343433345f53637265656e73686f745f323032362d30332d31315f3139313533322e706e67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 12:03:39,697 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 12:03:39,697 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 12:03:39,700 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 12:03:39,700 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 8, 'result': '0x7a69'}
