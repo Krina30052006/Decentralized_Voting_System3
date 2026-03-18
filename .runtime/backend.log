@@ -1220,3 +1220,5 @@ Traceback (most recent call last):
         err.errno, msg=err.msg, sqlstate=err.sqlstate
     ) from err
 mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+ * Serving Flask app 'app'
+ * Debug mode: off
