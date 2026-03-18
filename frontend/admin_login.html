@@ -59,6 +59,7 @@
             try {
                 const res = await fetch("http://127.0.0.1:5000/admin/login", {
                     method: "POST",
+                    credentials: "include",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ username, password })
                 });
@@ -66,8 +67,8 @@
                 const data = await res.json();
 
                 if (res.ok) {
-                    localStorage.setItem("userRole", "admin");
-                    localStorage.setItem("userId", "Admin Control");
+                    sessionStorage.setItem("userRole", "admin");
+                    sessionStorage.setItem("userId", "Admin Control");
                     msgEl.textContent = "Access Granted. Initializing Control Center...";
                     msgEl.className = "message success";
                     setTimeout(() => window.location.href = "index.html", 1000);

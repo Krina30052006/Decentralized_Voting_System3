@@ -55,7 +55,7 @@
         let selectedCandidateId = null;
 
         document.addEventListener("DOMContentLoaded", () => {
-            const voterId = localStorage.getItem("voter_id");
+            const voterId = sessionStorage.getItem("userId");
             if (!voterId) { window.location.href = "login.html"; return; }
             document.getElementById("welcomeMsg").textContent = `Welcome, ${voterId}`;
             loadElectionState();
@@ -110,7 +110,7 @@
 
         async function castVote() {
             if (!selectedCandidateId) return;
-            const voterId = localStorage.getItem("voter_id");
+            const voterId = sessionStorage.getItem("userId");
             const btn = document.getElementById("submitBtn");
             const msgEl = document.getElementById("msg");
 
@@ -121,6 +121,7 @@
                 const res = await fetch("http://127.0.0.1:5000/vote", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
+                    credentials: "include",
                     body: JSON.stringify({ 
                         candidate_id: selectedCandidateId,
                         voter_id: voterId
@@ -144,7 +145,8 @@
         }
 
         function logout() {
-            localStorage.removeItem("voter_id");
+            sessionStorage.removeItem("userId");
+            sessionStorage.removeItem("userRole");
             window.location.href = "index.html";
         }
     </script>
