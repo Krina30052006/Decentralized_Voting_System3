@@ -9,7 +9,9 @@ if not web3.is_connected():
 with open(ABI_PATH, 'r') as f:
     abi = json.load(f)['abi']
 
-contract = web3.eth.contract(address=CONTRACT_ADDRESS, abi=abi)
+# Convert address to checksum format for Web3 compatibility
+contract_address = Web3.to_checksum_address(CONTRACT_ADDRESS)
+contract = web3.eth.contract(address=contract_address, abi=abi)
 account = web3.eth.accounts[0] if web3.eth.accounts else None
 if not account:
     raise Exception("No accounts available in blockchain")
