@@ -44,11 +44,6 @@
     </div>
 
     <script>
-        // Always run auth pages from backend origin so API calls and session flow are consistent.
-        if (window.location.protocol === 'file:' || window.location.port !== '5000') {
-            window.location.href = 'http://127.0.0.1:5000/register.html';
-        }
-
         // Force return to landing page on refresh or new session
         if (performance.navigation.type === 1 || !sessionStorage.getItem('portal_session')) {
             window.location.href = 'index.html';

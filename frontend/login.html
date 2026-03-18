@@ -45,11 +45,6 @@
     </section>
 
     <script>
-        // Always run auth pages from backend origin so API calls and session flow are consistent.
-        if (window.location.protocol === 'file:' || window.location.port !== '5000') {
-            window.location.href = 'http://127.0.0.1:5000/login.html';
-        }
-
         // Force return to landing page on refresh or new session
         if (performance.navigation.type === 1 || !sessionStorage.getItem('portal_session')) {
             window.location.href = 'index.html';
@@ -73,7 +68,7 @@
             };
 
             try {
-                const res = await fetch("/login", {
+                const res = await fetch("http://127.0.0.1:5000/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
@@ -86,8 +81,8 @@
                     msgEl.classList.add("success");
                     
                     // Store unified session keys
-                    sessionStorage.setItem("userRole", "voter");
-                    sessionStorage.setItem("userId", result.voter_id);
+                    localStorage.setItem("userRole", "voter");
+                    localStorage.setItem("userId", result.voter_id);
                     
                     setTimeout(() => window.location.href = "index.html", 1000);
                 } else {
