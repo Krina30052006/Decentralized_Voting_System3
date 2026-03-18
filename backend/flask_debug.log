@@ -40,3 +40,285 @@
 2026-03-18 10:41:25,507 - app - INFO - DB setup completed successfully
 2026-03-18 10:41:25,795 - app - DEBUG - DB connection closed
 2026-03-18 10:41:25,796 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:41:25] "POST /login HTTP/1.1" 200 -
+2026-03-18 10:42:38,671 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-18 10:42:38,672 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-03-18 10:42:56,947 - app - INFO - Setting up DB for request: POST /register
+2026-03-18 10:42:56,949 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:42:56,950 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:42:56,950 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:42:56,951 - app - INFO - DB setup completed successfully
+2026-03-18 10:42:57,323 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2026-03-18 10:42:57,324 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts
+2026-03-18 10:42:57,325 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x00000105BB565310>
+2026-03-18 10:42:57,326 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-03-18 10:42:57,331 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 935
+2026-03-18 10:42:57,332 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_accounts, Response: {'jsonrpc': '2.0', 'id': 3, 'result': ['0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', '0x70997970c51812dc3a010c7d01b50e0d17dc79c8', '0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc', '0x90f79bf6eb2c4f870365e785982e1f101e93b906', '0x15d34aaf54267db7d7c367839aaf71a00a2c6a65', '0x9965507d1a55bcc2695c58ba16fb37d819b0a4dc', '0x976ea74026e726554db657fa54763abd0c3a0aa9', '0x14dc79964da2c08b23698b3d3cc7ca32193d9955', '0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f', '0xa0ee7a142d267c1f36714e4a8f75612f20a79720', '0xbcd4042de499d14e55001ccbb24a551f3b954096', '0x71be63f3384f5fb98995898a86b02fb2426c5788', '0xfabb0ac9d68b0b445fb7357272ff202c5651694a', '0x1cbd3b2770909d4e10f157cabc84c7264073c9ec', '0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097', '0xcd3b766ccdd6ae721141f452c550ca635964ce71', '0x2546bcd3c84621e976d8185a91a922ae77ecec30', '0xbda5747bfd65f08deb54cb465eb87d40e51b197e', '0xdd2fd4581271e230360230f9337d5c0430bf44c0', '0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199']}
+2026-03-18 10:42:57,377 - app - DEBUG - DB connection closed
+2026-03-18 10:42:57,379 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:42:57] "POST /register HTTP/1.1" 200 -
+2026-03-18 10:42:57,396 - app - INFO - Setting up DB for request: POST /login
+2026-03-18 10:42:57,399 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:42:57,399 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:42:57,400 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:42:57,402 - app - INFO - DB setup completed successfully
+2026-03-18 10:42:57,878 - app - DEBUG - DB connection closed
+2026-03-18 10:42:57,879 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:42:57] "POST /login HTTP/1.1" 200 -
+2026-03-18 10:43:38,371 - app - INFO - Setting up DB for request: GET /
+2026-03-18 10:43:38,375 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:38,375 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:38,376 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:38,376 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:38,728 - app - DEBUG - DB connection closed
+2026-03-18 10:43:38,729 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:38] "[36mGET / HTTP/1.1[0m" 304 -
+2026-03-18 10:43:38,759 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:43:38,764 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:38,765 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:38,765 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:38,766 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:38,767 - app - DEBUG - DB connection closed
+2026-03-18 10:43:38,768 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:38] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:43:38,770 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-18 10:43:38,776 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:38,776 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:38,776 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:38,777 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:38,778 - app - DEBUG - DB connection closed
+2026-03-18 10:43:38,779 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:38] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-03-18 10:43:39,068 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 10:43:39,070 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:39,070 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:39,070 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:39,071 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:39,073 - app - DEBUG - DB connection closed
+2026-03-18 10:43:39,074 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:39] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-18 10:43:42,421 - app - INFO - Setting up DB for request: GET /login.html
+2026-03-18 10:43:42,423 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:42,423 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:42,424 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:42,426 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:42,428 - app - DEBUG - DB connection closed
+2026-03-18 10:43:42,428 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:42] "[36mGET /login.html HTTP/1.1[0m" 304 -
+2026-03-18 10:43:42,465 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:43:42,469 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:42,470 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:42,471 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:42,472 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:42,474 - app - DEBUG - DB connection closed
+2026-03-18 10:43:42,475 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:42] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:43:42,490 - app - INFO - Setting up DB for request: GET /index.html
+2026-03-18 10:43:42,493 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:42,493 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:42,494 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:42,495 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:42,496 - app - DEBUG - DB connection closed
+2026-03-18 10:43:42,497 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:42] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2026-03-18 10:43:42,533 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:43:42,535 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:42,536 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:42,537 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:42,537 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:42,539 - app - DEBUG - DB connection closed
+2026-03-18 10:43:42,540 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:42] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:43:42,547 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-18 10:43:42,549 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:42,549 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:42,549 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:42,550 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:42,551 - app - DEBUG - DB connection closed
+2026-03-18 10:43:42,553 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:42] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-03-18 10:43:42,652 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 10:43:42,655 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:42,655 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:42,655 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:42,656 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:42,658 - app - DEBUG - DB connection closed
+2026-03-18 10:43:42,659 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:42] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-18 10:43:43,595 - app - INFO - Setting up DB for request: GET /login.html
+2026-03-18 10:43:43,597 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:43,597 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:43,598 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:43,599 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:43,601 - app - DEBUG - DB connection closed
+2026-03-18 10:43:43,601 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:43] "[36mGET /login.html HTTP/1.1[0m" 304 -
+2026-03-18 10:43:43,631 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:43:43,633 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:43,633 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:43,633 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:43,634 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:43,635 - app - DEBUG - DB connection closed
+2026-03-18 10:43:43,635 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:43] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:43:43,813 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 10:43:43,817 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:43,817 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:43,818 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:43,820 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:43,823 - app - DEBUG - DB connection closed
+2026-03-18 10:43:43,823 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:43] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-18 10:43:51,270 - app - INFO - Setting up DB for request: POST /login
+2026-03-18 10:43:51,272 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:51,272 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:51,273 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:51,275 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:51,848 - app - DEBUG - DB connection closed
+2026-03-18 10:43:51,849 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:51] "POST /login HTTP/1.1" 200 -
+2026-03-18 10:43:52,905 - app - INFO - Setting up DB for request: GET /index.html
+2026-03-18 10:43:52,908 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:52,909 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:52,910 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:52,913 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:52,916 - app - DEBUG - DB connection closed
+2026-03-18 10:43:52,917 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:52] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2026-03-18 10:43:52,971 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:43:52,977 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:52,978 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:52,979 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:52,980 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:52,982 - app - DEBUG - DB connection closed
+2026-03-18 10:43:52,984 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:52] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:43:52,989 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-18 10:43:52,992 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:52,992 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:52,992 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:52,993 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:52,995 - app - DEBUG - DB connection closed
+2026-03-18 10:43:52,995 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:52] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-03-18 10:43:53,169 - app - INFO - Setting up DB for request: GET /election/status
+2026-03-18 10:43:53,172 - app - INFO - Setting up DB for request: GET /candidates
+2026-03-18 10:43:53,174 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:53,174 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:53,176 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:53,177 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:53,177 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:53,178 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:53,179 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:53,179 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:53,188 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 10:43:53,189 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 10:43:53,190 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 10:43:53,191 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x00000105BB564690>
+2026-03-18 10:43:53,193 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-03-18 10:43:53,197 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-03-18 10:43:53,198 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 10:43:53,198 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 10:43:53,199 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x00000105BB585220>
+2026-03-18 10:43:53,202 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-03-18 10:43:53,207 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 10:43:53,208 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 4, 'result': '0x7a69'}
+2026-03-18 10:43:53,209 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 10:43:53,221 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-03-18 10:43:53,222 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 6, 'result': '0x0000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 10:43:53,223 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 10:43:53,223 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 10:43:53,229 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 10:43:53,230 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 10:43:53,230 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x7a69'}
+2026-03-18 10:43:53,231 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x7a69'}
+2026-03-18 10:43:53,232 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-03-18 10:43:53,236 - app - DEBUG - DB connection closed
+2026-03-18 10:43:53,236 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:53] "GET /candidates HTTP/1.1" 200 -
+2026-03-18 10:43:53,249 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-03-18 10:43:53,250 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 8, 'result': '0x0000000000000000000000000000000000000000000000000000000000000000'}
+2026-03-18 10:43:53,250 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-03-18 10:43:53,251 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-03-18 10:43:53,254 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-03-18 10:43:53,255 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 9, 'result': '0x7a69'}
+2026-03-18 10:43:53,257 - app - DEBUG - DB connection closed
+2026-03-18 10:43:53,257 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:53] "GET /election/status HTTP/1.1" 200 -
+2026-03-18 10:43:53,272 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 10:43:53,277 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:43:53,277 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:43:53,277 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:43:53,278 - app - INFO - DB setup completed successfully
+2026-03-18 10:43:53,280 - app - DEBUG - DB connection closed
+2026-03-18 10:43:53,281 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:43:53] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-18 10:44:00,715 - app - INFO - Setting up DB for request: GET /index.html
+2026-03-18 10:44:00,717 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:00,718 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:00,718 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:00,719 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:00,721 - app - DEBUG - DB connection closed
+2026-03-18 10:44:00,721 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:00] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2026-03-18 10:44:00,756 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:44:00,758 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:00,758 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:00,759 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:00,759 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:00,762 - app - DEBUG - DB connection closed
+2026-03-18 10:44:00,762 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:00] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:44:00,764 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-18 10:44:00,767 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:00,767 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:00,768 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:00,769 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:00,770 - app - DEBUG - DB connection closed
+2026-03-18 10:44:00,770 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:00] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-03-18 10:44:00,941 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 10:44:00,944 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:00,944 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:00,945 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:00,945 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:00,947 - app - DEBUG - DB connection closed
+2026-03-18 10:44:00,947 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:00] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-18 10:44:02,272 - app - INFO - Setting up DB for request: GET /admin_login.html
+2026-03-18 10:44:02,274 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:02,274 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:02,276 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:02,277 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:02,279 - app - DEBUG - DB connection closed
+2026-03-18 10:44:02,279 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:02] "[36mGET /admin_login.html HTTP/1.1[0m" 304 -
+2026-03-18 10:44:02,315 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:44:02,318 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:02,319 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:02,319 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:02,320 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:02,321 - app - DEBUG - DB connection closed
+2026-03-18 10:44:02,321 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:02] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:44:02,344 - app - INFO - Setting up DB for request: GET /index.html
+2026-03-18 10:44:02,346 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:02,346 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:02,347 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:02,347 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:02,349 - app - DEBUG - DB connection closed
+2026-03-18 10:44:02,349 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:02] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2026-03-18 10:44:02,382 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:44:02,384 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:02,384 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:02,385 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-18 10:44:02,385 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:02,386 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:02,386 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:02,386 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:02,387 - app - DEBUG - DB connection closed
+2026-03-18 10:44:02,387 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:02,388 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:02] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:44:02,390 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:02,393 - app - DEBUG - DB connection closed
+2026-03-18 10:44:02,393 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:02] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-03-18 10:44:02,554 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 10:44:02,557 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:02,558 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:02,558 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:02,559 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:02,561 - app - DEBUG - DB connection closed
+2026-03-18 10:44:02,562 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:02] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-18 10:44:04,144 - app - INFO - Setting up DB for request: GET /admin_login.html
+2026-03-18 10:44:04,146 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:04,146 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:04,146 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:04,147 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:04,150 - app - DEBUG - DB connection closed
+2026-03-18 10:44:04,150 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:04] "[36mGET /admin_login.html HTTP/1.1[0m" 304 -
+2026-03-18 10:44:04,181 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 10:44:04,183 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:04,183 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:04,183 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:04,184 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:04,185 - app - DEBUG - DB connection closed
+2026-03-18 10:44:04,186 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:04] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 10:44:04,236 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 10:44:04,238 - mysql.connector - DEBUG - Starting authorization phase
+2026-03-18 10:44:04,239 - mysql.connector - DEBUG - The provided initial strategy is mysql_native_password
+2026-03-18 10:44:04,239 - mysql.connector - DEBUG - mysql_native_password completed succesfully
+2026-03-18 10:44:04,240 - app - INFO - DB setup completed successfully
+2026-03-18 10:44:04,241 - app - DEBUG - DB connection closed
+2026-03-18 10:44:04,242 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 10:44:04] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -

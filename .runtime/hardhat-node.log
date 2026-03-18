@@ -1795,3 +1795,195 @@ Any funds sent to them on Mainnet or any other live network WILL BE LOST.
 [32mweb3_clientVersion[0m
 [32meth_accounts[0m
 [32meth_accounts (2)[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32meth_accounts (3)[0m
+[32mhardhat_metadata[0m
+[32mhardhat_metadata (2)[0m
+[32mhardhat_metadata (3)[0m
+[32mhardhat_metadata (4)[0m
+[32mhardhat_metadata (5)[0m
+[32mhardhat_metadata (6)[0m
+[32mhardhat_metadata (7)[0m
+[32mhardhat_metadata (8)[0m
+[32mhardhat_metadata (9)[0m
+[32mhardhat_metadata (10)[0m
+[32mhardhat_metadata (11)[0m
+[32mhardhat_metadata (12)[0m
+[32mhardhat_metadata (13)[0m
+[32mhardhat_metadata (14)[0m
+[32mhardhat_metadata (15)[0m
+[32mhardhat_metadata (16)[0m
+[32mhardhat_metadata (17)[0m
+[32mhardhat_metadata (18)[0m
+[32mhardhat_metadata (19)[0m
+[32mhardhat_metadata (20)[0m
+[32meth_blockNumber[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract deployment: Voting
+  Contract address:    0x9a676e781a523b5d0c0e43731313a708cb607508
+  Transaction:         0x69d04a2c5a44b25293bd10823983fd2e8a77969e7d52f0f0729335fde3c11eca
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  Value:               0 ETH
+  Gas used:            2198403 of 16777216
+  Block #15:           0x8e0e26f24c0dcb3ee4ce44a3f9cc47a3e109dad22a8cbbe1678e72a6d182993a
+
+[32meth_getTransactionByHash[0m
+[32meth_getTransactionReceipt[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32meth_accounts (3)[0m
+[32mhardhat_metadata[0m
+[32mhardhat_metadata (2)[0m
+[32mhardhat_metadata (3)[0m
+[32mhardhat_metadata (4)[0m
+[32mhardhat_metadata (5)[0m
+[32mhardhat_metadata (6)[0m
+[32mhardhat_metadata (7)[0m
+[32mhardhat_metadata (8)[0m
+[32mhardhat_metadata (9)[0m
+[32mhardhat_metadata (10)[0m
+[32mhardhat_metadata (11)[0m
+[32mhardhat_metadata (12)[0m
+[32mhardhat_metadata (13)[0m
+[32mhardhat_metadata (14)[0m
+[32mhardhat_metadata (15)[0m
+[32mhardhat_metadata (16)[0m
+[32mhardhat_metadata (17)[0m
+[32mhardhat_metadata (18)[0m
+[32mhardhat_metadata (19)[0m
+[32mhardhat_metadata (20)[0m
+[32meth_blockNumber[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract deployment: Voting
+  Contract address:    0x0b306bf915c4d645ff596e518faf3f9669b97016
+  Transaction:         0x7decf71c134a354b1e3316c6dacfb662a81f6c5926682f7640fd9459c987c124
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  Value:               0 ETH
+  Gas used:            2198403 of 16777216
+  Block #16:           0xba1055c4168037aabbe9cd3a1490fe377a10251d16b0fc251391b7609a74fcc7
+
+[32meth_getTransactionByHash[0m
+[32meth_getTransactionReceipt[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32meth_accounts (3)[0m
+[32mhardhat_metadata[0m
+[32mhardhat_metadata (2)[0m
+[32mhardhat_metadata (3)[0m
+[32mhardhat_metadata (4)[0m
+[32mhardhat_metadata (5)[0m
+[32mhardhat_metadata (6)[0m
+[32mhardhat_metadata (7)[0m
+[32mhardhat_metadata (8)[0m
+[32mhardhat_metadata (9)[0m
+[32mhardhat_metadata (10)[0m
+[32mhardhat_metadata (11)[0m
+[32mhardhat_metadata (12)[0m
+[32mhardhat_metadata (13)[0m
+[32mhardhat_metadata (14)[0m
+[32mhardhat_metadata (15)[0m
+[32mhardhat_metadata (16)[0m
+[32mhardhat_metadata (17)[0m
+[32mhardhat_metadata (18)[0m
+[32mhardhat_metadata (19)[0m
+[32mhardhat_metadata (20)[0m
+[32meth_blockNumber[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract deployment: Voting
+  Contract address:    0x959922be3caee4b8cd9a407cc3ac1c251c2007b1
+  Transaction:         0xe14e857d3c39a95ec389cf8f68cc3c223b0253a0d899c67525308fa6b67995d8
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  Value:               0 ETH
+  Gas used:            2198403 of 16777216
+  Block #17:           0x279d0ce35c560ad1235988199aedcd684d5ed1973870813e65ab1ae492a7ae16
+
+[32meth_getTransactionByHash[0m
+[32meth_getTransactionReceipt[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32meth_accounts (3)[0m
+[32meth_accounts (4)[0m
+[32mhardhat_metadata[0m
+[32mhardhat_metadata (2)[0m
+[32mhardhat_metadata (3)[0m
+[32mhardhat_metadata (4)[0m
+[32mhardhat_metadata (5)[0m
+[32mhardhat_metadata (6)[0m
+[32mhardhat_metadata (7)[0m
+[32mhardhat_metadata (8)[0m
+[32mhardhat_metadata (9)[0m
+[32mhardhat_metadata (10)[0m
+[32mhardhat_metadata (11)[0m
+[32mhardhat_metadata (12)[0m
+[32mhardhat_metadata (13)[0m
+[32mhardhat_metadata (14)[0m
+[32mhardhat_metadata (15)[0m
+[32mhardhat_metadata (16)[0m
+[32mhardhat_metadata (17)[0m
+[32mhardhat_metadata (18)[0m
+[32mhardhat_metadata (19)[0m
+[32mhardhat_metadata (20)[0m
+[32meth_blockNumber[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract deployment: Voting
+  Contract address:    0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+  Transaction:         0x05b474994f4f6b8378c0b13a24dc8f2638d74468367acbd47651a560e3a6aba5
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  Value:               0 ETH
+  Gas used:            2198403 of 16777216
+  Block #18:           0x966350c974e3251044a82b3969f7240d3198eef4cabb759698ce3be27db2dfe8
+
+[32meth_getTransactionByHash[0m
+[32meth_getTransactionReceipt[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
+[32meth_accounts (3)[0m
+[32meth_chainId[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
