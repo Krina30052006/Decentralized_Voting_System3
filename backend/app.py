@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
 from config import ADMIN_CREDENTIALS, CONTRACT_ADDRESS
-import uuid
+import hashlib
 import logging
 
 # Set up logging to file
@@ -56,6 +56,28 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'frontend')
+
+
+def select_wallet_for_voter(voter_id: str, accounts: list[str]) -> str:
+    """Choose a deterministic wallet for a voter from currently active node accounts."""
+    digest = hashlib.sha256(voter_id.encode("utf-8")).digest()
+    index = int.from_bytes(digest[:4], "big") % len(accounts)
+    return accounts[index]
+
+
+def resolve_active_wallet(voter_id: str, stored_wallet: str | None) -> tuple[str, bool]:
+    """Return a wallet guaranteed to exist on the active node; bool indicates if remap occurred."""
+    accounts = web3.eth.accounts
+    if not accounts:
+        raise RuntimeError("Blockchain node has no available accounts")
+
+    if stored_wallet:
+        active_by_lower = {addr.lower(): addr for addr in accounts}
+        active_match = active_by_lower.get(stored_wallet.lower())
+        if active_match:
+            return active_match, False
+
+    return select_wallet_for_voter(voter_id, accounts), True
 
 @app.route("/")
 def serve_index():
@@ -261,10 +283,8 @@ def register():
     accounts = web3.eth.accounts
     if not accounts:
         return jsonify({"message": "Blockchain node has no available accounts. Registration suspended."}), 503
-        
-    # Use UUID for persistent wallet assignment
-    wallet_uuid = str(uuid.uuid4())
-    assigned_wallet = accounts[hash(wallet_uuid) % len(accounts)]
+
+    assigned_wallet = select_wallet_for_voter(voter_id, accounts)
 
     sql = "INSERT INTO voters (voter_id, name, email, password, wallet_address) VALUES (%s,%s,%s,%s,%s)"
     values = (voter_id, name, email, hashed_password, assigned_wallet)
@@ -318,7 +338,14 @@ def vote():
         if res[1]:
             return jsonify({"message": "You have already voted."}), 400
             
-        voter_wallet = res[0]
+        voter_wallet, wallet_remapped = resolve_active_wallet(voter_id, res[0])
+
+        if wallet_remapped:
+            cursor_obj.execute(
+                "UPDATE voters SET wallet_address=%s WHERE voter_id=%s",
+                (voter_wallet, voter_id),
+            )
+            get_request_db().commit()
 
         # Perform blockchain transaction
         tx_hash = contract.functions.vote(candidate_id).transact({"from": voter_wallet})
