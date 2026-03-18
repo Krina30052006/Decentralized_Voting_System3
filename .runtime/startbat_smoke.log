@@ -1,0 +1,54 @@
+
+========================================================
+   DECENTRALIZED VOTING SYSTEM - STARTUP
+========================================================
+
+[OK] Python detected
+
+[OK] Node.js detected
+
+Starting Decentralized Voting System...
+
+Starting local voting stack...
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\start_local_stack.py", line 260, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "D:\Decentralized_Voting_System3\start_local_stack.py", line 209, in main
+    stop_pid(existing_backend_port_pid)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\start_local_stack.py", line 64, in stop_pid
+    subprocess.run(
+    ~~~~~~~~~~~~~~^
+        ["taskkill", "/PID", str(pid), "/F"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        timeout=8,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 1241, in communicate
+    sts = self.wait(timeout=self._remaining_time(endtime))
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 1280, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\subprocess.py", line 1606, in _wait
+    result = _winapi.WaitForSingleObject(self._handle,
+                                         timeout_millis)
+KeyboardInterrupt
+^CTerminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+
+========================================================
+   [ERROR] STARTUP FAILED
+========================================================
+
+Please check the error messages above and try again.
+For support, check:
+  - .runtime/backend.log
+  - .runtime/hardhat-node.log
+
+Press any key to continue . . . 

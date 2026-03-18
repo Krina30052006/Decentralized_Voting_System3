@@ -15,10 +15,21 @@ echo ========================================================
 echo.
 
 REM Check if Python is installed
-python --version >nul 2>&1
+if exist ".venv\Scripts\python.exe" (
+    set "PYTHON_CMD=.venv\Scripts\python.exe"
+) else (
+    py -3 --version >nul 2>&1
+    if errorlevel 1 (
+        set "PYTHON_CMD=python"
+    ) else (
+        set "PYTHON_CMD=py -3"
+    )
+)
+
+%PYTHON_CMD% --version >nul 2>&1
 if errorlevel 1 (
     echo [ERROR] Python is not installed or not in PATH
-    echo Please install Python 3.13+ from https://www.python.org/
+    echo Please install Python 3 from https://www.python.org/
     pause
     exit /b 1
 )
@@ -27,7 +38,7 @@ echo [OK] Python detected
 echo.
 
 REM Check if Node.js/npm is installed
-npx --version >nul 2>&1
+call npx --version >nul 2>&1
 if errorlevel 1 (
     echo [ERROR] Node.js/npm is not installed or not in PATH
     echo Please install Node.js from https://nodejs.org/
@@ -42,7 +53,7 @@ echo Starting Decentralized Voting System...
 echo.
 
 REM Run the main startup script
-python start_local_stack.py
+%PYTHON_CMD% start_local_stack.py
 set STARTUP_RESULT=%errorlevel%
 
 if %STARTUP_RESULT% equ 0 (
@@ -71,11 +82,11 @@ if %STARTUP_RESULT% equ 0 (
     start http://127.0.0.1:5000
     
     echo.
-    echo Keep this window open while using the system
-    echo Press Ctrl+C to stop all services
+    echo Services continue running in the background.
+    echo Run stop.bat to stop all services.
     echo.
     
-    REM Keep the window open
+    REM Keep the window open briefly so startup status is visible
     pause
 ) else (
     echo.

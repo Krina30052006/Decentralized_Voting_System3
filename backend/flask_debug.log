@@ -11392,3 +11392,41 @@
 2026-03-18 12:01:01,887 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Closed evicted session: <requests.sessions.Session object at 0x000001531BEAF960>
 2026-03-18 12:01:02,095 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Closed evicted session: <requests.sessions.Session object at 0x000001531BEAF490>
 2026-03-18 12:01:05,805 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Closed evicted session: <requests.sessions.Session object at 0x000001531BEAF330>
+2026-03-18 12:26:26,433 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-18 12:26:26,433 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-03-18 12:26:27,057 - app - INFO - Setting up DB for request: GET /
+2026-03-18 12:26:27,063 - app - INFO - DB setup completed successfully
+2026-03-18 12:26:27,218 - app - DEBUG - DB connection closed
+2026-03-18 12:26:27,219 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 12:26:27] "[36mGET / HTTP/1.1[0m" 304 -
+2026-03-18 12:26:27,248 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 12:26:27,254 - app - INFO - DB setup completed successfully
+2026-03-18 12:26:27,256 - app - DEBUG - DB connection closed
+2026-03-18 12:26:27,256 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 12:26:27] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 12:26:27,274 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-18 12:26:27,276 - app - INFO - DB setup completed successfully
+2026-03-18 12:26:27,278 - app - DEBUG - DB connection closed
+2026-03-18 12:26:27,279 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 12:26:27] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-03-18 12:26:27,566 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 12:26:27,570 - app - INFO - DB setup completed successfully
+2026-03-18 12:26:27,572 - app - DEBUG - DB connection closed
+2026-03-18 12:26:27,572 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 12:26:27] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-18 12:29:19,187 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-18 12:29:19,188 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-03-18 12:29:21,362 - app - INFO - Setting up DB for request: GET /
+2026-03-18 12:29:21,368 - app - INFO - DB setup completed successfully
+2026-03-18 12:29:21,508 - app - DEBUG - DB connection closed
+2026-03-18 12:29:21,509 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 12:29:21] "[36mGET / HTTP/1.1[0m" 304 -
+2026-03-18 12:29:21,545 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-18 12:29:21,550 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-18 12:29:21,552 - app - INFO - DB setup completed successfully
+2026-03-18 12:29:21,554 - app - DEBUG - DB connection closed
+2026-03-18 12:29:21,554 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 12:29:21] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-18 12:29:21,554 - app - INFO - DB setup completed successfully
+2026-03-18 12:29:21,556 - app - DEBUG - DB connection closed
+2026-03-18 12:29:21,556 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 12:29:21] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-03-18 12:29:21,851 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-18 12:29:21,856 - app - INFO - DB setup completed successfully
+2026-03-18 12:29:21,858 - app - DEBUG - DB connection closed
+2026-03-18 12:29:21,858 - werkzeug - INFO - 127.0.0.1 - - [18/Mar/2026 12:29:21] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
