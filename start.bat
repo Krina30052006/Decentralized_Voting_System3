@@ -64,6 +64,13 @@ if %STARTUP_RESULT% equ 0 (
     echo   - Node:    .runtime/hardhat-node.log
     echo   - Backend: .runtime/backend.log
     echo.
+    
+    REM Open the web interface in default browser
+    echo Opening web interface in browser...
+    timeout /t 2 /nobreak
+    start http://127.0.0.1:5000
+    
+    echo.
     echo Keep this window open while using the system
     echo Press Ctrl+C to stop all services
     echo.

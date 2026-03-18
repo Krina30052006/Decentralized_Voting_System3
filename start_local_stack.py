@@ -120,6 +120,26 @@ def save_state(state: dict) -> None:
     STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
 
 
+def update_config_with_contract_address(contract_address: str) -> None:
+    """Update backend/config.py with the newly deployed contract address"""
+    config_file = BACKEND_DIR / "config.py"
+    try:
+        config_content = config_file.read_text(encoding="utf-8")
+        
+        # Replace the CONTRACT_ADDRESS line with the new deployed address
+        import re
+        updated_content = re.sub(
+            r"CONTRACT_ADDRESS = os\.getenv\('CONTRACT_ADDRESS', '[^']*'\)",
+            f"CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS', '{contract_address}')",
+            config_content
+        )
+        
+        config_file.write_text(updated_content, encoding="utf-8")
+        print(f"Updated CONTRACT_ADDRESS to {contract_address} in config.py")
+    except Exception as e:
+        print(f"Warning: Could not update config.py: {e}")
+
+
 def deploy_contract() -> str:
     cmd = [get_npx_command(), "hardhat", "run", "scripts/deploy.js", "--network", "localhost"]
     result = subprocess.run(
@@ -204,6 +224,10 @@ def main() -> int:
     print("Deploying Voting contract...")
     contract_address = deploy_contract()
     print(f"Contract deployed at {contract_address}")
+    
+    # Update config.py with the deployed contract address
+    print("Updating config.py with deployed contract address...")
+    update_config_with_contract_address(contract_address)
 
     print("Starting backend...")
     backend_pid = start_backend(contract_address)

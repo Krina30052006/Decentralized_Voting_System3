@@ -324,9 +324,11 @@ def vote():
         tx_hash = contract.functions.vote(candidate_id).transact({"from": voter_wallet})
         web3.eth.wait_for_transaction_receipt(tx_hash)
 
-        # Update database
+        # Update database (get fresh cursor to avoid state issues)
         db_obj = get_request_db()
-        cursor_obj.execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
+        update_cursor = db_obj.cursor()
+        update_cursor.execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
+        update_cursor.close()
         db_obj.commit()
 
         return jsonify({"message": "Vote recorded successfully"})
@@ -337,12 +339,16 @@ def vote():
             pass
         
         error_msg = str(e)
+        error_logger.error(f"Vote error for {voter_id}: {error_msg}")
+        print(f"[VOTE ERROR] {voter_id}: {error_msg}")  # Print for immediate visibility
+        
         if "already voted" in error_msg.lower():
             return jsonify({"message": "Error: You have already voted."}), 400
         elif "Action not allowed" in error_msg:
             return jsonify({"message": "Voting is not currently allowed."}), 400
+        elif "not deployed" in error_msg.lower() or "no code" in error_msg.lower():
+            return jsonify({"message": "Contract not properly deployed. Try restarting the system."}), 500
         
-        error_logger.error(f"Vote error for {voter_id}: {error_msg}")
         return jsonify({"message": "Unable to record vote right now. Please try again."}), 500
 
 @app.route("/candidates", methods=["GET"])
