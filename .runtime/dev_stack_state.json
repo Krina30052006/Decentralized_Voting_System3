@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-03-18T06:59:19.679711+00:00",
-  "node_pid": 41300,
-  "backend_pid": 31864,
+  "updated_at": "2026-03-18T08:12:42.002115+00:00",
+  "node_pid": 24736,
+  "backend_pid": 13416,
   "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
   "node_started_here": true,
   "logs": {

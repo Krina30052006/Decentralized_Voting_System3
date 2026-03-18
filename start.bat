@@ -76,10 +76,11 @@ if %STARTUP_RESULT% equ 0 (
     echo   - Backend: .runtime/backend.log
     echo.
     
-    REM Open the web interface in default browser
-    echo Opening web interface in browser...
-    timeout /t 2 /nobreak
-    start http://127.0.0.1:5000
+    REM Do not auto-open browser; print links for manual use
+    echo Open these links manually in your browser:
+    echo   - Home:         http://127.0.0.1:5000
+    echo   - Voter Portal: http://127.0.0.1:5000/login.html
+    echo   - Admin Portal: http://127.0.0.1:5000/admin_login.html
     
     echo.
     echo Services continue running in the background.
