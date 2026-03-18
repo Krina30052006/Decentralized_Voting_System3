@@ -1330,3 +1330,41 @@ Any funds sent to them on Mainnet or any other live network WILL BE LOST.
   To:                  0x0165878a594ca255338adfa4d48449f69242eb8f
 
 [32meth_chainId[0m
+[32meth_accounts[0m
+[32mhardhat_metadata[0m
+[32mhardhat_metadata (2)[0m
+[32mhardhat_metadata (3)[0m
+[32mhardhat_metadata (4)[0m
+[32mhardhat_metadata (5)[0m
+[32mhardhat_metadata (6)[0m
+[32mhardhat_metadata (7)[0m
+[32mhardhat_metadata (8)[0m
+[32mhardhat_metadata (9)[0m
+[32mhardhat_metadata (10)[0m
+[32mhardhat_metadata (11)[0m
+[32mhardhat_metadata (12)[0m
+[32mhardhat_metadata (13)[0m
+[32mhardhat_metadata (14)[0m
+[32mhardhat_metadata (15)[0m
+[32mhardhat_metadata (16)[0m
+[32mhardhat_metadata (17)[0m
+[32mhardhat_metadata (18)[0m
+[32mhardhat_metadata (19)[0m
+[32mhardhat_metadata (20)[0m
+[32meth_blockNumber[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract deployment: Voting
+  Contract address:    0xa513e6e4b8f2a923d98304ec87f64353c4d5c853
+  Transaction:         0x10cbeb0386875b90238f127c80cf88303a161974a7708a01c91dcc3b2447c7ee
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  Value:               0 ETH
+  Gas used:            2198403 of 16777216
+  Block #8:            0xa0c016a7e35020b6eb653b9df83c86e44a0cfb1f50a5863fef10a88231b29f06
+
+[32meth_getTransactionByHash[0m
+[32meth_getTransactionReceipt[0m
+[32mweb3_clientVersion[0m
+[32meth_accounts[0m
+[32meth_accounts (2)[0m
