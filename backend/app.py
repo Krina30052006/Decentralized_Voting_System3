@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
-from config import ADMIN_CREDENTIALS
+from config import ADMIN_CREDENTIALS, CONTRACT_ADDRESS
 import uuid
 
 app = Flask(__name__)
@@ -34,6 +34,22 @@ def serve_static(path):
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route("/debug", methods=["GET"])
+def debug_info():
+    """Debug endpoint to check contract address and candidate count"""
+    try:
+        count = contract.functions.getCandidatesCount().call()
+        return jsonify({
+            "contract_address": CONTRACT_ADDRESS,
+            "candidate_count": count,
+            "web3_connected": web3.is_connected()
+        })
+    except Exception as e:
+        return jsonify({
+            "contract_address": CONTRACT_ADDRESS,
+            "error": str(e)
+        }), 500
 
 def require_admin():
     if 'admin_logged_in' not in session or not session['admin_logged_in']:
