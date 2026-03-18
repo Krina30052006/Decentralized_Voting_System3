@@ -1987,3 +1987,946 @@ Any funds sent to them on Mainnet or any other live network WILL BE LOST.
   To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
 
 [32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract call:       Voting#addCandidate
+  Transaction:         0xb7d24238a5b1a1e057acf3d3b73fcdb0cbf5f51f669ccda45ab0f540489b7a09
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+  Value:               0 ETH
+  Gas used:            227229 of 327229
+  Block #19:           0x5a43447fb32386e04171346373fdf3c2b2d0dad1352edba70612ef3e66fc5c3d
+
+[32meth_chainId[0m
+[32meth_getTransactionReceipt[0m
+[32meth_chainId[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract call:       Voting#addCandidate
+  Transaction:         0x68c31a855dfefb7b544fcc24aa7f7b3da61b21726aa36bd97ee1918ea2eed01e
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+  Value:               0 ETH
+  Gas used:            210165 of 310165
+  Block #20:           0x89420d0a20b47ee399e9bbe0ca0c52d8a04f8e0b0d19101b1d9a068c78801608
+
+[32meth_chainId[0m
+[32meth_getTransactionReceipt[0m
+[32meth_chainId[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract call:       Voting#startElection
+  Transaction:         0x499366a1e45933fbdf0c713cc25223fc98eefb8daac6134cb423122ac7698921
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+  Value:               0 ETH
+  Gas used:            49078 of 149078
+  Block #21:           0x271e12bcbc9d3c9c0344935d758c6d0a55a03bc689ef669c025f5f53cc253648
+
+[32meth_chainId[0m
+[32meth_getTransactionReceipt[0m
+[32meth_chainId[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[31meth_sendTransaction[0m
+
+  Unknown account 0xB12D1B6744bA256E5a63ABc5eD403E828978ab13
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[31meth_sendTransaction[0m
+
+  Unknown account 0xB12D1B6744bA256E5a63ABc5eD403E828978ab13
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[31meth_sendTransaction[0m
+
+  Unknown account 0xB12D1B6744bA256E5a63ABc5eD403E828978ab13
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[31meth_sendTransaction[0m
+
+  Unknown account 0xB12D1B6744bA256E5a63ABc5eD403E828978ab13
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[31meth_sendTransaction[0m
+
+  Unknown account 0xB12D1B6744bA256E5a63ABc5eD403E828978ab13
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[31meth_sendTransaction[0m
+
+  Unknown account 0xB12D1B6744bA256E5a63ABc5eD403E828978ab13
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[31meth_sendTransaction[0m
+
+  Unknown account 0xB12D1B6744bA256E5a63ABc5eD403E828978ab13
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[31meth_sendTransaction[0m
+
+  Unknown account 0xB12D1B6744bA256E5a63ABc5eD403E828978ab13
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract call:       Voting#endElection
+  Transaction:         0x92104ee8dcfc650a2a031c6a6a6f990dcc2de34ed67808d013520cb0f4b0d621
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+  Value:               0 ETH
+  Gas used:            31956 of 131956
+  Block #22:           0x28ae3878ef61411032c26cacc6a567ea92eba72cb59a64e12c3bd530d2aafb5c
+
+[32meth_chainId[0m
+[32meth_getTransactionReceipt[0m
+[32meth_chainId[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidate
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_estimateGas[0m
+[32meth_chainId[0m
+[32meth_getBlockByNumber[0m
+[32meth_feeHistory[0m
+[32meth_sendTransaction[0m
+  Contract call:       Voting#resetSystem
+  Transaction:         0x8e7aae72e271eef5f3ddec94bde421a359989b73b480b595d7d8b50d4bc76c16
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+  Value:               0 ETH
+  Gas used:            30335 of 135311
+  Block #23:           0xbed29ac82123e6fc135ca0c46e20602643b91072aa6868e50b7251cb51c03a81
+
+[32meth_chainId[0m
+[32meth_getTransactionReceipt[0m
+[32meth_chainId[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+[32meth_chainId (3)[0m
+[32meth_call[0m
+  Contract call:       Voting#electionState
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_call[0m
+  Contract call:       Voting#getCandidatesCount
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  To:                  0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae
+
+[32meth_chainId[0m
+[32meth_chainId (2)[0m
+^C

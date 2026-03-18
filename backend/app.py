@@ -306,32 +306,43 @@ def vote():
     if candidate_id is None or not isinstance(candidate_id, int) or candidate_id <= 0:
         return jsonify({"message": "Valid candidate ID required"}), 400
 
-    sql = "SELECT wallet_address, has_voted FROM voters WHERE voter_id=%s"
-    get_request_cursor().execute(sql, (voter_id,))
-    res = get_request_cursor().fetchone()
-    
-    if not res or not res[0]:
-        return jsonify({"message": "User wallet not found."}), 404
-    if res[1]:
-        return jsonify({"message": "You have already voted."}), 400
-        
-    voter_wallet = res[0]
-
     try:
+        # Query voter details
+        sql = "SELECT wallet_address, has_voted FROM voters WHERE voter_id=%s"
+        cursor_obj = get_request_cursor()
+        cursor_obj.execute(sql, (voter_id,))
+        res = cursor_obj.fetchone()
+        
+        if not res or not res[0]:
+            return jsonify({"message": "User wallet not found."}), 404
+        if res[1]:
+            return jsonify({"message": "You have already voted."}), 400
+            
+        voter_wallet = res[0]
+
+        # Perform blockchain transaction
         tx_hash = contract.functions.vote(candidate_id).transact({"from": voter_wallet})
         web3.eth.wait_for_transaction_receipt(tx_hash)
 
-        get_request_cursor().execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
-        get_request_db().commit()
+        # Update database
+        db_obj = get_request_db()
+        cursor_obj.execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
+        db_obj.commit()
 
         return jsonify({"message": "Vote recorded successfully"})
     except Exception as e:
-        get_request_db().rollback()  # Rollback DB on TX failure
+        try:
+            get_request_db().rollback()
+        except:
+            pass
+        
         error_msg = str(e)
         if "already voted" in error_msg.lower():
             return jsonify({"message": "Error: You have already voted."}), 400
         elif "Action not allowed" in error_msg:
             return jsonify({"message": "Voting is not currently allowed."}), 400
+        
+        error_logger.error(f"Vote error for {voter_id}: {error_msg}")
         return jsonify({"message": "Unable to record vote right now. Please try again."}), 500
 
 @app.route("/candidates", methods=["GET"])

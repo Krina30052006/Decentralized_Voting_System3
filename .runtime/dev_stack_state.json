@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-18T05:12:36.637953+00:00",
-  "node_pid": 40412,
-  "backend_pid": 1820,
-  "contract_address": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
-  "node_started_here": false,
+  "updated_at": "2026-03-18T05:51:08.989992+00:00",
+  "node_pid": 17924,
+  "backend_pid": 23612,
+  "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "node_started_here": true,
   "logs": {
     "node": ".runtime\\hardhat-node.log",
     "backend": ".runtime\\backend.log"
