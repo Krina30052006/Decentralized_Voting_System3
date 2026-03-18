@@ -1,5 +1,5 @@
-from flask import Flask, request, jsonify, send_from_directory, session
-from database import db, cursor
+from flask import Flask, request, jsonify, send_from_directory, session, g
+from database import db, cursor, init_request_db, get_request_cursor, get_request_db, close_request_db
 from blockchain import web3, contract, account
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -7,10 +7,45 @@ from flask_cors import CORS
 import os
 from config import ADMIN_CREDENTIALS, CONTRACT_ADDRESS
 import uuid
+import logging
+
+# Set up logging to file
+logging.basicConfig(
+    filename='flask_debug.log',
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+error_logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
 app.secret_key = os.getenv('SECRET_KEY', 'default-secret-key-change-in-prod')  # Use env var for security
+
+# Flask request context setup for database connections
+@app.before_request
+def setup_db():
+    """Initialize database connection for this request"""
+    import traceback
+    try:
+        error_logger.info(f"Setting up DB for request: {request.method} {request.path}")
+        init_request_db()
+        error_logger.info("DB setup completed successfully")
+    except Exception as e:
+        exc_trace = traceback.format_exc()
+        error_logger.error(f"DATABASE SETUP ERROR: {e}\n{exc_trace}")
+        print(f"!!! DATABASE SETUP ERROR !!!")
+        print(f"Error: {e}")
+        print(exc_trace)
+        raise  # Re-raise so Flask catches it properly
+        
+@app.teardown_request
+def close_db(exception=None):
+    """Close the database connection at the end of the request"""
+    try:
+        close_request_db()
+        error_logger.debug("DB connection closed")
+    except Exception as e:
+        error_logger.error(f"Database close error: {e}")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
@@ -108,12 +143,12 @@ def reset_system():
         tx_hash = contract.functions.resetSystem().transact({"from": account})
         web3.eth.wait_for_transaction_receipt(tx_hash)
         
-        cursor.execute("UPDATE voters SET has_voted = 0")
-        db.commit()
+        get_request_cursor().execute("UPDATE voters SET has_voted = 0")
+        get_request_db().commit()
         
         return jsonify({"message": "Election records archived. System ready for new round."})
     except Exception as e:
-        db.rollback()  # Rollback DB on failure for consistency
+        get_request_db().rollback()  # Rollback DB on failure for consistency
         return jsonify({"message": f"Reset failed: {str(e)}"}), 500
 
 @app.route("/election/status", methods=["GET"])
@@ -189,8 +224,8 @@ def get_all_voters():
     if auth_check: return auth_check
     
     try:
-        cursor.execute("SELECT voter_id, name, email, has_voted FROM voters")
-        voters = cursor.fetchall()
+        get_request_cursor().execute("SELECT voter_id, name, email, has_voted FROM voters")
+        voters = get_request_cursor().fetchall()
         result = []
         for v in voters:
             result.append({
@@ -219,8 +254,8 @@ def register():
     hashed_password = generate_password_hash(password)
 
     # Check for duplicate voter_id
-    cursor.execute("SELECT COUNT(*) FROM voters WHERE voter_id = %s", (voter_id,))
-    if cursor.fetchone()[0] > 0:
+    get_request_cursor().execute("SELECT COUNT(*) FROM voters WHERE voter_id = %s", (voter_id,))
+    if get_request_cursor().fetchone()[0] > 0:
         return jsonify({"message": "Voter ID already exists"}), 400
 
     accounts = web3.eth.accounts
@@ -235,8 +270,8 @@ def register():
     values = (voter_id, name, email, hashed_password, assigned_wallet)
 
     try:
-        cursor.execute(sql, values)
-        db.commit()
+        get_request_cursor().execute(sql, values)
+        get_request_db().commit()
     except Exception as e:
         return jsonify({"message": f"Registration failed: {str(e)}"}), 500
 
@@ -252,8 +287,8 @@ def login():
         return jsonify({"message": "Voter ID and password required"}), 400
 
     sql = "SELECT password, voter_id FROM voters WHERE voter_id=%s"
-    cursor.execute(sql, (voter_id,))
-    result = cursor.fetchone()
+    get_request_cursor().execute(sql, (voter_id,))
+    result = get_request_cursor().fetchone()
 
     if result and check_password_hash(result[0], password):
         return jsonify({"message": "Login successful", "voter_id": result[1]})
@@ -272,8 +307,8 @@ def vote():
         return jsonify({"message": "Valid candidate ID required"}), 400
 
     sql = "SELECT wallet_address, has_voted FROM voters WHERE voter_id=%s"
-    cursor.execute(sql, (voter_id,))
-    res = cursor.fetchone()
+    get_request_cursor().execute(sql, (voter_id,))
+    res = get_request_cursor().fetchone()
     
     if not res or not res[0]:
         return jsonify({"message": "User wallet not found."}), 404
@@ -286,12 +321,12 @@ def vote():
         tx_hash = contract.functions.vote(candidate_id).transact({"from": voter_wallet})
         web3.eth.wait_for_transaction_receipt(tx_hash)
 
-        cursor.execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
-        db.commit()
+        get_request_cursor().execute("UPDATE voters SET has_voted=1 WHERE voter_id=%s", (voter_id,))
+        get_request_db().commit()
 
         return jsonify({"message": "Vote recorded successfully"})
     except Exception as e:
-        db.rollback()  # Rollback DB on TX failure
+        get_request_db().rollback()  # Rollback DB on TX failure
         error_msg = str(e)
         if "already voted" in error_msg.lower():
             return jsonify({"message": "Error: You have already voted."}), 400

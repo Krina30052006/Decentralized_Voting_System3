@@ -157,8 +157,16 @@ def start_backend(contract_address: str) -> int:
     env["CONTRACT_ADDRESS"] = contract_address
 
     with BACKEND_LOG.open("a", encoding="utf-8") as log_file:
+        # Run Flask with proper configuration: no reloader, threaded mode for proper database connection handling
         proc = subprocess.Popen(
-            [sys.executable, "app.py"],
+            [
+                sys.executable, 
+                "-c", 
+                """
+from app import app
+app.run(host='127.0.0.1', port=5000, debug=False, use_reloader=False, threaded=True)
+"""
+            ],
             cwd=BACKEND_DIR,
             stdout=log_file,
             stderr=subprocess.STDOUT,
