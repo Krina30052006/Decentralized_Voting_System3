@@ -6,7 +6,6 @@ from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
 from config import ADMIN_CREDENTIALS, CONTRACT_ADDRESS
-import hashlib
 import logging
 
 # Set up logging to file
@@ -58,26 +57,48 @@ if not os.path.exists(UPLOAD_FOLDER):
 FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'frontend')
 
 
-def select_wallet_for_voter(voter_id: str, accounts: list[str]) -> str:
-    """Choose a deterministic wallet for a voter from currently active node accounts."""
-    digest = hashlib.sha256(voter_id.encode("utf-8")).digest()
-    index = int.from_bytes(digest[:4], "big") % len(accounts)
-    return accounts[index]
+def _get_wallets_in_use_by_other_voters(voter_id: str, cursor_obj) -> set[str]:
+    """Return normalized wallet addresses currently assigned to other voters."""
+    cursor_obj.execute(
+        "SELECT wallet_address FROM voters WHERE voter_id <> %s AND wallet_address IS NOT NULL AND wallet_address <> ''",
+        (voter_id,),
+    )
+    return {row[0].lower() for row in cursor_obj.fetchall() if row and row[0]}
 
 
-def resolve_active_wallet(voter_id: str, stored_wallet: str | None) -> tuple[str, bool]:
-    """Return a wallet guaranteed to exist on the active node; bool indicates if remap occurred."""
+def _pick_available_wallet(voter_id: str, cursor_obj) -> str | None:
+    """Pick an active node account that is not assigned to another voter."""
+    accounts = web3.eth.accounts
+    if not accounts:
+        return None
+
+    used_wallets = _get_wallets_in_use_by_other_voters(voter_id, cursor_obj)
+    for addr in accounts:
+        if addr.lower() not in used_wallets:
+            return addr
+
+    return None
+
+
+def resolve_active_wallet(voter_id: str, stored_wallet: str | None, cursor_obj) -> tuple[str, bool]:
+    """Return a wallet guaranteed to exist on the active node and unique to this voter."""
     accounts = web3.eth.accounts
     if not accounts:
         raise RuntimeError("Blockchain node has no available accounts")
 
+    used_wallets = _get_wallets_in_use_by_other_voters(voter_id, cursor_obj)
+    active_by_lower = {addr.lower(): addr for addr in accounts}
+
     if stored_wallet:
-        active_by_lower = {addr.lower(): addr for addr in accounts}
         active_match = active_by_lower.get(stored_wallet.lower())
-        if active_match:
+        if active_match and active_match.lower() not in used_wallets:
             return active_match, False
 
-    return select_wallet_for_voter(voter_id, accounts), True
+    fallback_wallet = _pick_available_wallet(voter_id, cursor_obj)
+    if not fallback_wallet:
+        raise RuntimeError("No available blockchain account for this voter")
+
+    return fallback_wallet, True
 
 @app.route("/")
 def serve_index():
@@ -284,7 +305,9 @@ def register():
     if not accounts:
         return jsonify({"message": "Blockchain node has no available accounts. Registration suspended."}), 503
 
-    assigned_wallet = select_wallet_for_voter(voter_id, accounts)
+    assigned_wallet = _pick_available_wallet(voter_id, get_request_cursor())
+    if not assigned_wallet:
+        return jsonify({"message": "No available blockchain wallets left. Please contact admin."}), 503
 
     sql = "INSERT INTO voters (voter_id, name, email, password, wallet_address) VALUES (%s,%s,%s,%s,%s)"
     values = (voter_id, name, email, hashed_password, assigned_wallet)
@@ -338,7 +361,7 @@ def vote():
         if res[1]:
             return jsonify({"message": "You have already voted."}), 400
             
-        voter_wallet, wallet_remapped = resolve_active_wallet(voter_id, res[0])
+        voter_wallet, wallet_remapped = resolve_active_wallet(voter_id, res[0], cursor_obj)
 
         if wallet_remapped:
             cursor_obj.execute(
@@ -373,6 +396,8 @@ def vote():
             return jsonify({"message": "Error: You have already voted."}), 400
         elif "Action not allowed" in error_msg:
             return jsonify({"message": "Voting is not currently allowed."}), 400
+        elif "No available blockchain account" in error_msg:
+            return jsonify({"message": "No available blockchain wallet for this voter. Please contact admin."}), 503
         elif "not deployed" in error_msg.lower() or "no code" in error_msg.lower():
             return jsonify({"message": "Contract not properly deployed. Try restarting the system."}), 500
         

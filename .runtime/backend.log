@@ -962,4 +962,461 @@ Press CTRL+C to quit
 [DB] Request DB initialized successfully
 [DB] Request DB initialized successfully
 [DB] Request DB initialized successfully
+[DB] Request DB initialized successfullyModule-level database connection failed: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+ * Serving Flask app 'app'
+ * Debug mode: off
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Failed to create database connection: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+[DB] Request DB init error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+!!! DATABASE SETUP ERROR !!!
+Error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+
+Failed to create database connection: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+[DB] Request DB init error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+!!! DATABASE SETUP ERROR !!!
+Error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+
+Failed to create database connection: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+[DB] Request DB init error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+!!! DATABASE SETUP ERROR !!!
+Error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+
+Failed to create database connection: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+[DB] Request DB init error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+!!! DATABASE SETUP ERROR !!!
+Error: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 354, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'localhost:3306' (10061)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 31, in setup_db
+    init_request_db()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 29, in init_request_db
+    _thread_local.db = get_db_connection()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\backend\database.py", line 17, in get_db_connection
+    return mysql.connector.connect(**DB_CONFIG)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 142, in __init__
+    self.connect(**kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1604, in connect
+    self._open_connection()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 360, in _open_connection
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
+ * Serving Flask app 'app'
+ * Debug mode: off
+ * Serving Flask app 'app'
+ * Debug mode: off
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
+[DB] Request DB initialized successfully
 [DB] Request DB initialized successfully
