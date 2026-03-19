@@ -6,7 +6,7 @@ ABI_PATH = os.path.join(os.path.dirname(__file__), '..', 'blockchain', 'artifact
 
 ADMIN_CREDENTIALS = {
     "username": os.getenv('ADMIN_USERNAME', 'admin'),
-    "password": os.getenv('ADMIN_PASSWORD', 'secure-password-change-in-prod')  # Use env var, not default weak password
+    "password": os.getenv('ADMIN_PASSWORD', 'admin')  # Use env var, not default weak password
 }
 DB_CONFIG = {
     "host": os.getenv('DB_HOST', 'localhost'),
