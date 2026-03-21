@@ -301,7 +301,16 @@ async function fetchAdminStats() {
         
         const resS = await fetch(`${API_BASE}/election/status`);
         const sData = await resS.json();
-        document.getElementById('adminStatusDisplay').textContent = `Status: ${sData.status}`;
+        const statusEl = document.getElementById('adminStatusDisplay');
+        if (sData.scope && sData.scope.city && sData.scope.district) {
+            statusEl.textContent = `Status: ${sData.status} | ${sData.scope.district}, ${sData.scope.city}`;
+            const cityInput = document.getElementById('electionCityInput');
+            const districtInput = document.getElementById('electionDistrictInput');
+            if (cityInput) cityInput.value = sData.scope.city;
+            if (districtInput) districtInput.value = sData.scope.district;
+        } else {
+            statusEl.textContent = `Status: ${sData.status}`;
+        }
         document.getElementById('startElectionBtn').disabled = (sData.status !== 'NotStarted' || totalCandidates === 0);
         document.getElementById('endElectionBtn').disabled = (sData.status !== 'Started');
 
@@ -322,7 +331,19 @@ function updateActivityLog(msg) {
 
 async function controlElection(action) {
     try {
-        const res = await fetch(`${API_BASE}/admin/${action}-election`, { method: 'POST', credentials: 'include' });
+        const options = { method: 'POST', credentials: 'include' };
+        if (action === 'start') {
+            const city = (document.getElementById('electionCityInput')?.value || '').trim();
+            const district = (document.getElementById('electionDistrictInput')?.value || '').trim();
+            if (!city || !district) {
+                alert('Please enter election district and city before starting election.');
+                return;
+            }
+            options.headers = { 'Content-Type': 'application/json' };
+            options.body = JSON.stringify({ city, district });
+        }
+
+        const res = await fetch(`${API_BASE}/admin/${action}-election`, options);
         const data = await res.json();
         if (res.ok) {
             alert(data.message);
