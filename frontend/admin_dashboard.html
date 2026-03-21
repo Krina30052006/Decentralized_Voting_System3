@@ -98,6 +98,10 @@
             <!-- Election Controls -->
             <div class="control-panel stats-card">
                 <h3>Executive Controls</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                    <input type="text" id="election-district" placeholder="Election District (e.g. Palghar)">
+                    <input type="text" id="election-city" placeholder="Election City (e.g. Vasai)">
+                </div>
                 <div style="display: flex; gap: 1rem; margin-top: 1rem;">
                     <button id="start-btn" onclick="controlElection('start')" style="flex: 1; background: #10b981;">Start Election</button>
                     <button id="end-btn" onclick="controlElection('end')" style="flex: 1; background: #ef4444;">End Election</button>
@@ -158,7 +162,13 @@
                 const res = await fetch("http://127.0.0.1:5000/election/status");
                 const data = await res.json();
                 const badge = document.getElementById("election-badge");
-                badge.textContent = `Election State: ${data.status}`;
+                if (data.scope && data.scope.city && data.scope.district) {
+                    badge.textContent = `Election State: ${data.status} | Scope: ${data.scope.district}, ${data.scope.city}`;
+                    document.getElementById("election-city").value = data.scope.city;
+                    document.getElementById("election-district").value = data.scope.district;
+                } else {
+                    badge.textContent = `Election State: ${data.status}`;
+                }
                 badge.className = `badge-status status-${data.status.toLowerCase()}`;
                 
                 // Toggle buttons based on state
@@ -197,10 +207,24 @@
             const msgEl = document.getElementById("control-msg");
             msgEl.textContent = "Processing Blockchain Transaction...";
             msgEl.className = "message";
+
+            const city = document.getElementById("election-city").value.trim();
+            const district = document.getElementById("election-district").value.trim();
+
+            if (action === "start" && (!city || !district)) {
+                msgEl.textContent = "Please enter both district and city before starting election.";
+                msgEl.className = "message error";
+                return;
+            }
             
             try {
                 const url = `http://127.0.0.1:5000/admin/${action}-election`;
-                const res = await fetch(url, { method: "POST" });
+                const options = { method: "POST" };
+                if (action === "start") {
+                    options.headers = { "Content-Type": "application/json" };
+                    options.body = JSON.stringify({ city, district });
+                }
+                const res = await fetch(url, options);
                 const data = await res.json();
                 
                 if (res.ok) {

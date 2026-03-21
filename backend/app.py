@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify, send_from_directory, session, g
-from database import db, cursor, init_request_db, get_request_cursor, get_request_db, close_request_db
+from database import db, cursor, init_request_db, get_request_cursor, get_request_db, close_request_db, get_db_connection
 from blockchain import web3, contract, account
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
+import random
+import re
+import time
 from config import ADMIN_CREDENTIALS, CONTRACT_ADDRESS
 import logging
 
@@ -55,6 +58,160 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'frontend')
+
+
+def _ensure_voter_schema():
+    """Ensure required voter profile columns and indexes exist for registration."""
+    active_db = db
+    active_cursor = cursor
+    owns_connection = False
+
+    if not active_db or not active_cursor:
+        try:
+            active_db = get_db_connection()
+            active_cursor = active_db.cursor()
+            owns_connection = True
+        except Exception as e:
+            error_logger.warning(f"Skipping voter schema check: DB unavailable ({e})")
+            return
+
+    try:
+        active_cursor.execute("SHOW COLUMNS FROM voters")
+        existing_columns = {row[0] for row in active_cursor.fetchall()}
+
+        if "aadhaar_no" not in existing_columns:
+            active_cursor.execute("ALTER TABLE voters ADD COLUMN aadhaar_no VARCHAR(12) DEFAULT NULL")
+        if "aadhaar_photo_url" not in existing_columns:
+            active_cursor.execute("ALTER TABLE voters ADD COLUMN aadhaar_photo_url VARCHAR(255) DEFAULT NULL")
+        if "city" not in existing_columns:
+            active_cursor.execute("ALTER TABLE voters ADD COLUMN city VARCHAR(100) DEFAULT NULL")
+        if "district" not in existing_columns:
+            active_cursor.execute("ALTER TABLE voters ADD COLUMN district VARCHAR(100) DEFAULT NULL")
+
+        active_cursor.execute("SHOW INDEX FROM voters")
+        existing_indexes = {row[2] for row in active_cursor.fetchall()}
+        if "aadhaar_no" not in existing_indexes:
+            active_cursor.execute("ALTER TABLE voters ADD UNIQUE KEY aadhaar_no (aadhaar_no)")
+
+        active_db.commit()
+    except Exception as e:
+        try:
+            active_db.rollback()
+        except Exception:
+            pass
+        error_logger.error(f"Failed to ensure voter schema: {e}")
+    finally:
+        if owns_connection and active_cursor:
+            active_cursor.close()
+        if owns_connection and active_db:
+            active_db.close()
+
+
+def _generate_unique_voter_id(cursor_obj) -> str:
+    """Generate voter ID in VT#### format, starting from VT1000."""
+    cursor_obj.execute(
+        """
+        SELECT voter_id
+        FROM voters
+        WHERE voter_id REGEXP '^VT[0-9]{4}$'
+        ORDER BY CAST(SUBSTRING(voter_id, 3) AS UNSIGNED) DESC
+        LIMIT 1
+        """
+    )
+    row = cursor_obj.fetchone()
+
+    next_number = 1000
+    if row and row[0]:
+        next_number = int(row[0][2:]) + 1
+
+    if next_number > 9999:
+        raise RuntimeError("Voter ID range exhausted for VT#### format")
+
+    while next_number <= 9999:
+        voter_id = f"VT{next_number:04d}"
+        cursor_obj.execute("SELECT COUNT(*) FROM voters WHERE voter_id = %s", (voter_id,))
+        if cursor_obj.fetchone()[0] == 0:
+            return voter_id
+        next_number += 1
+
+    raise RuntimeError("Could not generate a unique voter ID")
+
+
+def _ensure_election_scope_schema():
+    """Ensure table exists for storing active election city/district scope."""
+    active_db = db
+    active_cursor = cursor
+    owns_connection = False
+
+    if not active_db or not active_cursor:
+        try:
+            active_db = get_db_connection()
+            active_cursor = active_db.cursor()
+            owns_connection = True
+        except Exception as e:
+            error_logger.warning(f"Skipping election scope schema check: DB unavailable ({e})")
+            return
+
+    try:
+        active_cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS election_scope (
+                id INT NOT NULL PRIMARY KEY,
+                city VARCHAR(100) DEFAULT NULL,
+                district VARCHAR(100) DEFAULT NULL,
+                is_active TINYINT(1) NOT NULL DEFAULT 0,
+                updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+            """
+        )
+        active_cursor.execute(
+            """
+            INSERT INTO election_scope (id, city, district, is_active)
+            VALUES (1, NULL, NULL, 0)
+            ON DUPLICATE KEY UPDATE id = id
+            """
+        )
+        active_db.commit()
+    except Exception as e:
+        try:
+            active_db.rollback()
+        except Exception:
+            pass
+        error_logger.error(f"Failed to ensure election scope schema: {e}")
+    finally:
+        if owns_connection and active_cursor:
+            active_cursor.close()
+        if owns_connection and active_db:
+            active_db.close()
+
+
+def _get_active_election_scope(cursor_obj) -> dict | None:
+    cursor_obj.execute("SELECT city, district, is_active FROM election_scope WHERE id = 1")
+    row = cursor_obj.fetchone()
+    if not row or not row[2]:
+        return None
+    return {"city": row[0], "district": row[1]}
+
+
+def _set_active_election_scope(cursor_obj, city: str, district: str):
+    cursor_obj.execute(
+        """
+        INSERT INTO election_scope (id, city, district, is_active)
+        VALUES (1, %s, %s, 1)
+        ON DUPLICATE KEY UPDATE city = VALUES(city), district = VALUES(district), is_active = 1
+        """,
+        (city, district),
+    )
+
+
+def _clear_active_election_scope(cursor_obj):
+    cursor_obj.execute(
+        "UPDATE election_scope SET city = NULL, district = NULL, is_active = 0 WHERE id = 1"
+    )
+
+
+_ensure_voter_schema()
+_ensure_election_scope_schema()
 
 
 def _get_wallets_in_use_by_other_voters(voter_id: str, cursor_obj) -> set[str]:
@@ -153,6 +310,13 @@ def admin_login():
 def start_election():
     auth_check = require_admin()
     if auth_check: return auth_check
+
+    data = request.get_json(silent=True) or {}
+    city = data.get("city", "").strip()
+    district = data.get("district", "").strip()
+
+    if not city or not district:
+        return jsonify({"message": "City and district are required to start a place-based election."}), 400
     
     try:
         count = contract.functions.getCandidatesCount().call()
@@ -161,8 +325,20 @@ def start_election():
             
         tx_hash = contract.functions.startElection().transact({"from": account})
         web3.eth.wait_for_transaction_receipt(tx_hash)
-        return jsonify({"message": "Election started successfully", "tx_hash": tx_hash.hex()})
+
+        _set_active_election_scope(get_request_cursor(), city, district)
+        get_request_db().commit()
+
+        return jsonify({
+            "message": f"Election started successfully for district {district}, city {city}",
+            "tx_hash": tx_hash.hex(),
+            "scope": {"city": city, "district": district}
+        })
     except Exception as e:
+        try:
+            get_request_db().rollback()
+        except Exception:
+            pass
         return jsonify({"message": f"Failed to start election: {str(e)}"}), 500
 
 @app.route("/admin/end-election", methods=["POST"])
@@ -173,8 +349,16 @@ def end_election():
     try:
         tx_hash = contract.functions.endElection().transact({"from": account})
         web3.eth.wait_for_transaction_receipt(tx_hash)
+
+        _clear_active_election_scope(get_request_cursor())
+        get_request_db().commit()
+
         return jsonify({"message": "Election ended successfully", "tx_hash": tx_hash.hex()})
     except Exception as e:
+        try:
+            get_request_db().rollback()
+        except Exception:
+            pass
         return jsonify({"message": f"Failed to end election: {str(e)}"}), 500
 
 @app.route("/admin/reset", methods=["POST"])
@@ -187,6 +371,7 @@ def reset_system():
         web3.eth.wait_for_transaction_receipt(tx_hash)
         
         get_request_cursor().execute("UPDATE voters SET has_voted = 0")
+        _clear_active_election_scope(get_request_cursor())
         get_request_db().commit()
         
         return jsonify({"message": "Election records archived. System ready for new round."})
@@ -199,7 +384,8 @@ def get_election_status():
     try:
         status_code = contract.functions.electionState().call()
         states = ["NotStarted", "Started", "Ended"]
-        return jsonify({"status": states[status_code], "status_code": status_code})
+        scope = _get_active_election_scope(get_request_cursor())
+        return jsonify({"status": states[status_code], "status_code": status_code, "scope": scope})
     except Exception as e:
         return jsonify({"message": f"Failed to get status: {str(e)}"}), 500
 
@@ -283,42 +469,71 @@ def get_all_voters():
 
 @app.route("/register", methods=["POST"])
 def register():
-    data = request.json
-    voter_id = data.get("voter_id", "").strip()
-    name = data.get("name", "").strip()
-    email = data.get("email", "").strip()
-    password = data.get("password", "").strip()
-    
-    if not voter_id or not name or not email or not password:
+    if request.content_type and "multipart/form-data" in request.content_type:
+        name = request.form.get("name", "").strip()
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password", "").strip()
+        aadhaar_no = request.form.get("aadhaar_no", "").strip()
+        city = request.form.get("city", "").strip()
+        district = request.form.get("district", "").strip()
+        aadhaar_photo = request.files.get("aadhaar_photo")
+    else:
+        data = request.get_json(silent=True) or {}
+        name = data.get("name", "").strip()
+        email = data.get("email", "").strip()
+        password = data.get("password", "").strip()
+        aadhaar_no = data.get("aadhaar_no", "").strip()
+        city = data.get("city", "").strip()
+        district = data.get("district", "").strip()
+        aadhaar_photo = None
+
+    if not name or not email or not password or not aadhaar_no or not city or not district:
         return jsonify({"message": "All fields are required"}), 400
     if len(password) < 6:
         return jsonify({"message": "Password must be at least 6 characters"}), 400
+    if not re.fullmatch(r"\d{12}", aadhaar_no):
+        return jsonify({"message": "Aadhaar number must be exactly 12 digits"}), 400
+    if not aadhaar_photo or aadhaar_photo.filename == "":
+        return jsonify({"message": "Aadhaar photo is required"}), 400
+    if not allowed_file(aadhaar_photo.filename):
+        return jsonify({"message": "Aadhaar photo must be an image (png, jpg, jpeg, gif)"}), 400
 
     hashed_password = generate_password_hash(password)
 
-    # Check for duplicate voter_id
-    get_request_cursor().execute("SELECT COUNT(*) FROM voters WHERE voter_id = %s", (voter_id,))
-    if get_request_cursor().fetchone()[0] > 0:
-        return jsonify({"message": "Voter ID already exists"}), 400
+    cursor_obj = get_request_cursor()
+    cursor_obj.execute("SELECT COUNT(*) FROM voters WHERE aadhaar_no = %s", (aadhaar_no,))
+    if cursor_obj.fetchone()[0] > 0:
+        return jsonify({"message": "Aadhaar number already registered"}), 400
 
     accounts = web3.eth.accounts
     if not accounts:
         return jsonify({"message": "Blockchain node has no available accounts. Registration suspended."}), 503
 
-    assigned_wallet = _pick_available_wallet(voter_id, get_request_cursor())
+    voter_id = _generate_unique_voter_id(cursor_obj)
+
+    assigned_wallet = _pick_available_wallet(voter_id, cursor_obj)
     if not assigned_wallet:
         return jsonify({"message": "No available blockchain wallets left. Please contact admin."}), 503
 
-    sql = "INSERT INTO voters (voter_id, name, email, password, wallet_address) VALUES (%s,%s,%s,%s,%s)"
-    values = (voter_id, name, email, hashed_password, assigned_wallet)
+    safe_filename = secure_filename(aadhaar_photo.filename)
+    photo_filename = f"aadhaar_{int(time.time())}_{random.randint(1000, 9999)}_{safe_filename}"
+    aadhaar_photo.save(os.path.join(app.config['UPLOAD_FOLDER'], photo_filename))
+    aadhaar_photo_url = f"{request.host_url}uploads/{photo_filename}"
+
+    sql = (
+        "INSERT INTO voters "
+        "(voter_id, name, email, password, wallet_address, aadhaar_no, aadhaar_photo_url, city, district) "
+        "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    )
+    values = (voter_id, name, email, hashed_password, assigned_wallet, aadhaar_no, aadhaar_photo_url, city, district)
 
     try:
-        get_request_cursor().execute(sql, values)
+        cursor_obj.execute(sql, values)
         get_request_db().commit()
     except Exception as e:
         return jsonify({"message": f"Registration failed: {str(e)}"}), 500
 
-    return jsonify({"message": "Registration successful"})
+    return jsonify({"message": "Registration successful", "voter_id": voter_id})
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -351,7 +566,7 @@ def vote():
 
     try:
         # Query voter details
-        sql = "SELECT wallet_address, has_voted FROM voters WHERE voter_id=%s"
+        sql = "SELECT wallet_address, has_voted, city, district FROM voters WHERE voter_id=%s"
         cursor_obj = get_request_cursor()
         cursor_obj.execute(sql, (voter_id,))
         res = cursor_obj.fetchone()
@@ -360,6 +575,21 @@ def vote():
             return jsonify({"message": "User wallet not found."}), 404
         if res[1]:
             return jsonify({"message": "You have already voted."}), 400
+
+        election_scope = _get_active_election_scope(cursor_obj)
+        if election_scope:
+            voter_city = (res[2] or "").strip().lower()
+            voter_district = (res[3] or "").strip().lower()
+            scope_city = (election_scope["city"] or "").strip().lower()
+            scope_district = (election_scope["district"] or "").strip().lower()
+
+            if voter_city != scope_city or voter_district != scope_district:
+                return jsonify({
+                    "message": (
+                        f"Voting restricted: this election is only for district {election_scope['district']}, "
+                        f"city {election_scope['city']}."
+                    )
+                }), 403
             
         voter_wallet, wallet_remapped = resolve_active_wallet(voter_id, res[0], cursor_obj)
 

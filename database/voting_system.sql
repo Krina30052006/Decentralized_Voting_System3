@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `election_scope`
+--
+
+CREATE TABLE `election_scope` (
+  `id` int(11) NOT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `district` varchar(100) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 0,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `election_scope`
+--
+
+INSERT INTO `election_scope` (`id`, `city`, `district`, `is_active`) VALUES
+(1, NULL, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `voters`
 --
 
@@ -33,6 +54,10 @@ CREATE TABLE `voters` (
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `aadhaar_no` varchar(12) DEFAULT NULL,
+  `aadhaar_photo_url` varchar(255) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `district` varchar(100) DEFAULT NULL,
   `wallet_address` varchar(255) DEFAULT NULL,
   `has_voted` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -41,12 +66,18 @@ CREATE TABLE `voters` (
 -- Dumping data for table `voters`
 --
 
-INSERT INTO `voters` (`id`, `voter_id`, `name`, `email`, `password`, `wallet_address`, `has_voted`) VALUES
-(1, 'V1001', 'Rahul', 'rahul@gmail.com', '123456', NULL, 0);
+INSERT INTO `voters` (`id`, `voter_id`, `name`, `email`, `password`, `aadhaar_no`, `aadhaar_photo_url`, `city`, `district`, `wallet_address`, `has_voted`) VALUES
+(1, 'VT1000', 'Rahul', 'rahul@gmail.com', '123456', '123456789012', NULL, 'Pune', 'Pune', NULL, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `election_scope`
+--
+ALTER TABLE `election_scope`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `voters`
@@ -54,11 +85,18 @@ INSERT INTO `voters` (`id`, `voter_id`, `name`, `email`, `password`, `wallet_add
 ALTER TABLE `voters`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `voter_id` (`voter_id`),
+  ADD UNIQUE KEY `aadhaar_no` (`aadhaar_no`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `election_scope`
+--
+ALTER TABLE `election_scope`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `voters`
