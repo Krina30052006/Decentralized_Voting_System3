@@ -36053,3 +36053,86 @@ mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'r
 2026-03-21 20:27:16,659 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 500, 'result': '0x7a69'}
 2026-03-21 20:27:16,661 - app - DEBUG - DB connection closed
 2026-03-21 20:27:16,661 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2026 20:27:16] "GET /election/status HTTP/1.1" 200 -
+2026-03-25 21:44:31,090 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-03-25 21:44:31,090 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-03-25 21:44:45,606 - app - INFO - Setting up DB for request: GET /
+2026-03-25 21:44:45,611 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:45,714 - app - DEBUG - DB connection closed
+2026-03-25 21:44:45,715 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:45] "GET / HTTP/1.1" 200 -
+2026-03-25 21:44:45,737 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-25 21:44:45,740 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-25 21:44:45,741 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:45,743 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:45,744 - app - DEBUG - DB connection closed
+2026-03-25 21:44:45,745 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:45] "GET /script.js HTTP/1.1" 200 -
+2026-03-25 21:44:45,752 - app - DEBUG - DB connection closed
+2026-03-25 21:44:45,753 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:45] "GET /style.css HTTP/1.1" 200 -
+2026-03-25 21:44:46,393 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-25 21:44:46,396 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:46,398 - app - DEBUG - DB connection closed
+2026-03-25 21:44:46,399 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:46] "GET /favicon.ico HTTP/1.1" 200 -
+2026-03-25 21:44:48,583 - app - INFO - Setting up DB for request: GET /login.html
+2026-03-25 21:44:48,587 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:48,617 - app - DEBUG - DB connection closed
+2026-03-25 21:44:48,617 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:48] "GET /login.html HTTP/1.1" 200 -
+2026-03-25 21:44:48,647 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-25 21:44:48,649 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:48,650 - app - DEBUG - DB connection closed
+2026-03-25 21:44:48,651 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:48] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-25 21:44:48,787 - app - INFO - Setting up DB for request: GET /index.html
+2026-03-25 21:44:48,791 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:48,792 - app - DEBUG - DB connection closed
+2026-03-25 21:44:48,793 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:48] "GET /index.html HTTP/1.1" 200 -
+2026-03-25 21:44:48,818 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-25 21:44:48,820 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:48,822 - app - DEBUG - DB connection closed
+2026-03-25 21:44:48,823 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:48] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-25 21:44:48,824 - app - INFO - Setting up DB for request: GET /script.js
+2026-03-25 21:44:48,827 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:48,828 - app - DEBUG - DB connection closed
+2026-03-25 21:44:48,829 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:48] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-03-25 21:44:48,967 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-25 21:44:48,970 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:48,971 - app - DEBUG - DB connection closed
+2026-03-25 21:44:48,972 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:48] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-25 21:44:49,739 - app - INFO - Setting up DB for request: GET /login.html
+2026-03-25 21:44:49,743 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:49,745 - app - DEBUG - DB connection closed
+2026-03-25 21:44:49,745 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:49] "[36mGET /login.html HTTP/1.1[0m" 304 -
+2026-03-25 21:44:49,773 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-25 21:44:49,776 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:49,778 - app - DEBUG - DB connection closed
+2026-03-25 21:44:49,778 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:49] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-25 21:44:49,795 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-25 21:44:49,798 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:49,800 - app - DEBUG - DB connection closed
+2026-03-25 21:44:49,800 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:49] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-25 21:44:52,267 - app - INFO - Setting up DB for request: GET /register.html
+2026-03-25 21:44:52,271 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:52,273 - app - DEBUG - DB connection closed
+2026-03-25 21:44:52,274 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:52] "GET /register.html HTTP/1.1" 200 -
+2026-03-25 21:44:52,298 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-25 21:44:52,300 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:52,302 - app - DEBUG - DB connection closed
+2026-03-25 21:44:52,303 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:52] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-25 21:44:52,329 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-25 21:44:52,332 - app - INFO - DB setup completed successfully
+2026-03-25 21:44:52,334 - app - DEBUG - DB connection closed
+2026-03-25 21:44:52,335 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:44:52] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-03-25 21:46:07,344 - app - INFO - Setting up DB for request: POST /register
+2026-03-25 21:46:07,346 - app - INFO - DB setup completed successfully
+2026-03-25 21:46:07,359 - app - DEBUG - DB connection closed
+2026-03-25 21:46:07,360 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:46:07] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
+2026-03-25 21:46:10,378 - app - INFO - Setting up DB for request: GET /login.html
+2026-03-25 21:46:10,381 - app - INFO - DB setup completed successfully
+2026-03-25 21:46:10,383 - app - DEBUG - DB connection closed
+2026-03-25 21:46:10,384 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:46:10] "[36mGET /login.html HTTP/1.1[0m" 304 -
+2026-03-25 21:46:10,413 - app - INFO - Setting up DB for request: GET /style.css
+2026-03-25 21:46:10,416 - app - INFO - DB setup completed successfully
+2026-03-25 21:46:10,417 - app - DEBUG - DB connection closed
+2026-03-25 21:46:10,418 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:46:10] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-03-25 21:46:10,451 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-03-25 21:46:10,455 - app - INFO - DB setup completed successfully
+2026-03-25 21:46:10,456 - app - DEBUG - DB connection closed
+2026-03-25 21:46:10,457 - werkzeug - INFO - 127.0.0.1 - - [25/Mar/2026 21:46:10] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
