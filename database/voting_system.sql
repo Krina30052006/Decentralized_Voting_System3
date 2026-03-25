@@ -56,6 +56,7 @@ CREATE TABLE `voters` (
   `password` varchar(255) DEFAULT NULL,
   `aadhaar_no` varchar(12) DEFAULT NULL,
   `aadhaar_photo_url` varchar(255) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
   `city` varchar(100) DEFAULT NULL,
   `district` varchar(100) DEFAULT NULL,
   `wallet_address` varchar(255) DEFAULT NULL,
@@ -66,8 +67,8 @@ CREATE TABLE `voters` (
 -- Dumping data for table `voters`
 --
 
-INSERT INTO `voters` (`id`, `voter_id`, `name`, `email`, `password`, `aadhaar_no`, `aadhaar_photo_url`, `city`, `district`, `wallet_address`, `has_voted`) VALUES
-(1, 'VT1000', 'Rahul', 'rahul@gmail.com', '123456', '123456789012', NULL, 'Pune', 'Pune', NULL, 0);
+INSERT INTO `voters` (`id`, `voter_id`, `name`, `email`, `password`, `aadhaar_no`, `aadhaar_photo_url`, `date_of_birth`, `city`, `district`, `wallet_address`, `has_voted`) VALUES
+(1, 'VT1000', 'Rahul', 'rahul@gmail.com', '123456', '123456789012', NULL, '2000-01-01', 'Pune', 'Pune', NULL, 0);
 
 --
 -- Indexes for dumped tables

@@ -8,6 +8,7 @@ import os
 import random
 import re
 import time
+from datetime import date
 from config import ADMIN_CREDENTIALS, CONTRACT_ADDRESS
 import logging
 
@@ -83,6 +84,8 @@ def _ensure_voter_schema():
             active_cursor.execute("ALTER TABLE voters ADD COLUMN aadhaar_no VARCHAR(12) DEFAULT NULL")
         if "aadhaar_photo_url" not in existing_columns:
             active_cursor.execute("ALTER TABLE voters ADD COLUMN aadhaar_photo_url VARCHAR(255) DEFAULT NULL")
+        if "date_of_birth" not in existing_columns:
+            active_cursor.execute("ALTER TABLE voters ADD COLUMN date_of_birth DATE DEFAULT NULL")
         if "city" not in existing_columns:
             active_cursor.execute("ALTER TABLE voters ADD COLUMN city VARCHAR(100) DEFAULT NULL")
         if "district" not in existing_columns:
@@ -212,6 +215,18 @@ def _clear_active_election_scope(cursor_obj):
 
 _ensure_voter_schema()
 _ensure_election_scope_schema()
+
+
+def _calculate_age_from_dob(dob_str: str) -> int | None:
+    """Parse YYYY-MM-DD date of birth and return current age in years."""
+    try:
+        dob = date.fromisoformat(dob_str)
+    except (TypeError, ValueError):
+        return None
+
+    today = date.today()
+    age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+    return age if age >= 0 else None
 
 
 def _get_wallets_in_use_by_other_voters(voter_id: str, cursor_obj) -> set[str]:
@@ -474,6 +489,7 @@ def register():
         email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
         aadhaar_no = request.form.get("aadhaar_no", "").strip()
+        date_of_birth = request.form.get("date_of_birth", "").strip()
         city = request.form.get("city", "").strip()
         district = request.form.get("district", "").strip()
         aadhaar_photo = request.files.get("aadhaar_photo")
@@ -483,16 +499,22 @@ def register():
         email = data.get("email", "").strip()
         password = data.get("password", "").strip()
         aadhaar_no = data.get("aadhaar_no", "").strip()
+        date_of_birth = data.get("date_of_birth", "").strip()
         city = data.get("city", "").strip()
         district = data.get("district", "").strip()
         aadhaar_photo = None
 
-    if not name or not email or not password or not aadhaar_no or not city or not district:
+    if not name or not email or not password or not aadhaar_no or not date_of_birth or not city or not district:
         return jsonify({"message": "All fields are required"}), 400
     if len(password) < 6:
         return jsonify({"message": "Password must be at least 6 characters"}), 400
     if not re.fullmatch(r"\d{12}", aadhaar_no):
         return jsonify({"message": "Aadhaar number must be exactly 12 digits"}), 400
+    age = _calculate_age_from_dob(date_of_birth)
+    if age is None:
+        return jsonify({"message": "Date of birth must be a valid date in YYYY-MM-DD format"}), 400
+    if age < 18:
+        return jsonify({"message": "You must be at least 18 years old to register"}), 400
     if not aadhaar_photo or aadhaar_photo.filename == "":
         return jsonify({"message": "Aadhaar photo is required"}), 400
     if not allowed_file(aadhaar_photo.filename):
@@ -522,10 +544,10 @@ def register():
 
     sql = (
         "INSERT INTO voters "
-        "(voter_id, name, email, password, wallet_address, aadhaar_no, aadhaar_photo_url, city, district) "
-        "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        "(voter_id, name, email, password, wallet_address, aadhaar_no, aadhaar_photo_url, date_of_birth, city, district) "
+        "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
     )
-    values = (voter_id, name, email, hashed_password, assigned_wallet, aadhaar_no, aadhaar_photo_url, city, district)
+    values = (voter_id, name, email, hashed_password, assigned_wallet, aadhaar_no, aadhaar_photo_url, date_of_birth, city, district)
 
     try:
         cursor_obj.execute(sql, values)

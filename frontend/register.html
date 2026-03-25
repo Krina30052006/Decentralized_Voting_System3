@@ -34,6 +34,11 @@
             </div>
 
             <div class="form-group">
+                <label for="date_of_birth">Date of Birth</label>
+                <input type="date" id="date_of_birth" required>
+            </div>
+
+            <div class="form-group">
                 <label for="city">City</label>
                 <input type="text" id="city" required placeholder="Vasai">
             </div>
@@ -93,6 +98,7 @@
             formData.append("aadhaar_no", aadhaarNo);
             formData.append("aadhaar_photo", document.getElementById("aadhaar_photo").files[0]);
             formData.append("email", document.getElementById("email").value.trim());
+            formData.append("date_of_birth", document.getElementById("date_of_birth").value);
             formData.append("city", document.getElementById("city").value.trim());
             formData.append("district", document.getElementById("district").value.trim());
             formData.append("password", document.getElementById("password").value);
