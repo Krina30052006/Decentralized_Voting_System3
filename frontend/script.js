@@ -519,9 +519,9 @@ async function fetchAdminCandidates() {
 
 async function fetchVoters() {
     const tbody = document.getElementById('voterTableBody');
-    tbody.innerHTML = "<tr><td colspan='4' class='p-8 text-center'>Syncing registry...</td></tr>";
+    tbody.innerHTML = "<tr><td colspan='5' class='p-8 text-center'>Syncing registry...</td></tr>";
     try {
-        const res = await fetch(`${API_BASE}/admin/voters`);
+        const res = await fetch(`${API_BASE}/admin/voters`, { credentials: 'include' });
         const voters = await res.json();
         tbody.innerHTML = "";
         voters.forEach(v => {
@@ -534,10 +534,34 @@ async function fetchVoters() {
                 <td class="px-8 py-4 text-[10px] font-black uppercase tracking-widest ${v.has_voted ? 'text-green-500' : 'text-red-500'}">
                     ${v.has_voted ? '✓ Cast' : '○ Pending'}
                 </td>
+                <td class="px-8 py-4">
+                    <button onclick="deleteVoter('${v.voter_id}')" class="text-xs font-bold text-red-500 hover:underline">Delete User</button>
+                </td>
             `;
             tbody.appendChild(tr);
         });
-    } catch (err) { tbody.innerHTML = "Error loading voters."; }
+    } catch (err) { tbody.innerHTML = "<tr><td colspan='5' class='p-8 text-center'>Error loading voters.</td></tr>"; }
+}
+
+async function deleteVoter(voterId) {
+    if (!confirm(`Delete user ${voterId}?`)) return;
+
+    try {
+        const res = await fetch(`${API_BASE}/admin/delete-voter/${encodeURIComponent(voterId)}`, {
+            method: 'POST',
+            credentials: 'include'
+        });
+        const data = await res.json();
+        if (res.ok) {
+            alert(data.message || 'Voter deleted successfully.');
+            fetchVoters();
+            fetchAdminStats();
+        } else {
+            alert(data.message || 'Failed to delete voter.');
+        }
+    } catch (err) {
+        alert('Connection Error.');
+    }
 }
 
 // --- UTILS ---

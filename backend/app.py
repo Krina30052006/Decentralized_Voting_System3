@@ -111,33 +111,25 @@ def _ensure_voter_schema():
 
 
 def _generate_unique_voter_id(cursor_obj) -> str:
-    """Generate voter ID in VT#### format, starting from VT1000."""
+    """Generate voter ID in VT#### format, reusing any freed IDs first."""
     cursor_obj.execute(
         """
         SELECT voter_id
         FROM voters
         WHERE voter_id REGEXP '^VT[0-9]{4}$'
-        ORDER BY CAST(SUBSTRING(voter_id, 3) AS UNSIGNED) DESC
-        LIMIT 1
         """
     )
-    row = cursor_obj.fetchone()
+    used_numbers = {
+        int(row[0][2:])
+        for row in cursor_obj.fetchall()
+        if row and row[0]
+    }
 
-    next_number = 1000
-    if row and row[0]:
-        next_number = int(row[0][2:]) + 1
+    for number in range(1000, 10000):
+        if number not in used_numbers:
+            return f"VT{number:04d}"
 
-    if next_number > 9999:
-        raise RuntimeError("Voter ID range exhausted for VT#### format")
-
-    while next_number <= 9999:
-        voter_id = f"VT{next_number:04d}"
-        cursor_obj.execute("SELECT COUNT(*) FROM voters WHERE voter_id = %s", (voter_id,))
-        if cursor_obj.fetchone()[0] == 0:
-            return voter_id
-        next_number += 1
-
-    raise RuntimeError("Could not generate a unique voter ID")
+    raise RuntimeError("Voter ID range exhausted for VT#### format")
 
 
 def _ensure_election_scope_schema():
@@ -481,6 +473,26 @@ def get_all_voters():
         return jsonify(result)
     except Exception as e:
         return jsonify({"message": f"Failed to fetch voters: {str(e)}"}), 500
+
+@app.route("/admin/delete-voter/<voter_id>", methods=["POST"])
+def delete_voter(voter_id):
+    auth_check = require_admin()
+    if auth_check:
+        return auth_check
+
+    try:
+        cursor_obj = get_request_cursor()
+        cursor_obj.execute("DELETE FROM voters WHERE voter_id = %s", (voter_id,))
+        if cursor_obj.rowcount == 0:
+            return jsonify({"message": "Voter not found"}), 404
+        get_request_db().commit()
+        return jsonify({"message": "Voter deleted successfully"})
+    except Exception as e:
+        try:
+            get_request_db().rollback()
+        except Exception:
+            pass
+        return jsonify({"message": f"Failed to delete voter: {str(e)}"}), 500
 
 @app.route("/register", methods=["POST"])
 def register():

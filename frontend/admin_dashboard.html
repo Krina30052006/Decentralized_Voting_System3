@@ -69,6 +69,22 @@
         .status-notstarted { background: #6b7280; }
         .status-started { background: #10b981; }
         .status-ended { background: #ef4444; }
+        .action-cell {
+            min-width: 110px;
+        }
+        .delete-voter-btn {
+            width: auto;
+            padding: 0.45rem 0.8rem;
+            border: none;
+            border-radius: 0.5rem;
+            background: #dc2626;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .delete-voter-btn:hover {
+            background: #b91c1c;
+        }
     </style>
 </head>
 <body>
@@ -135,6 +151,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -197,10 +214,28 @@
                         <td>${v.name}</td>
                         <td>${v.email}</td>
                         <td><span class="${v.has_voted ? 'voted-badge' : 'not-voted-badge'}">${v.has_voted ? 'Voted' : 'Not Voted'}</span></td>
+                        <td class="action-cell"><button class="delete-voter-btn" type="button" onclick="deleteVoter('${v.voter_id}')">Delete User</button></td>
                     `;
                     tbody.appendChild(tr);
                 });
             } catch (err) { console.error(err); }
+        }
+
+        async function deleteVoter(voterId) {
+            if (!confirm(`Delete user ${voterId}?`)) return;
+            try {
+                const res = await fetch(`http://127.0.0.1:5000/admin/delete-voter/${encodeURIComponent(voterId)}`, {
+                    method: "POST"
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    alert(data.message || "Failed to delete voter");
+                    return;
+                }
+                await loadStats();
+            } catch (err) {
+                alert("Server error while deleting voter.");
+            }
         }
 
         async function controlElection(action) {
