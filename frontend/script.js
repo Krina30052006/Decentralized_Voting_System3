@@ -119,6 +119,15 @@ async function fetchResults() {
     const grid = document.getElementById('resultsGrid');
     grid.innerHTML = "<p>Loading blockchain stream...</p>";
     try {
+        if (userRole === 'voter') {
+            const statusRes = await fetch(`${API_BASE}/election/status`);
+            const statusData = await statusRes.json();
+            if (!statusRes.ok || statusData.status !== 'Ended') {
+                grid.innerHTML = "<p>Results are available only after the election ends and until admin performs universal reset.</p>";
+                return;
+            }
+        }
+
         const res = await fetch(`${API_BASE}/results`);
         const data = await res.json();
         

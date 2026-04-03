@@ -45459,3 +45459,125 @@ mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'r
 2026-04-02 11:59:14,239 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 466, 'result': '0x7a69'}
 2026-04-02 11:59:14,243 - app - DEBUG - DB connection closed
 2026-04-02 11:59:14,244 - werkzeug - INFO - 127.0.0.1 - - [02/Apr/2026 11:59:14] "GET /results HTTP/1.1" 200 -
+2026-04-03 13:10:17,856 - app - ERROR - Failed to ensure voter schema: 1932 (42S02): Table 'voting_system.voters' doesn't exist in engine
+2026-04-03 13:10:17,859 - app - ERROR - Failed to ensure election scope schema: 1932 (42S02): Table 'voting_system.election_scope' doesn't exist in engine
+2026-04-03 13:10:17,984 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-03 13:10:17,985 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-03 13:10:23,540 - app - INFO - Setting up DB for request: GET /
+2026-04-03 13:10:23,544 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:23,627 - app - DEBUG - DB connection closed
+2026-04-03 13:10:23,628 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:23] "GET / HTTP/1.1" 200 -
+2026-04-03 13:10:23,653 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-03 13:10:23,657 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:23,659 - app - INFO - Setting up DB for request: GET /script.js
+2026-04-03 13:10:23,662 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:23,670 - app - DEBUG - DB connection closed
+2026-04-03 13:10:23,671 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:23] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-03 13:10:23,689 - app - DEBUG - DB connection closed
+2026-04-03 13:10:23,689 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:23] "GET /script.js HTTP/1.1" 200 -
+2026-04-03 13:10:24,007 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-03 13:10:24,011 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:24,012 - app - DEBUG - DB connection closed
+2026-04-03 13:10:24,013 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:24] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-03 13:10:25,434 - app - INFO - Setting up DB for request: GET /login.html
+2026-04-03 13:10:25,437 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:25,475 - app - DEBUG - DB connection closed
+2026-04-03 13:10:25,476 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:25] "[36mGET /login.html HTTP/1.1[0m" 304 -
+2026-04-03 13:10:25,568 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-03 13:10:25,571 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:25,572 - app - DEBUG - DB connection closed
+2026-04-03 13:10:25,572 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:25] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-03 13:10:25,593 - app - INFO - Setting up DB for request: GET /index.html
+2026-04-03 13:10:25,596 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:25,598 - app - DEBUG - DB connection closed
+2026-04-03 13:10:25,598 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:25] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2026-04-03 13:10:25,627 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-03 13:10:25,629 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:25,630 - app - INFO - Setting up DB for request: GET /script.js
+2026-04-03 13:10:25,632 - app - DEBUG - DB connection closed
+2026-04-03 13:10:25,633 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:25] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-03 13:10:25,637 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:25,638 - app - DEBUG - DB connection closed
+2026-04-03 13:10:25,639 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:25] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-04-03 13:10:25,756 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-03 13:10:25,758 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:25,760 - app - DEBUG - DB connection closed
+2026-04-03 13:10:25,760 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:25] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-03 13:10:26,433 - app - INFO - Setting up DB for request: GET /login.html
+2026-04-03 13:10:26,436 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:26,437 - app - DEBUG - DB connection closed
+2026-04-03 13:10:26,437 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:26] "[36mGET /login.html HTTP/1.1[0m" 304 -
+2026-04-03 13:10:26,474 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-03 13:10:26,477 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:26,479 - app - DEBUG - DB connection closed
+2026-04-03 13:10:26,480 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:26] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-03 13:10:26,641 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-03 13:10:26,647 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:26,649 - app - DEBUG - DB connection closed
+2026-04-03 13:10:26,650 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:26] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-03 13:10:28,269 - app - INFO - Setting up DB for request: GET /register.html
+2026-04-03 13:10:28,272 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:28,275 - app - DEBUG - DB connection closed
+2026-04-03 13:10:28,276 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:28] "[36mGET /register.html HTTP/1.1[0m" 304 -
+2026-04-03 13:10:28,305 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-03 13:10:28,308 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:28,310 - app - DEBUG - DB connection closed
+2026-04-03 13:10:28,311 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:28] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-03 13:10:28,350 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-03 13:10:28,353 - app - INFO - DB setup completed successfully
+2026-04-03 13:10:28,354 - app - DEBUG - DB connection closed
+2026-04-03 13:10:28,354 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:10:28] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-03 13:11:32,249 - app - INFO - Setting up DB for request: POST /register
+2026-04-03 13:11:32,253 - app - INFO - DB setup completed successfully
+2026-04-03 13:11:32,444 - app - ERROR - Exception on /register [POST]
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: Table 'voting_system.voters' doesn't exist in engine
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\backend\app.py", line 538, in register
+    cursor_obj.execute("SELECT COUNT(*) FROM voters WHERE aadhaar_no = %s", (aadhaar_no,))
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "D:\Decentralized_Voting_System3\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.ProgrammingError: 1932 (42S02): Table 'voting_system.voters' doesn't exist in engine
+2026-04-03 13:11:32,537 - app - DEBUG - DB connection closed
+2026-04-03 13:11:32,538 - werkzeug - INFO - 127.0.0.1 - - [03/Apr/2026 13:11:32] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
