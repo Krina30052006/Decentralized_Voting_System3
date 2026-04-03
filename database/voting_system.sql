@@ -1,31 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Mar 16, 2026 at 04:12 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `voting_system`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `election_scope`
---
 
 CREATE TABLE `election_scope` (
   `id` int(11) NOT NULL,
@@ -35,18 +14,13 @@ CREATE TABLE `election_scope` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `election_scope`
---
+
 
 INSERT INTO `election_scope` (`id`, `city`, `district`, `is_active`) VALUES
 (1, NULL, NULL, 0);
 
--- --------------------------------------------------------
 
---
--- Table structure for table `voters`
---
+
 
 CREATE TABLE `voters` (
   `id` int(11) NOT NULL,
@@ -63,49 +37,24 @@ CREATE TABLE `voters` (
   `has_voted` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `voters`
---
 
-INSERT INTO `voters` (`id`, `voter_id`, `name`, `email`, `password`, `aadhaar_no`, `aadhaar_photo_url`, `date_of_birth`, `city`, `district`, `wallet_address`, `has_voted`) VALUES
-(1, 'VT1000', 'Rahul', 'rahul@gmail.com', '123456', '123456789012', NULL, '2000-01-01', 'Pune', 'Pune', NULL, 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `election_scope`
---
 ALTER TABLE `election_scope`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `voters`
---
+
 ALTER TABLE `voters`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `voter_id` (`voter_id`),
   ADD UNIQUE KEY `aadhaar_no` (`aadhaar_no`),
   ADD UNIQUE KEY `email` (`email`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `election_scope`
---
 ALTER TABLE `election_scope`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
---
--- AUTO_INCREMENT for table `voters`
---
+
 ALTER TABLE `voters`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
