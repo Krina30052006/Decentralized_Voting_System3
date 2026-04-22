@@ -389,9 +389,30 @@ def reset_system():
 @app.route("/election/status", methods=["GET"])
 def get_election_status():
     try:
+        voter_id = request.args.get("voter_id", "").strip()
         status_code = contract.functions.electionState().call()
         states = ["NotStarted", "Started", "Ended"]
         scope = _get_active_election_scope(get_request_cursor())
+
+        if status_code == 1 and scope and voter_id:
+            cursor_obj = get_request_cursor()
+            cursor_obj.execute("SELECT city, district FROM voters WHERE voter_id=%s", (voter_id,))
+            voter_row = cursor_obj.fetchone()
+
+            if voter_row:
+                voter_city = (voter_row[0] or "").strip().lower()
+                voter_district = (voter_row[1] or "").strip().lower()
+                scope_city = (scope["city"] or "").strip().lower()
+                scope_district = (scope["district"] or "").strip().lower()
+
+                if voter_city != scope_city or voter_district != scope_district:
+                    return jsonify({
+                        "status": "NotStarted",
+                        "status_code": 0,
+                        "scope": scope,
+                        "message": "No voting has been started for your place."
+                    })
+
         return jsonify({"status": states[status_code], "status_code": status_code, "scope": scope})
     except Exception as e:
         return jsonify({"message": f"Failed to get status: {str(e)}"}), 500
@@ -460,7 +481,7 @@ def get_all_voters():
     if auth_check: return auth_check
     
     try:
-        get_request_cursor().execute("SELECT voter_id, name, email, has_voted FROM voters")
+        get_request_cursor().execute("SELECT voter_id, name, email, has_voted, city, district FROM voters")
         voters = get_request_cursor().fetchall()
         result = []
         for v in voters:
@@ -468,7 +489,9 @@ def get_all_voters():
                 "voter_id": v[0],
                 "name": v[1],
                 "email": v[2],
-                "has_voted": bool(v[3])
+                "has_voted": bool(v[3]),
+                "city": v[4],
+                "district": v[5]
             })
         return jsonify(result)
     except Exception as e:

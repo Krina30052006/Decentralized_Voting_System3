@@ -123,7 +123,7 @@ async function fetchResults() {
             const statusRes = await fetch(`${API_BASE}/election/status`);
             const statusData = await statusRes.json();
             if (!statusRes.ok || statusData.status !== 'Ended') {
-                grid.innerHTML = "<p>Results are available only after the election ends and until admin performs universal reset.</p>";
+                grid.innerHTML = "<p>Results can only be viewed after the election ends.</p>";
                 return;
             }
         }
@@ -153,7 +153,11 @@ async function fetchResults() {
 
 async function fetchElectionStatus() {
     try {
-        const res = await fetch(`${API_BASE}/election/status`);
+        const voterId = sessionStorage.getItem("userId");
+        const statusUrl = userRole === 'voter' && voterId
+            ? `${API_BASE}/election/status?voter_id=${encodeURIComponent(voterId)}`
+            : `${API_BASE}/election/status`;
+        const res = await fetch(statusUrl);
         const data = await res.json();
         const label = document.getElementById('voterStatusLabel');
         const voteGrid = document.getElementById('voteGrid');
@@ -182,7 +186,7 @@ async function fetchElectionStatus() {
             }
         } else {
             selectedCandidateId = null;
-            voteGrid.innerHTML = `<div class="col-span-3 py-10 opacity-50">Voting is currently closed. Please wait for election start.</div>`;
+            voteGrid.innerHTML = `<div class="col-span-3 py-10 opacity-50">${data.message || 'Voting is currently closed. Please wait for election start.'}</div>`;
             voteBtn.disabled = true;
             voteBtn.classList.remove('vote-btn-active');
             voteBtn.textContent = "CONFIRM SECURE VOTE";
@@ -292,9 +296,22 @@ async function fetchAdminStats() {
     try {
         const resV = await fetch(`${API_BASE}/admin/voters`, { credentials: 'include' });
         const voters = await resV.json();
-        
-        const votedCount = voters.filter(v => v.has_voted).length;
-        const totalVoters = voters.length;
+
+        const resS = await fetch(`${API_BASE}/election/status`);
+        const sData = await resS.json();
+
+        let turnoutVoters = voters;
+        if (sData.status === 'Started' && sData.scope && sData.scope.city && sData.scope.district) {
+            const scopeCity = (sData.scope.city || '').trim().toLowerCase();
+            const scopeDistrict = (sData.scope.district || '').trim().toLowerCase();
+            turnoutVoters = voters.filter(v =>
+                ((v.city || '').trim().toLowerCase() === scopeCity) &&
+                ((v.district || '').trim().toLowerCase() === scopeDistrict)
+            );
+        }
+
+        const votedCount = turnoutVoters.filter(v => v.has_voted).length;
+        const totalVoters = turnoutVoters.length;
         const turnoutPercent = totalVoters > 0 ? ((votedCount / totalVoters) * 100).toFixed(1) : 0;
         
         const resC = await fetch(`${API_BASE}/candidates`);
@@ -307,9 +324,7 @@ async function fetchAdminStats() {
             document.getElementById('registeredVotersStat').textContent = totalVoters;
             document.getElementById('turnoutRateStat').textContent = `${turnoutPercent}%`;
         }
-        
-        const resS = await fetch(`${API_BASE}/election/status`);
-        const sData = await resS.json();
+
         const statusEl = document.getElementById('adminStatusDisplay');
         if (sData.scope && sData.scope.city && sData.scope.district) {
             statusEl.textContent = `Status: ${sData.status} | ${sData.scope.district}, ${sData.scope.city}`;
@@ -530,16 +545,24 @@ async function fetchVoters() {
     const tbody = document.getElementById('voterTableBody');
     tbody.innerHTML = "<tr><td colspan='5' class='p-8 text-center'>Syncing registry...</td></tr>";
     try {
-        const res = await fetch(`${API_BASE}/admin/voters`, { credentials: 'include' });
-        const voters = await res.json();
+        const [resVoters, resStatus] = await Promise.all([
+            fetch(`${API_BASE}/admin/voters`, { credentials: 'include' }),
+            fetch(`${API_BASE}/election/status`)
+        ]);
+        const voters = await resVoters.json();
+        const statusData = await resStatus.json();
         tbody.innerHTML = "";
-        voters.forEach(v => {
+
+        const renderVoterRow = (v) => {
             const tr = document.createElement('tr');
             tr.className = "border-b border-slate-50 hover:bg-slate-50/50 transition";
             tr.innerHTML = `
                 <td class="px-8 py-4 font-bold text-slate-800">${v.voter_id}</td>
                 <td class="px-8 py-4 text-slate-600">${v.name}</td>
-                <td class="px-8 py-4 text-slate-400 text-sm">${v.email}</td>
+                <td class="px-8 py-4 text-slate-400 text-sm">
+                    <div>${v.email}</div>
+                    <div class="text-[10px] uppercase tracking-widest mt-1">${v.district || 'Unknown District'}, ${v.city || 'Unknown City'}</div>
+                </td>
                 <td class="px-8 py-4 text-[10px] font-black uppercase tracking-widest ${v.has_voted ? 'text-green-500' : 'text-red-500'}">
                     ${v.has_voted ? '✓ Cast' : '○ Pending'}
                 </td>
@@ -548,7 +571,31 @@ async function fetchVoters() {
                 </td>
             `;
             tbody.appendChild(tr);
-        });
+        };
+
+        if (statusData.status === 'Started') {
+            const grouped = {};
+            voters.forEach(v => {
+                const key = `${v.district || 'Unknown District'}|${v.city || 'Unknown City'}`;
+                if (!grouped[key]) grouped[key] = [];
+                grouped[key].push(v);
+            });
+
+            Object.keys(grouped).sort().forEach(key => {
+                const [district, city] = key.split('|');
+                const areaVoters = grouped[key];
+                const areaVoted = areaVoters.filter(v => v.has_voted).length;
+                const areaTurnout = areaVoters.length > 0 ? ((areaVoted / areaVoters.length) * 100).toFixed(1) : 0;
+
+                const groupRow = document.createElement('tr');
+                groupRow.innerHTML = `<td colspan='5' class='px-8 py-3 bg-slate-50 text-xs font-black uppercase tracking-widest text-slate-600'>${district}, ${city} • Turnout: ${areaTurnout}% (${areaVoted}/${areaVoters.length})</td>`;
+                tbody.appendChild(groupRow);
+
+                areaVoters.forEach(renderVoterRow);
+            });
+        } else {
+            voters.forEach(renderVoterRow);
+        }
     } catch (err) { tbody.innerHTML = "<tr><td colspan='5' class='p-8 text-center'>Error loading voters.</td></tr>"; }
 }
 
