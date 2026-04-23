@@ -54282,3 +54282,210 @@ mysql.connector.errors.ProgrammingError: 1932 (42S02): Table 'voting_system.vote
 2026-04-22 21:14:27,661 - app - INFO - DB setup completed successfully
 2026-04-22 21:14:27,663 - app - DEBUG - DB connection closed
 2026-04-22 21:14:27,663 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:14:27] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-22 21:16:35,616 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-22 21:16:35,617 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 21:16:38,371 - app - INFO - Setting up DB for request: GET /
+2026-04-22 21:16:38,374 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:38,506 - app - DEBUG - DB connection closed
+2026-04-22 21:16:38,506 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:38] "[36mGET / HTTP/1.1[0m" 304 -
+2026-04-22 21:16:38,530 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-22 21:16:38,533 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:38,535 - app - DEBUG - DB connection closed
+2026-04-22 21:16:38,535 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:38] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-22 21:16:38,540 - app - INFO - Setting up DB for request: GET /script.js
+2026-04-22 21:16:38,548 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:38,550 - app - DEBUG - DB connection closed
+2026-04-22 21:16:38,551 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:38] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-04-22 21:16:38,848 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-22 21:16:38,850 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:38,851 - app - DEBUG - DB connection closed
+2026-04-22 21:16:38,852 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:38] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-22 21:16:42,213 - app - INFO - Setting up DB for request: GET /admin_login.html
+2026-04-22 21:16:42,216 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:42,217 - app - DEBUG - DB connection closed
+2026-04-22 21:16:42,218 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:42] "[36mGET /admin_login.html HTTP/1.1[0m" 304 -
+2026-04-22 21:16:42,251 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-22 21:16:42,256 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:42,260 - app - DEBUG - DB connection closed
+2026-04-22 21:16:42,261 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:42] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-22 21:16:42,273 - app - INFO - Setting up DB for request: GET /index.html
+2026-04-22 21:16:42,279 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:42,280 - app - DEBUG - DB connection closed
+2026-04-22 21:16:42,281 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:42] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2026-04-22 21:16:42,305 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-22 21:16:42,311 - app - INFO - Setting up DB for request: GET /script.js
+2026-04-22 21:16:42,312 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:42,313 - app - DEBUG - DB connection closed
+2026-04-22 21:16:42,314 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:42] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-22 21:16:42,314 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:42,316 - app - DEBUG - DB connection closed
+2026-04-22 21:16:42,316 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:42] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-04-22 21:16:42,435 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-22 21:16:42,439 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:42,441 - app - DEBUG - DB connection closed
+2026-04-22 21:16:42,443 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:42] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-22 21:16:43,620 - app - INFO - Setting up DB for request: GET /admin_login.html
+2026-04-22 21:16:43,626 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:43,628 - app - DEBUG - DB connection closed
+2026-04-22 21:16:43,629 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:43] "[36mGET /admin_login.html HTTP/1.1[0m" 304 -
+2026-04-22 21:16:43,660 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-22 21:16:43,664 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:43,665 - app - DEBUG - DB connection closed
+2026-04-22 21:16:43,666 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:43] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-22 21:16:43,693 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-22 21:16:43,696 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:43,697 - app - DEBUG - DB connection closed
+2026-04-22 21:16:43,698 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:43] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-22 21:16:49,828 - app - INFO - Setting up DB for request: POST /admin/login
+2026-04-22 21:16:49,832 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:49,836 - app - DEBUG - DB connection closed
+2026-04-22 21:16:49,836 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:49] "POST /admin/login HTTP/1.1" 200 -
+2026-04-22 21:16:50,866 - app - INFO - Setting up DB for request: GET /index.html
+2026-04-22 21:16:50,870 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:50,872 - app - DEBUG - DB connection closed
+2026-04-22 21:16:50,872 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:50] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2026-04-22 21:16:50,909 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-22 21:16:50,912 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:50,914 - app - DEBUG - DB connection closed
+2026-04-22 21:16:50,914 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:50] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-22 21:16:50,920 - app - INFO - Setting up DB for request: GET /script.js
+2026-04-22 21:16:50,924 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:50,926 - app - DEBUG - DB connection closed
+2026-04-22 21:16:50,927 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:50] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-04-22 21:16:51,127 - app - INFO - Setting up DB for request: GET /admin/voters
+2026-04-22 21:16:51,129 - app - INFO - Setting up DB for request: GET /candidates
+2026-04-22 21:16:51,130 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:51,132 - app - DEBUG - DB connection closed
+2026-04-22 21:16:51,132 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:51] "GET /admin/voters HTTP/1.1" 200 -
+2026-04-22 21:16:51,133 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:51,139 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-04-22 21:16:51,139 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,139 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,139 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x00000184522A96D0>
+2026-04-22 21:16:51,141 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-04-22 21:16:51,148 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-04-22 21:16:51,148 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 3, 'result': '0x7a69'}
+2026-04-22 21:16:51,150 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-04-22 21:16:51,168 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-04-22 21:16:51,169 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 4, 'result': '0x0000000000000000000000000000000000000000000000000000000000000000'}
+2026-04-22 21:16:51,169 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,169 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,173 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-04-22 21:16:51,173 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 5, 'result': '0x7a69'}
+2026-04-22 21:16:51,176 - app - DEBUG - DB connection closed
+2026-04-22 21:16:51,176 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:51] "GET /candidates HTTP/1.1" 200 -
+2026-04-22 21:16:51,182 - app - INFO - Setting up DB for request: GET /candidates
+2026-04-22 21:16:51,184 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:51,187 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-04-22 21:16:51,187 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,187 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,188 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x00000184522A9950>
+2026-04-22 21:16:51,189 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-04-22 21:16:51,194 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-04-22 21:16:51,194 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 6, 'result': '0x7a69'}
+2026-04-22 21:16:51,195 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-04-22 21:16:51,202 - app - INFO - Setting up DB for request: GET /election/status
+2026-04-22 21:16:51,204 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-22 21:16:51,205 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:51,206 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:51,208 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-04-22 21:16:51,209 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,209 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,209 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x00000184522F96E0>
+2026-04-22 21:16:51,210 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 102
+2026-04-22 21:16:51,212 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 7, 'result': '0x0000000000000000000000000000000000000000000000000000000000000000'}
+2026-04-22 21:16:51,212 - app - DEBUG - DB connection closed
+2026-04-22 21:16:51,213 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,213 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:51] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-04-22 21:16:51,213 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-04-22 21:16:51,213 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,220 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-04-22 21:16:51,220 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 42
+2026-04-22 21:16:51,220 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 8, 'result': '0x7a69'}
+2026-04-22 21:16:51,221 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 9, 'result': '0x7a69'}
+2026-04-22 21:16:51,221 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-04-22 21:16:51,222 - app - DEBUG - DB connection closed
+2026-04-22 21:16:51,223 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:51] "GET /candidates HTTP/1.1" 200 -
+2026-04-22 21:16:51,230 - app - INFO - Setting up DB for request: GET /candidates
+2026-04-22 21:16:51,232 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:51,235 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-04-22 21:16:51,235 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 10, 'result': '0x0000000000000000000000000000000000000000000000000000000000000000'}
+2026-04-22 21:16:51,235 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-04-22 21:16:51,235 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,236 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,236 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,236 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,237 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x00000184522F9A70>
+2026-04-22 21:16:51,239 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-04-22 21:16:51,242 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-04-22 21:16:51,242 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 11, 'result': '0x7a69'}
+2026-04-22 21:16:51,243 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-04-22 21:16:51,244 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 12, 'result': '0x7a69'}
+2026-04-22 21:16:51,245 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-04-22 21:16:51,246 - app - DEBUG - DB connection closed
+2026-04-22 21:16:51,246 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:51] "GET /election/status HTTP/1.1" 200 -
+2026-04-22 21:16:51,253 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-04-22 21:16:51,253 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 13, 'result': '0x0000000000000000000000000000000000000000000000000000000000000000'}
+2026-04-22 21:16:51,254 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,254 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,257 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-04-22 21:16:51,257 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 14, 'result': '0x7a69'}
+2026-04-22 21:16:51,259 - app - DEBUG - DB connection closed
+2026-04-22 21:16:51,259 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:51] "GET /candidates HTTP/1.1" 200 -
+2026-04-22 21:16:51,277 - app - INFO - Setting up DB for request: GET /candidates
+2026-04-22 21:16:51,280 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:51,282 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-04-22 21:16:51,282 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,282 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,283 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x00000184522871D0>
+2026-04-22 21:16:51,284 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-04-22 21:16:51,287 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-04-22 21:16:51,288 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 15, 'result': '0x7a69'}
+2026-04-22 21:16:51,289 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-04-22 21:16:51,299 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-04-22 21:16:51,299 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 16, 'result': '0x0000000000000000000000000000000000000000000000000000000000000000'}
+2026-04-22 21:16:51,300 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:51,300 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:51,305 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-04-22 21:16:51,306 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 17, 'result': '0x7a69'}
+2026-04-22 21:16:51,309 - app - DEBUG - DB connection closed
+2026-04-22 21:16:51,309 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:51] "GET /candidates HTTP/1.1" 200 -
+2026-04-22 21:16:55,781 - app - INFO - Setting up DB for request: GET /admin/voters
+2026-04-22 21:16:55,795 - app - INFO - Setting up DB for request: GET /election/status
+2026-04-22 21:16:55,803 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:55,808 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:55,809 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2026-04-22 21:16:55,809 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:55,809 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:55,810 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://127.0.0.1:8545, <requests.sessions.Session object at 0x0000018452273680>
+2026-04-22 21:16:55,811 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:8545
+2026-04-22 21:16:55,814 - app - DEBUG - DB connection closed
+2026-04-22 21:16:55,815 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:55] "GET /admin/voters HTTP/1.1" 200 -
+2026-04-22 21:16:55,817 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-04-22 21:16:55,817 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 18, 'result': '0x7a69'}
+2026-04-22 21:16:55,819 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_call
+2026-04-22 21:16:55,838 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 103
+2026-04-22 21:16:55,840 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_call, Response: {'jsonrpc': '2.0', 'id': 19, 'result': '0x0000000000000000000000000000000000000000000000000000000000000000'}
+2026-04-22 21:16:55,840 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2026-04-22 21:16:55,840 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId
+2026-04-22 21:16:55,848 - urllib3.connectionpool - DEBUG - http://127.0.0.1:8545 "POST / HTTP/1.1" 200 43
+2026-04-22 21:16:55,849 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://127.0.0.1:8545, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'id': 20, 'result': '0x7a69'}
+2026-04-22 21:16:55,853 - app - DEBUG - DB connection closed
+2026-04-22 21:16:55,854 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:55] "GET /election/status HTTP/1.1" 200 -
+2026-04-22 21:16:59,386 - app - INFO - Setting up DB for request: GET /index.html
+2026-04-22 21:16:59,389 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:59,391 - app - DEBUG - DB connection closed
+2026-04-22 21:16:59,392 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:59] "[36mGET /index.html HTTP/1.1[0m" 304 -
+2026-04-22 21:16:59,429 - app - INFO - Setting up DB for request: GET /style.css
+2026-04-22 21:16:59,431 - app - INFO - Setting up DB for request: GET /script.js
+2026-04-22 21:16:59,432 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:59,433 - app - DEBUG - DB connection closed
+2026-04-22 21:16:59,433 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:59] "[36mGET /style.css HTTP/1.1[0m" 304 -
+2026-04-22 21:16:59,434 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:59,435 - app - DEBUG - DB connection closed
+2026-04-22 21:16:59,435 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:59] "[36mGET /script.js HTTP/1.1[0m" 304 -
+2026-04-22 21:16:59,582 - app - INFO - Setting up DB for request: GET /favicon.ico
+2026-04-22 21:16:59,585 - app - INFO - DB setup completed successfully
+2026-04-22 21:16:59,586 - app - DEBUG - DB connection closed
+2026-04-22 21:16:59,586 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 21:16:59] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
